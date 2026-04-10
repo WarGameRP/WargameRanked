@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WarGame Deck Indexer</title>
+    <link rel="stylesheet" href="Assets/Other/css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="Assets/Other/js/marked.min.js"></script>
+    <!-- Load generated data -->
+    <script src="Assets/Other/js/pages.js"></script>
+    <script src="Assets/Other/js/updates.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <img src="Assets/Other/img/Logo_Ranked.png" alt="Logo WarGame">
+                <div class="title-group">
+                    <h1>WarGame Deck <span class="version-tag" id="current-version">v1.1.0</span></h1>
+                </div>
+            </div>
+            <nav>
+                <button class="btn" onclick="openModal('points-modal')">Explication des Points</button>
+                <button class="btn btn-primary" onclick="openModal('updates-modal')">Nouveautés</button>
+            </nav>
+        </header>
+
+        <section id="pages-list" class="grid">
+            <!-- Dynamically filled by JS -->
+            <div class="loading">Chargement des pages...</div>
+        </section>
+    </div>
+
+    <!-- Modal Points -->
+    <div id="points-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('points-modal')">&times;</button>
+            <div id="points-content" class="markdown-body"></div>
+        </div>
+    </div>
+
+    <!-- Modal Updates -->
+    <div id="updates-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('updates-modal')">&times;</button>
+            <div id="updates-content" class="markdown-body"></div>
+            <div class="update-history">
+                <button id="back-to-latest" class="btn"
+                    style="display: none; width: 100%; margin-bottom: 1rem; border-color: var(--accent-color);"
+                    onclick="resetUpdatesModal()">Retour à la version actuelle</button>
+                <button id="btn-toggle-old" class="btn" style="width: 100%" onclick="toggleOldUpdates()">Voir les
+                    anciennes mises à jour</button>
+                <div id="old-updates-list" style="display: none; margin-top: 1rem;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const APP_VERSION = "1.1.0";
+        document.getElementById('current-version').innerText = "v" + APP_VERSION;
+
+        function init() {
+            loadPages();
+            checkVersion();
+        }
+
+        function loadPages() {
+            const container = document.getElementById('pages-list');
+            if (typeof PAGES_DATA === 'undefined') {
+                container.innerHTML = '<p style="color: #f0ad4e; text-align: center; grid-column: 1/-1;">Erreur: Veuillez lancer "Lancer_WarGame.bat" pour générer la liste des pages.<br><small>(Fichier Assets/Other/pages.js manquant)</small></p>';
+                return;
+            }
+
+            container.innerHTML = '';
+            PAGES_DATA.forEach(page => {
+                const card = document.createElement('div');
+                card.className = `card`;
+                card.style.setProperty('--flag-url', `url('https://flagcdn.com/w640/${page.flag}.png')`);
+                const displayName = page.filename.replace('.html', '').replace(/_/g, ' ');
+                card.innerHTML = `
+                    <div>
+                        <h3 style="position: relative; z-index: 2;">${displayName}</h3>
+                        <div class="meta" style="position: relative; z-index: 2;">Fichier: ${page.filename}</div>
+                    </div>
+                `;
+                card.onclick = () => window.location.href = `Assets/${page.filename}`;
+                container.appendChild(card);
+            });
+        }
+
+        function checkVersion() {
+            const lastSeen = localStorage.getItem('last_seen_version');
+            if (lastSeen !== APP_VERSION) {
+                openModal('updates-modal');
+                localStorage.setItem('last_seen_version', APP_VERSION);
+            }
+        }
+
+        function openModal(id) {
+            console.log('Opening modal:', id);
+            const modal = document.getElementById(id);
+            if (!modal) return;
+            modal.classList.add('active');
+
+            try {
+                if (id === 'points-modal') {
+                    const content = (typeof POINTS_CONTENT !== 'undefined' && POINTS_CONTENT) ? POINTS_CONTENT : "# Erreur\nContenu des points non trouvé.";
+                    console.log('Points content type:', typeof content);
+                    const target = document.getElementById('points-content');
+                    if (target) {
+                        target.innerHTML = typeof marked.parse === 'function' ? marked.parse(content) : marked(content);
+                    }
+                } else if (id === 'updates-modal') {
+                    const content = (typeof WHATSNEW_CONTENT !== 'undefined' && WHATSNEW_CONTENT) ? WHATSNEW_CONTENT : "# Erreur\nContenu des nouveautés non trouvé.";
+                    console.log('Updates content type:', typeof content);
+                    const target = document.getElementById('updates-content');
+                    if (target) {
+                        target.innerHTML = typeof marked.parse === 'function' ? marked.parse(content) : marked(content);
+                    }
+                }
+            } catch (e) {
+                console.error('Markdown rendering error:', e);
+                const targetId = id === 'points-modal' ? 'points-content' : 'updates-content';
+                const target = document.getElementById(targetId);
+                if (target) target.innerText = "Erreur de rendu : " + e.message;
+            }
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        function toggleOldUpdates() {
+            const list = document.getElementById('old-updates-list');
+            const btn = document.getElementById('btn-toggle-old');
+            if (list.style.display === 'none') {
+                list.style.display = 'block';
+                btn.innerText = "Masquer les archives";
+                if (typeof OLD_UPDATES_DATA === 'undefined' || Object.keys(OLD_UPDATES_DATA).length === 0) {
+                    list.innerHTML = "Aucune archive trouvée.";
+                } else {
+                    const keys = Object.keys(OLD_UPDATES_DATA);
+                    list.innerHTML = keys.map(u => `<div class="old-update-item" onclick="loadOldUpdate('${u}')">${u}</div>`).join('');
+                }
+            } else {
+                list.style.display = 'none';
+                btn.innerText = "Voir les anciennes mises à jour";
+            }
+        }
+
+        function loadOldUpdate(filename) {
+            if (typeof OLD_UPDATES_DATA !== 'undefined' && OLD_UPDATES_DATA[filename]) {
+                const text = OLD_UPDATES_DATA[filename];
+                document.getElementById('updates-content').innerHTML = marked.parse(text);
+                document.getElementById('back-to-latest').style.display = 'block';
+                // Scroll to top of modal content
+                document.querySelector('#updates-modal .modal-content').scrollTop = 0;
+            } else {
+                alert("Impossible de charger l'archive.");
+            }
+        }
+
+        function resetUpdatesModal() {
+            const content = (typeof WHATSNEW_CONTENT !== 'undefined' && WHATSNEW_CONTENT) ? WHATSNEW_CONTENT : "# Erreur\nContenu des nouveautés non trouvé.";
+            document.getElementById('updates-content').innerHTML = marked.parse(content);
+            document.getElementById('back-to-latest').style.display = 'none';
+            document.querySelector('#updates-modal .modal-content').scrollTop = 0;
+        }
+
+        window.onclick = function (event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+            }
+        }
+
+        // On load
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+@echo off
+echo Mise a jour de l'index des decks...
+powershell -ExecutionPolicy Bypass -File "Indexer.ps1"
+echo Lancement du portail WarGame...
+start index.html
+exit

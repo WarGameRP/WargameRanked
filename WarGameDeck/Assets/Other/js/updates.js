@@ -1,0 +1,1 @@
+﻿window.UPDATES_LIST = ["v1.0.5.md"];
