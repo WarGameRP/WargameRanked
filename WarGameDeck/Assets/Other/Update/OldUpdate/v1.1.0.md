@@ -1,0 +1,23 @@
+# Dashboard WarGameDeck v1.1.0
+
+Bienvenue sur la version 1.1.0 du dashboard. Cette interface centralisee permet une gestion fluide et une visualisation rapide de l'ensemble de vos doctrines et unites.
+
+## Nouvelles fonctionnalités
+
+### Indexation Dynamique
+Le systeme detecte desormais automatiquement tout nouveau fichier HTML place dans le dossier Assets. L'ajout d'un deck ne necessite plus aucune modification manuelle du code source. Il suffit de lancer l'application pour mettre a jour la liste.
+
+### Interface Tactique Premium
+Le design a ete entierement revu pour offrir une experience immersive. Le mode sombre est desormais la norme, avec des composants visuels ameliores et des animations fluides.
+
+### Gestion Documentaire
+Les regles de points et les journaux de modifications sont desormais accessibles directement via l'interface principale, facilitant la consultation en pleine session de preparation.
+
+## Guide de mise en oeuvre rapide
+
+1.  **Placement du fichier** : Enregistrez votre export HTML dans le dossier `Assets`.
+2.  **Synchronisation** : Executez `Lancer_WarGame.bat`.
+3.  **Consultation** : Votre deck est instantanement disponible sur la page d'accueil avec son drapeau correspondant.
+
+---
+*Commandant, le systeme est pret pour le deploiement.*

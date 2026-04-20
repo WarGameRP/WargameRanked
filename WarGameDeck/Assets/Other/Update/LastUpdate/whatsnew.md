@@ -1,23 +1,25 @@
-# Dashboard WarGameDeck v1.1.0
+# Dashboard WarGameDeck v1.1.1
 
-Bienvenue sur la version 1.1.0 du dashboard. Cette interface centralisee permet une gestion fluide et une visualisation rapide de l'ensemble de vos doctrines et unites.
+Mise a jour mineure avec de nouveaux outils d'automatisation.
 
-## Nouvelles fonctionnalités
+## Nouveaux outils
 
-### Indexation Dynamique
-Le systeme detecte desormais automatiquement tout nouveau fichier HTML place dans le dossier Assets. L'ajout d'un deck ne necessite plus aucune modification manuelle du code source. Il suffit de lancer l'application pour mettre a jour la liste.
+### Script de mise a jour du style
+- Creation du script Python `update_style.py` pour standardiser le style des fichiers HTML
+- Ajout du fichier batch `update_style.bat` pour un lancement simplifie
+- Le script detecte automatiquement les fichiers qui necessitent une mise a jour et applique le style uniforme (CSS, en-tete, padding)
 
-### Interface Tactique Premium
-Le design a ete entierement revu pour offrir une experience immersive. Le mode sombre est desormais la norme, avec des composants visuels ameliores et des animations fluides.
+### Documentation
+- Mise a jour du README.md avec les instructions pour utiliser le script de mise a jour du style
+- Creation d'un guide de documentation dans `Other/docs/README.md` pour expliquer le systeme de mises a jour
 
-### Gestion Documentaire
-Les regles de points et les journaux de modifications sont desormais accessibles directement via l'interface principale, facilitant la consultation en pleine session de preparation.
+## Fonctionnalites
 
-## Guide de mise en oeuvre rapide
-
-1.  **Placement du fichier** : Enregistrez votre export HTML dans le dossier `Assets`.
-2.  **Synchronisation** : Executez `Lancer_WarGame.bat`.
-3.  **Consultation** : Votre deck est instantanement disponible sur la page d'accueil avec son drapeau correspondant.
+Le script `update_style.py` effectue les actions suivantes :
+- Ajoute les liens CSS manquants (deck_style.css et Google Fonts)
+- Ajoute l'en-tete avec le logo et le bouton de retour au portail
+- Met a jour le padding de la description
+- Traite automatiquement tous les fichiers HTML du dossier Assets
 
 ---
-*Commandant, le systeme est pret pour le deploiement.*
+*Le systeme continue d'evoluer pour une experience utilisateur optimisee.*
