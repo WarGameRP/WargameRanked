@@ -40,6 +40,32 @@
             justify-content: center;
         }
 
+        /* Scrollbar styles - Cross-browser */
+        /* Firefox */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-color) var(--bg-color);
+        }
+
+        /* Chrome, Safari, Edge */
+        *::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        *::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+
+        *::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 4px;
+        }
+
+        *::-webkit-scrollbar-thumb:hover {
+            background: #d98e2b;
+        }
+
         .container {
             max-width: 800px;
             width: 100%;
