@@ -1,0 +1,252 @@
+# ============================================
+# GITIGNORE - Fichiers à ignorer par Git
+# ============================================
+# Ce fichier liste tous les fichiers et dossiers que Git ne doit PAS suivre
+# Chaque section explique pourquoi ces fichiers sont ignorés
+
+# ============================================
+# FICHIERS SYSTÈME
+# ============================================
+
+# macOS
+# Fichiers système créés automatiquement par macOS pour le stockage des métadonnées
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Fichiers de thumbnails (miniatures) d'images
+._*
+
+# Dossiers système macOS
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Windows
+# Fichier de configuration de l'affichage des dossiers
+Desktop.ini
+
+# Fichier de thumbnail Windows
+Thumbs.db
+ehthumbs.db
+$RECYCLE.BIN/
+
+# Linux
+# Fichiers temporaires
+*~
+.directory
+
+# ============================================
+# IDE ET ÉDITEURS
+# ============================================
+
+# Visual Studio Code
+# Fichiers de configuration locale de VS Code (préférences utilisateur)
+.vscode/*
+# Mais on garde les fichiers de configuration partagée
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# JetBrains (IntelliJ, PyCharm, WebStorm, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+# Fichiers de swap et de backup créés par Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+# Fichiers de sauvegarde automatique d'Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+auto-save-list
+tramp
+
+# ============================================
+# FICHIERS DE CONFIGURATION LOCALE
+# ============================================
+
+# Variables d'environnement
+# Contient des secrets (API keys, mots de passe, etc.)
+.env
+.env.local
+.env.*.local
+
+# Fichiers de configuration spécifiques à la machine
+config.local.json
+settings.local.yaml
+credentials.json
+
+# Fichiers de logs
+# Contiennent des informations sensibles ou temporaires
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ============================================
+# DEPENDANCES ET BUILD
+# ============================================
+
+# Node.js / npm
+# Dossier contenant toutes les dépendances installées
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python
+# Dossiers de cache Python
+__pycache__/
+*.py[cod]
+*$py.class
+# Environnements virtuels
+venv/
+env/
+ENV/
+.venv
+# Distribution Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+# PyInstaller
+*.manifest
+*.spec
+
+# PHP / Composer
+vendor/
+
+# Java / Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# Ruby / Bundler
+vendor/bundle
+
+# ============================================
+# FICHIERS DE BUILD ET GÉNÉRÉS
+# ============================================
+
+# Fichiers compilés
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Fichiers de build
+build/
+dist/
+out/
+target/
+
+# Fichiers générés automatiquement
+*.min.js
+*.min.css
+*.bundle.js
+
+# ============================================
+# PROJET SPÉCIFIQUE
+# ============================================
+
+# Fichiers temporaires du projet
+tmp/
+temp/
+*.tmp
+
+# Fichiers de données sensibles
+secrets.json
+api_keys.txt
+database.local.db
+
+# Fichiers de cache
+.cache/
+.cache-loader/
+
+# Fichiers de test coverage
+coverage/
+.nyc_output/
+.coverage
+htmlcov/
+
+# ============================================
+# BACKUPS
+# ============================================
+
+# Fichiers de backup automatiques
+*.bak
+*.backup
+*.old
+
+# Archives
+*.zip
+*.tar
+*.rar
+*.gz
+
+# ============================================
+# AUTRES
+# ============================================
+
+# Fichiers verrouillés
+.lock
+*.lock
+
+# Fichiers PID (Process ID)
+*.pid
+
+# Fichiers de session
+*.session
+*.srt
+
+# ============================================
+# À GARDER (exceptions)
+# ============================================
+
+# Si vous avez besoin d'inclure certains fichiers normalement ignorés,
+# vous pouvez les exclure du gitignore en utilisant ! avant le chemin
+
+# Exemple : garder un fichier .env.example mais ignorer .env
+.env
+!.env.example
+
+# Exemple : ignorer node_modules mais garder un package-lock.json
+node_modules/
+package-lock.json
