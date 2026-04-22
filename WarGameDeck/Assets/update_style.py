@@ -76,28 +76,22 @@ def main():
     """Fonction principale."""
     assets_dir = Path(__file__).parent
     
-    # Liste des fichiers HTML à mettre à jour
-    html_files = [
-        'france.html',
-        'japon.html',
-        'South Korea.html',
-        'ranked_basique.html',
-        'afrique_du_sud.html',
-        'chine.html'
-    ]
+    # Détecter automatiquement tous les fichiers HTML dans le dossier Assets
+    html_files = list(assets_dir.glob('*.html'))
+    
+    if not html_files:
+        print("⚠ Aucun fichier HTML trouvé dans le dossier Assets")
+        return
     
     print("Mise à jour du style des fichiers HTML...")
     print("=" * 50)
+    print(f"{len(html_files)} fichier(s) HTML trouvé(s)")
     
-    for html_file in html_files:
-        html_path = assets_dir / html_file
-        if html_path.exists():
-            try:
-                update_html_style(html_path)
-            except Exception as e:
-                print(f"✗ Erreur lors de la mise à jour de {html_file}: {e}")
-        else:
-            print(f"⚠ {html_file} n'existe pas")
+    for html_path in html_files:
+        try:
+            update_html_style(html_path)
+        except Exception as e:
+            print(f"✗ Erreur lors de la mise à jour de {html_path.name}: {e}")
     
     print("=" * 50)
     print("Mise à jour terminée!")
