@@ -131,8 +131,24 @@ def process_html_file(html_file_path, image_base_dir):
             skipped += 1
             vehicles.append({
                 'name': vehicle_name,
-                'image_path': str(dest_path.relative_to(image_base_dir))
+                'image_path': 'Image/' + str(dest_path.relative_to(image_base_dir))
             })
+            continue
+        
+        # Si l'URL n'est pas imgur, essayer de trouver l'image locale correspondante
+        if 'i.imgur.com' not in url:
+            # Chercher si une image avec le nom du véhicule existe déjà
+            existing_images = list(dest_dir.glob('*.png'))
+            for existing_img in existing_images:
+                if sanitized_name in existing_img.stem:
+                    vehicles.append({
+                        'name': vehicle_name,
+                        'image_path': 'Image/' + str(existing_img.relative_to(image_base_dir))
+                    })
+                    downloaded += 1
+                    skipped += 1
+                    print(f"  ⊘ {vehicle_name} utilise image existante: {existing_img.name}")
+                    break
             continue
         
         download_tasks.append((url, dest_path, vehicle_name, image_name))
@@ -150,7 +166,7 @@ def process_html_file(html_file_path, image_base_dir):
                         dest_path = dest_dir / image_name
                         vehicles.append({
                             'name': vehicle_name,
-                            'image_path': str(dest_path.relative_to(image_base_dir))
+                            'image_path': 'Image/' + str(dest_path.relative_to(image_base_dir))
                         })
                     else:
                         errors.append(vehicle_name)
