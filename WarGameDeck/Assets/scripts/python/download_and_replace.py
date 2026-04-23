@@ -23,7 +23,7 @@ def run_script(script_name):
     try:
         result = subprocess.run(
             [sys.executable, str(script_path)],
-            cwd=Path(__file__).parent,
+            cwd=Path(__file__).parent.parent.parent,
             capture_output=False
         )
         return result.returncode == 0

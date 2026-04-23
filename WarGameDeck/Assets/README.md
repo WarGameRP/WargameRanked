@@ -2,6 +2,19 @@
 
 Ce dossier contient des scripts Python pour automatiser la gestion des fichiers HTML et des images du projet Wargame Ranked.
 
+## Script d'Installation
+
+### `setup.bat`
+Script d'installation qui vérifie Python et installe les dépendances nécessaires.
+
+**Fonctionnalités:**
+- Vérifie si Python est installé
+- Installe Python automatiquement via winget si nécessaire
+- Installe les dépendances Python (beautifulsoup4, requests)
+
+**Usage:**
+Double-cliquez sur `scripts/setup.bat`
+
 ## Scripts Individuels
 
 ### `download_images.py`
@@ -17,10 +30,10 @@ Télécharge les images depuis les URLs imgur dans les fichiers HTML et les orga
 
 **Usage:**
 ```bash
-python download_images.py
+python scripts/python/download_images.py
 ```
 
-Ou double-cliquez sur `download_images.bat`
+Ou double-cliquez sur `scripts/download_images.bat`
 
 ### `replace_imgur_links.py`
 Remplace les liens imgur par les chemins d'images locaux dans les fichiers HTML.
@@ -34,10 +47,10 @@ Remplace les liens imgur par les chemins d'images locaux dans les fichiers HTML.
 
 **Usage:**
 ```bash
-python replace_imgur_links.py
+python scripts/python/replace_imgur_links.py
 ```
 
-Ou double-cliquez sur `replace_imgur_links.bat`
+Ou double-cliquez sur `scripts/replace_imgur_links.bat`
 
 ### `update_style.py`
 Met à jour le style des fichiers HTML pour uniformiser l'apparence des decks.
@@ -50,10 +63,10 @@ Met à jour le style des fichiers HTML pour uniformiser l'apparence des decks.
 
 **Usage:**
 ```bash
-python update_style.py
+python scripts/python/update_style.py
 ```
 
-Ou double-cliquez sur `update_style.bat`
+Ou double-cliquez sur `scripts/update_style.bat`
 
 ## Scripts Combinés
 
@@ -67,10 +80,10 @@ Combine le téléchargement des images et le remplacement des liens imgur en une
 
 **Usage:**
 ```bash
-python download_and_replace.py
+python scripts/python/download_and_replace.py
 ```
 
-Ou double-cliquez sur `download_and_replace.bat`
+Ou double-cliquez sur `scripts/download_and_replace.bat`
 
 ### `full_update.py`
 Script complet qui effectue toutes les mises à jour nécessaires: style, téléchargement d'images, et remplacement des liens.
@@ -83,10 +96,10 @@ Script complet qui effectue toutes les mises à jour nécessaires: style, télé
 
 **Usage:**
 ```bash
-python full_update.py
+python scripts/python/full_update.py
 ```
 
-Ou double-cliquez sur `full_update.bat`
+Ou double-cliquez sur `scripts/full_update.bat`
 
 ## Flux de Travail Recommandé
 
@@ -115,6 +128,19 @@ pip install beautifulsoup4 requests
 
 ```
 Assets/
+├── scripts/                  # Dossier des scripts
+│   ├── python/              # Scripts Python
+│   │   ├── download_images.py
+│   │   ├── replace_imgur_links.py
+│   │   ├── update_style.py
+│   │   ├── download_and_replace.py
+│   │   └── full_update.py
+│   ├── setup.bat            # Script d'installation
+│   ├── download_images.bat
+│   ├── replace_imgur_links.bat
+│   ├── update_style.bat
+│   ├── download_and_replace.bat
+│   └── full_update.bat
 ├── Image/                    # Dossiers d'images par pays
 │   ├── afrique_du_sud/
 │   ├── chine/
@@ -128,5 +154,5 @@ Assets/
 ├── *.html                    # Fichiers HTML des decks
 ├── vehicles.json             # Mapping véhicule → chemin image
 ├── download_log.txt          # Log des téléchargements
-└── *.py                      # Scripts Python
+└── README.md                 # Documentation des scripts
 ```

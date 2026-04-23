@@ -1,11 +1,11 @@
 ============================================================
 Rapport de téléchargement d'images
-Date: 2026-04-23 13:42:48
+Date: 2026-04-23 13:55:04
 ============================================================
 
 Total fichiers HTML traités: 6
-Total images téléchargées: 68
-Total images ignorées (existantes): 68
+Total images téléchargées: 0
+Total images ignorées (existantes): 0
 Total erreurs: 0
 
 ============================================================
@@ -13,34 +13,34 @@ Détails par fichier:
 ============================================================
 
 Fichier: afrique_du_sud.html
-  Images trouvées: 9
-  Téléchargées: 9
-  Ignorées: 9
+  Images trouvées: 0
+  Téléchargées: 0
+  Ignorées: 0
 
 Fichier: chine.html
-  Images trouvées: 18
-  Téléchargées: 18
-  Ignorées: 18
+  Images trouvées: 0
+  Téléchargées: 0
+  Ignorées: 0
 
 Fichier: france.html
-  Images trouvées: 21
-  Téléchargées: 21
-  Ignorées: 21
+  Images trouvées: 0
+  Téléchargées: 0
+  Ignorées: 0
 
 Fichier: japon.html
-  Images trouvées: 10
-  Téléchargées: 10
-  Ignorées: 10
+  Images trouvées: 0
+  Téléchargées: 0
+  Ignorées: 0
 
 Fichier: ranked_basique.html
-  Images trouvées: 2
-  Téléchargées: 2
-  Ignorées: 2
+  Images trouvées: 0
+  Téléchargées: 0
+  Ignorées: 0
 
 Fichier: South Korea.html
-  Images trouvées: 8
-  Téléchargées: 8
-  Ignorées: 8
+  Images trouvées: 0
+  Téléchargées: 0
+  Ignorées: 0
 
 ============================================================
 Fin du rapport

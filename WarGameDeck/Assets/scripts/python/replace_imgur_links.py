@@ -166,7 +166,7 @@ def replace_imgur_links_in_html(html_file, vehicle_mapping):
 
 def main():
     """Fonction principale."""
-    assets_dir = Path(__file__).parent
+    assets_dir = Path(__file__).parent.parent.parent
     json_file = assets_dir / 'vehicles.json'
     
     if not json_file.exists():

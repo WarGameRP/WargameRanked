@@ -179,7 +179,7 @@ def process_html_file(html_file_path, image_base_dir):
 
 def main():
     """Fonction principale."""
-    assets_dir = Path(__file__).parent
+    assets_dir = Path(__file__).parent.parent.parent
     image_base_dir = assets_dir / 'Image'
     
     # Détecter automatiquement tous les fichiers HTML dans le dossier Assets

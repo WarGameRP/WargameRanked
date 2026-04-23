@@ -22,7 +22,7 @@ if %errorlevel% neq 0 (
 
 echo.
 echo Installation des dependances Python...
-pip install requests
+pip install beautifulsoup4 requests
 if %errorlevel% neq 0 (
     echo Erreur lors de l'installation des dependances.
     pause
@@ -31,4 +31,5 @@ if %errorlevel% neq 0 (
 
 echo.
 echo Configuration terminee!
+echo Vous pouvez maintenant utiliser les scripts dans le dossier scripts/
 pause

@@ -74,7 +74,7 @@ def update_html_style(html_file_path):
 
 def main():
     """Fonction principale."""
-    assets_dir = Path(__file__).parent
+    assets_dir = Path(__file__).parent.parent.parent
     
     # Détecter automatiquement tous les fichiers HTML dans le dossier Assets
     html_files = list(assets_dir.glob('*.html'))
