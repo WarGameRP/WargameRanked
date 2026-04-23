@@ -1,0 +1,9 @@
+@echo off
+echo Running update_style.py...
+python "Assets/scripts/python/update_style.py"
+echo.
+echo Starting Indexer.ps1...
+powershell -ExecutionPolicy Bypass -File "Indexer.ps1"
+echo Lancement du portail WarGame...
+start index.html
+pause
