@@ -1,6 +1,6 @@
 // ─── Configuration API Cloudflare Workers ───────────────────────────────────
 // L'URL de votre API Cloudflare Workers qui génère les signatures SHA-256.
-// 
+//
 // ARCHITECTURE SÉCURISÉE:
 // - Le script.js génère le deck JSON et l'envoie à cette API
 // - L'API (Cloudflare Workers) possède le secret caché dans ses variables d'environnement
@@ -20,15 +20,6 @@ function escapeHtml(str) {
     div.textContent = String(str);
     return div.innerHTML;
 }
-
-const DOCTRINES = {
-    infantry: { name: "Infanterie", infantry: 12, armor: 0, mechanized: 3, motorized: 3, support: 2, plane: 0 },
-    armored: { name: "Blindée", infantry: 2, armor: 13, mechanized: 3, motorized: 0, support: 4, plane: 0 },
-    mechanized: { name: "Mécanisée", infantry: 10, armor: 0, mechanized: 10, motorized: 0, support: 2, plane: 0 },
-    support: { name: "Appui", infantry: 5, armor: 0, mechanized: 2, motorized: 0, support: 10, plane: 5 },
-    cas: { name: "CAS", infantry: 5, armor: 2, mechanized: 2, motorized: 3, support: 0, plane: 10 },
-    mixed: { name: "Mixte", infantry: 5, armor: 5, mechanized: 2, motorized: 3, support: 3, plane: 2 }
-};
 
 let currentDoctrine = null;
 let currentDeck = [];
@@ -329,7 +320,7 @@ function stableStringify(obj) {
 
 async function exportDeck() {
     const deckName = document.getElementById('deck-name').value || "Sans Nom";
-    
+
     const deckData = {
         name: deckName,
         doctrine: currentDoctrine,
@@ -343,7 +334,7 @@ async function exportDeck() {
         })),
         timestamp: Date.now()
     };
-    
+
     try {
         // Envoyer le deck JSON à l'API Cloudflare Workers pour obtenir la signature
         const response = await fetch(SIGNATURE_API_URL, {
@@ -353,32 +344,46 @@ async function exportDeck() {
             },
             body: JSON.stringify(deckData)
         });
-        
+
         if (!response.ok) {
             throw new Error(`Erreur API: ${response.status} ${response.statusText}`);
         }
-        
+
         const { signature } = await response.json();
-        
+
         if (!signature) {
             throw new Error("L'API n'a pas renvoyé de signature");
         }
-        
+
         const finalFile = {
             ...deckData,
             signature: signature
         };
-        
+
         const blob = new Blob([JSON.stringify(finalFile, null, 2)], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
         a.download = `${deckName.replace(/\s+/g, '_')}_deck.json`;
         a.click();
-        
+
     } catch (error) {
         console.error("Erreur lors de la signature:", error);
-        alert(`Erreur lors de l'export: ${error.message}\n\nVérifiez que l'API Cloudflare Workers est déployée et accessible.`);
+
+        // Fallback: proposer d'exporter sans signature
+        if (confirm(`L'API de signature est inaccessible (${error.message}).\n\nVoulez-vous exporter le deck quand même sans signature ?\n\n⚠️ `)) {
+            const finalFile = {
+                ...deckData,
+                signature: null
+            };
+
+            const blob = new Blob([JSON.stringify(finalFile, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${deckName.replace(/\s+/g, '_')}_deck.json`;
+            a.click();
+        }
     }
 }
 

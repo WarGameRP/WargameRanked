@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="../Assets/vehicles.js"></script>
+    <script src="doctrines.js"></script>
 </head>
 <body>
     <header>
@@ -29,10 +30,21 @@
             <label class="file-drop" id="drop-zone">
                 <input type="file" id="verify-input" style="display: none;" onchange="handleVerify(event)">
                 <div id="drop-content">
-                    <img src="https://www.svgrepo.com/show/486241/upload-file.svg" style="width: 64px; opacity: 0.3; margin-bottom: 20px;">
+                    <img src="../Assets/Other/img/archive-svgrepo-com.svg" style="width: 64px; opacity: 0.3; margin-bottom: 20px;">
                     <p>Cliquez ou glissez-déposez le fichier ici</p>
                 </div>
             </label>
+
+            <!-- Vehicle Details Modal -->
+            <div id="vehicle-modal" class="modal-overlay" style="display: none;" onclick="closeVehicleModal()">
+                <div class="modal-content animate-in" style="max-width: 500px;" onclick="event.stopPropagation()">
+                    <h3 id="modal-vehicle-name" style="margin-top: 0; color: var(--accent);">Détails du Véhicule</h3>
+                    <div id="modal-vehicle-details" style="margin-top: 20px;">
+                        <!-- Details will be injected here -->
+                    </div>
+                    <button class="primary-btn" style="margin-top: 20px; width: 100%;" onclick="closeVehicleModal()">Fermer</button>
+                </div>
+            </div>
 
             <div id="result-area" style="display: none; margin-top: 40px; text-align: left;">
                 <div id="status-badge" class="status-badge">VALIDE</div>
@@ -42,7 +54,14 @@
                         <h3 id="deck-title" style="margin: 0; color: var(--accent); font-size: 1.5rem;">Nom du Deck</h3>
                         <p id="deck-meta" style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 8px;"></p>
                     </div>
-                    
+
+                    <div id="credits-section" style="padding: 25px; border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.01);">
+                        <h4 style="margin-top: 0; margin-bottom: 15px; font-size: 1rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px;">Crédits Utilisés</h4>
+                        <div id="credits-bars" class="credits-bars">
+                            <!-- Credits bars will be inserted here -->
+                        </div>
+                    </div>
+
                     <div style="padding: 25px;">
                         <h4 style="margin-top: 0; margin-bottom: 20px; font-size: 1.1rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px;">Unités du Deck</h4>
                         <div id="deck-units" class="verify-grid">
@@ -119,18 +138,141 @@
             padding: 2px 6px;
             border-radius: 4px;
         }
+
+        .credits-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .credit-bar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .credit-bar-label {
+            width: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .credit-bar-track {
+            flex: 1;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .credit-bar-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .credit-bar-fill.overflow {
+            background: var(--danger);
+        }
+
+        .credit-bar-value {
+            width: 60px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-align: right;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .vehicle-detail-section {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .vehicle-detail-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .vehicle-detail-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .credit-detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 0.85rem;
+        }
+
+        .credit-detail-label {
+            color: var(--text-secondary);
+        }
+
+        .credit-detail-value {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .emport-option {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 10px;
+        }
+
+        .emport-option.selected {
+            border-color: var(--accent);
+            background: rgba(240, 173, 78, 0.1);
+        }
+
+        .emport-option-title {
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 5px;
+        }
+
+        .emport-option-cost {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .verify-unit-card {
+            cursor: pointer;
+        }
     </style>
 
     <script>
-        const DOCTRINES = {
-            infantry: "Infanterie",
-            armored: "Blindée",
-            mechanized: "Mécanisée",
-            support: "Appui",
-            cas: "CAS",
-            mixed: "Mixte"
-        };
-
         // ─── Configuration API Cloudflare Workers ───────────────────────────────────
         // L'URL de votre API Cloudflare Workers qui génère les signatures SHA-256.
         // La vérification utilise la même API que l'export pour garantir l'intégrité.
@@ -166,7 +308,7 @@
 
             const v = latest || u;
             let path = v.image_path || v.thumbnail || '';
-            
+
             if (path && !path.startsWith('http') && !path.startsWith('../')) {
                 path = '../Assets/' + path;
             }
@@ -174,6 +316,186 @@
                 path = '../Assets/' + v.image_path;
             }
             return path || '../Assets/Other/img/Logo_Ranked.png';
+        }
+
+        function updateCreditsBars(units, doctrineKey) {
+            const doctrine = DOCTRINES[doctrineKey];
+            if (!doctrine) return;
+
+            const totals = { infantry: 0, armor: 0, mechanized: 0, motorized: 0, support: 0, plane: 0, invitation: 0 };
+
+            units.forEach(u => {
+                const base = u.baseCredits || u.credits || {};
+                const emport = u.selectedEmport || { infantry: 0, armor: 0, mechanized: 0, motorized: 0, support: 0, plane: 0, invitation: 0, _text: '' };
+
+                for (const type in totals) {
+                    if (typeof base[type] === 'number') {
+                        totals[type] += (base[type] || 0) + (emport[type] || 0);
+                    }
+                }
+            });
+
+            const creditsBarsContainer = document.getElementById('credits-bars');
+            creditsBarsContainer.innerHTML = '';
+
+            const creditTypes = [
+                { key: 'infantry', label: 'INF' },
+                { key: 'armor', label: 'ARM' },
+                { key: 'mechanized', label: 'MEC' },
+                { key: 'motorized', label: 'MOT' },
+                { key: 'support', label: 'SUP' },
+                { key: 'plane', label: 'AIR' }
+            ];
+
+            creditTypes.forEach(({ key, label }) => {
+                const max = doctrine[key] !== undefined ? doctrine[key] : 0;
+                const used = totals[key];
+
+                if (max === 0 && used === 0) return;
+
+                const percentage = max > 0 ? Math.min((used / max) * 100, 100) : 0;
+                const isOverflow = max > 0 && used > max;
+
+                const item = document.createElement('div');
+                item.className = 'credit-bar-item';
+                item.innerHTML = `
+                    <span class="credit-bar-label">${label}</span>
+                    <div class="credit-bar-track">
+                        <div class="credit-bar-fill ${isOverflow ? 'overflow' : ''}" style="width: ${percentage}%"></div>
+                    </div>
+                    <span class="credit-bar-value">${used} / ${max}</span>
+                `;
+                creditsBarsContainer.appendChild(item);
+            });
+        }
+
+        function showVehicleDetails(unit) {
+            // Try to find latest data
+            let latest = null;
+            if (window.VEHICLES_DATA && window.VEHICLES_DATA[unit.country]) {
+                latest = window.VEHICLES_DATA[unit.country].find(v => v.name === unit.name);
+            }
+            const vehicle = latest || unit;
+
+            document.getElementById('modal-vehicle-name').innerText = vehicle.name;
+
+            const detailsContainer = document.getElementById('modal-vehicle-details');
+            detailsContainer.innerHTML = '';
+
+            // Base credits section
+            const base = vehicle.baseCredits || vehicle.credits || {};
+            const baseSection = document.createElement('div');
+            baseSection.className = 'vehicle-detail-section';
+            baseSection.innerHTML = '<div class="vehicle-detail-title">Crédits de Base</div>';
+
+            const creditTypes = [
+                { key: 'infantry', label: 'Infanterie' },
+                { key: 'armor', label: 'Blindés' },
+                { key: 'mechanized', label: 'Mécanisés' },
+                { key: 'motorized', label: 'Motorisés' },
+                { key: 'support', label: 'Support' },
+                { key: 'plane', label: 'Aériens' },
+                { key: 'invitation', label: 'Invitations' }
+            ];
+
+            creditTypes.forEach(({ key, label }) => {
+                const value = base[key] || 0;
+                if (value > 0) {
+                    const item = document.createElement('div');
+                    item.className = 'credit-detail-item';
+                    item.innerHTML = `
+                        <span class="credit-detail-label">${label}</span>
+                        <span class="credit-detail-value">${value}</span>
+                    `;
+                    baseSection.appendChild(item);
+                }
+            });
+
+            if (baseSection.children.length > 1) {
+                detailsContainer.appendChild(baseSection);
+            }
+
+            // Emport options section
+            const emport = unit.selectedEmport || { infantry: 0, armor: 0, mechanized: 0, motorized: 0, support: 0, plane: 0, invitation: 0, _text: '' };
+            const emportOptions = vehicle.emportOptions || [];
+
+            if (emportOptions.length > 0) {
+                const emportSection = document.createElement('div');
+                emportSection.className = 'vehicle-detail-section';
+                emportSection.innerHTML = '<div class="vehicle-detail-title">Options d\'Emport</div>';
+
+                // Show "Sans emport" option
+                const noneOption = document.createElement('div');
+                noneOption.className = 'emport-option';
+                const isNoneSelected = Object.values(emport).every(v => v === 0 || v === '');
+                noneOption.classList.toggle('selected', isNoneSelected);
+                noneOption.innerHTML = `
+                    <div class="emport-option-title">Pas d'emport supplémentaire</div>
+                    <div class="emport-option-cost">Gratuit</div>
+                `;
+                emportSection.appendChild(noneOption);
+
+                emportOptions.forEach((opt, idx) => {
+                    const optDiv = document.createElement('div');
+                    optDiv.className = 'emport-option';
+
+                    // Check if this option is selected
+                    const isSelected = opt._text === emport._text;
+                    optDiv.classList.toggle('selected', isSelected);
+
+                    const costStr = Object.entries(opt)
+                        .filter(([key, val]) => val > 0 && !key.startsWith('_'))
+                        .map(([type, val]) => `${val} ${translateType(type)}`)
+                        .join(', ') || 'Gratuit';
+
+                    const optTitle = opt._text || `Option ${idx + 1}`;
+                    optDiv.innerHTML = `
+                        <div class="emport-option-title">${escapeHtml(optTitle)}</div>
+                        <div class="emport-option-cost">${escapeHtml(costStr)}</div>
+                    `;
+                    emportSection.appendChild(optDiv);
+                });
+
+                detailsContainer.appendChild(emportSection);
+            }
+
+            // Selected emport section
+            if (emport && (emport._text || Object.values(emport).some(v => v > 0))) {
+                const selectedSection = document.createElement('div');
+                selectedSection.className = 'vehicle-detail-section';
+                selectedSection.innerHTML = '<div class="vehicle-detail-title">Emport Sélectionné</div>';
+
+                if (emport._text) {
+                    const titleDiv = document.createElement('div');
+                    titleDiv.className = 'credit-detail-item';
+                    titleDiv.innerHTML = `
+                        <span class="credit-detail-label">Option</span>
+                        <span class="credit-detail-value">${escapeHtml(emport._text)}</span>
+                    `;
+                    selectedSection.appendChild(titleDiv);
+                }
+
+                creditTypes.forEach(({ key, label }) => {
+                    const value = emport[key] || 0;
+                    if (value > 0) {
+                        const item = document.createElement('div');
+                        item.className = 'credit-detail-item';
+                        item.innerHTML = `
+                            <span class="credit-detail-label">${label}</span>
+                            <span class="credit-detail-value">+${value}</span>
+                        `;
+                        selectedSection.appendChild(item);
+                    }
+                });
+
+                detailsContainer.appendChild(selectedSection);
+            }
+
+            document.getElementById('vehicle-modal').style.display = 'flex';
+        }
+
+        function closeVehicleModal() {
+            document.getElementById('vehicle-modal').style.display = 'none';
         }
 
         async function handleVerify(event) {
@@ -216,13 +538,17 @@
                     }
 
                     document.getElementById('deck-title').innerText = data.name;
-                    document.getElementById('deck-meta').innerText = `Doctrine: ${DOCTRINES[data.doctrine] || data.doctrine} | Date: ${new Date(data.timestamp).toLocaleString()}`;
+                    document.getElementById('deck-meta').innerText = `Doctrine: ${DOCTRINES[data.doctrine]?.name || data.doctrine} | Date: ${new Date(data.timestamp).toLocaleString()}`;
+
+                    // Update credits bars
+                    updateCreditsBars(data.units, data.doctrine);
 
                     const unitsList = document.getElementById('deck-units');
                     unitsList.innerHTML = '';
                     data.units.forEach(u => {
                         const div = document.createElement('div');
                         div.className = 'verify-unit-card';
+                        div.onclick = () => showVehicleDetails(u);
                         
                         // Handle both old and new formats
                         const base = u.baseCredits || u.credits || {};
