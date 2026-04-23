@@ -168,3 +168,7 @@ $jsContent += "`nwindow.OLD_UPDATES_DATA = $jsonOldUpdates;"
 [System.IO.File]::WriteAllText($outputPath, $jsContent, [System.Text.Encoding]::UTF8)
 
 Write-Host "Indexation terminee. $( ($pData | Measure-Object).Count ) pages trouvees." -ForegroundColor Cyan
+
+# Update Deck Builder Data
+Write-Host "Mise à jour des données du Deck Builder..." -ForegroundColor Yellow
+node "Assets/scripts/js/extract_vehicles.js"

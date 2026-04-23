@@ -75,7 +75,8 @@ Combine le téléchargement des images et le remplacement des liens imgur en une
 
 **Fonctionnalités:**
 - Exécute `download_images.py` pour télécharger les images et créer `vehicles.json`
-- Exécute `replace_imgur_links.py` pour remplacer les liens imgur par les chemins locaux
+- Exécute `replace_imgur_links.py` pour remplacer les liens imgur par les chemins locaux dans le HTML et JS
+- Exécute le script Node.js `extract_vehicles.js` pour rafraîchir la base de données du Deck Builder (prix, options, images locales)
 - Affiche un résumé des opérations effectuées
 
 **Usage:**

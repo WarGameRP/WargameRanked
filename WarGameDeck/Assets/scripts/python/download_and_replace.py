@@ -8,6 +8,10 @@ import subprocess
 import sys
 from pathlib import Path
 
+# Ensure utf-8 output for emojis in Windows console
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+
 def run_script(script_name):
     """Exécute un script Python et retourne le code de sortie."""
     script_path = Path(__file__).parent / script_name
@@ -55,6 +59,15 @@ def main():
     
     print("\n✓ Remplacement des liens terminé")
     
+    # Étape 3: Mettre à jour les données du Deck Builder
+    print(f"\n{'=' * 60}")
+    print("Mise à jour des données du Deck Builder...")
+    print('=' * 60)
+    try:
+        subprocess.run(['node', 'scripts/js/extract_vehicles.js'], cwd=Path(__file__).parent.parent.parent)
+    except Exception as e:
+        print(f"❌ Erreur lors de la mise à jour des données: {e}")
+
     # Résumé
     print("\n" + "=" * 60)
     print("✓ Opérations terminées avec succès!")

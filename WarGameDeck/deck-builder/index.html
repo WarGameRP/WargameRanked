@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wargame Ranked - Deck Builder</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
+    <script src="../Assets/vehicles.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-title">
+            <img src="../Assets/Other/img/Logo_Ranked.png" alt="Logo">
+            <h1>Deck Builder</h1>
+        </div>
+        <div class="header-actions">
+            <a href="verify.html" class="back-btn" style="margin-right: 20px;">Vérifier un Deck</a>
+            <a href="../index.html" class="back-btn">← Retour au Portail</a>
+        </div>
+    </header>
+
+    <!-- Credit Selection Modal -->
+    <div id="credit-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content animate-in">
+            <h3 style="margin-top: 0; color: var(--accent);">Choisir un Type de Crédit</h3>
+            <p id="modal-vehicle-name" style="color: var(--text-secondary);"></p>
+            <div id="credit-options-list" style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
+                <!-- Options will be injected here -->
+            </div>
+            <button class="secondary-btn" style="margin-top: 20px; width: 100%;" onclick="closeCreditModal()">Annuler</button>
+        </div>
+    </div>
+
+    <main>
+        <!-- Step 1: Doctrine Selection -->
+        <div id="step-1" class="animate-in">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h2 style="font-size: 2rem; color: var(--accent);">Choisissez votre Doctrine</h2>
+                <p style="color: var(--text-secondary);">La doctrine définit vos limites de crédits par catégorie.</p>
+            </div>
+            
+            <div id="doctrine-selection">
+                <!-- Will be populated by JS -->
+                <div class="doctrine-card" onclick="selectDoctrine('infantry')">
+                    <h2>Doctrine Infanterie</h2>
+                    <ul class="doctrine-stats">
+                        <li>Infanterie <b>12</b></li>
+                        <li>Blindés <b>0</b></li>
+                        <li>Mécanisés <b>3</b></li>
+                        <li>Motorisés <b>3</b></li>
+                        <li>Support <b>2</b></li>
+                        <li>Aériens <b>0</b></li>
+                    </ul>
+                </div>
+                <div class="doctrine-card" onclick="selectDoctrine('armored')">
+                    <h2>Doctrine Blindée</h2>
+                    <ul class="doctrine-stats">
+                        <li>Infanterie <b>2</b></li>
+                        <li>Blindés <b>13</b></li>
+                        <li>Mécanisés <b>3</b></li>
+                        <li>Motorisés <b>0</b></li>
+                        <li>Support <b>4</b></li>
+                        <li>Aériens <b>0</b></li>
+                    </ul>
+                </div>
+                <div class="doctrine-card" onclick="selectDoctrine('mechanized')">
+                    <h2>Doctrine Mécanisée</h2>
+                    <ul class="doctrine-stats">
+                        <li>Infanterie <b>10</b></li>
+                        <li>Blindés <b>0</b></li>
+                        <li>Mécanisés <b>10</b></li>
+                        <li>Motorisés <b>0</b></li>
+                        <li>Support <b>2</b></li>
+                        <li>Aériens <b>0</b></li>
+                    </ul>
+                </div>
+                <div class="doctrine-card" onclick="selectDoctrine('support')">
+                    <h2>Doctrine Appui</h2>
+                    <ul class="doctrine-stats">
+                        <li>Infanterie <b>5</b></li>
+                        <li>Blindés <b>0</b></li>
+                        <li>Mécanisés <b>2</b></li>
+                        <li>Motorisés <b>0</b></li>
+                        <li>Support <b>10</b></li>
+                        <li>Aériens <b>5</b></li>
+                    </ul>
+                </div>
+                <div class="doctrine-card" onclick="selectDoctrine('cas')">
+                    <h2>Doctrine CAS</h2>
+                    <ul class="doctrine-stats">
+                        <li>Infanterie <b>5</b></li>
+                        <li>Blindés <b>2</b></li>
+                        <li>Mécanisés <b>2</b></li>
+                        <li>Motorisés <b>3</b></li>
+                        <li>Support <b>0</b></li>
+                        <li>Aériens <b>10</b></li>
+                    </ul>
+                </div>
+                <div class="doctrine-card" onclick="selectDoctrine('mixed')">
+                    <h2>Doctrine Mixte</h2>
+                    <ul class="doctrine-stats">
+                        <li>Infanterie <b>5</b></li>
+                        <li>Blindés <b>5</b></li>
+                        <li>Mécanisés <b>2</b></li>
+                        <li>Motorisés <b>3</b></li>
+                        <li>Support <b>3</b></li>
+                        <li>Aériens <b>2</b></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2: Builder UI -->
+        <div id="builder-ui" class="animate-in">
+            <!-- Top Credits Bar -->
+            <div class="credits-bar">
+                <div class="credit-item">
+                    <span class="credit-label">Infanterie</span>
+                    <span class="credit-value" id="val-infantry">0 / 12</span>
+                </div>
+                <div class="credit-item">
+                    <span class="credit-label">Blindés</span>
+                    <span class="credit-value" id="val-armor">0 / 0</span>
+                </div>
+                <div class="credit-item">
+                    <span class="credit-label">Mécanisés</span>
+                    <span class="credit-value" id="val-mechanized">0 / 3</span>
+                </div>
+                <div class="credit-item">
+                    <span class="credit-label">Motorisés</span>
+                    <span class="credit-value" id="val-motorized">0 / 3</span>
+                </div>
+                <div class="credit-item">
+                    <span class="credit-label">Support</span>
+                    <span class="credit-value" id="val-support">0 / 2</span>
+                </div>
+                <div class="credit-item">
+                    <span class="credit-label">Aériens</span>
+                    <span class="credit-value" id="val-plane">0 / 0</span>
+                </div>
+                <div class="credit-item">
+                    <span class="credit-label">Invitations</span>
+                    <span class="credit-value" id="val-invitation">0 / ∞</span>
+                </div>
+            </div>
+
+            <!-- Left Panel: Countries & Vehicles -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h3>Pays & Unités</h3>
+                    <div id="country-count" style="font-size: 0.8rem; color: var(--text-secondary);">Chargement...</div>
+                </div>
+                <div class="scroll-area" id="country-list">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- Center Panel: Current Deck -->
+            <div class="panel" style="background: transparent; border: none;">
+                <div class="panel-header" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px 12px 0 0;">
+                    <h3>Composition du Deck</h3>
+                    <span id="current-doctrine-label" style="font-weight: 700; color: var(--accent);">Doctrine</span>
+                </div>
+                <div class="scroll-area" style="background: var(--bg-card); border: 1px solid var(--border); border-top: none; border-radius: 0 0 12px 12px;">
+                    <div class="deck-list" id="deck-content">
+                        <!-- Sections for each credit type -->
+                        <div class="deck-section" data-type="infantry">
+                            <h4>Infanterie</h4>
+                            <div class="section-items"></div>
+                        </div>
+                        <div class="deck-section" data-type="armor">
+                            <h4>Blindés</h4>
+                            <div class="section-items"></div>
+                        </div>
+                        <div class="deck-section" data-type="mechanized">
+                            <h4>Mécanisés</h4>
+                            <div class="section-items"></div>
+                        </div>
+                        <div class="deck-section" data-type="motorized">
+                            <h4>Motorisés</h4>
+                            <div class="section-items"></div>
+                        </div>
+                        <div class="deck-section" data-type="support">
+                            <h4>Support</h4>
+                            <div class="section-items"></div>
+                        </div>
+                        <div class="deck-section" data-type="plane">
+                            <h4>Aériens</h4>
+                            <div class="section-items"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel: Actions & Info -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h3>Actions</h3>
+                </div>
+                <div class="actions-panel">
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; font-size: 0.9rem;">Nom du Deck</label>
+                        <input type="text" id="deck-name" placeholder="Mon Super Deck" style="width: 100%; background: var(--bg-input); border: 1px solid var(--border); color: white; padding: 10px; border-radius: 8px;">
+                    </div>
+                    
+                    <button class="primary-btn" onclick="exportDeck()">Exporter le Deck (.json)</button>
+                    <label class="secondary-btn" style="text-align: center; display: block; cursor: pointer;">
+                        Importer pour modification
+                        <input type="file" id="import-file" style="display: none;" onchange="importDeck(event)">
+                    </label>
+                    <button class="secondary-btn" onclick="resetBuilder()" style="color: var(--danger); border-color: rgba(218, 54, 51, 0.3);">Tout effacer</button>
+                    
+                    <div style="margin-top: auto; padding: 15px; background: rgba(255, 255, 255, 0.03); border-radius: 8px; font-size: 0.85rem; color: var(--text-secondary);">
+                        <p>ℹ️ Les decks exportés incluent une signature SHA-256. Toute modification manuelle du fichier invalidera le deck.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

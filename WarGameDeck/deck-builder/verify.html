@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wargame Ranked - Vérification de Deck</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
+    <script src="../Assets/vehicles.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-title">
+            <img src="../Assets/Other/img/Logo_Ranked.png" alt="Logo">
+            <h1>Vérification de Deck</h1>
+        </div>
+        <div class="header-actions">
+            <a href="index.html" class="back-btn">← Retour au Builder</a>
+        </div>
+    </header>
+
+    <main>
+        <div id="verify-area" class="animate-in">
+            <div style="margin-bottom: 40px;">
+                <h2 style="font-size: 2rem; color: var(--accent);">Vérifiez l'intégrité d'un Deck</h2>
+                <p style="color: var(--text-secondary);">Déposez votre fichier .json pour vérifier s'il est valide.</p>
+            </div>
+
+            <label class="file-drop" id="drop-zone">
+                <input type="file" id="verify-input" style="display: none;" onchange="handleVerify(event)">
+                <div id="drop-content">
+                    <img src="https://www.svgrepo.com/show/486241/upload-file.svg" style="width: 64px; opacity: 0.3; margin-bottom: 20px;">
+                    <p>Cliquez ou glissez-déposez le fichier ici</p>
+                </div>
+            </label>
+
+            <div id="result-area" style="display: none; margin-top: 40px; text-align: left;">
+                <div id="status-badge" class="status-badge">VALIDE</div>
+                
+                <div class="panel" style="padding: 0; overflow: hidden; border: 1px solid var(--border); background: var(--bg-card); border-radius: 12px;">
+                    <div style="padding: 25px; border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.02);">
+                        <h3 id="deck-title" style="margin: 0; color: var(--accent); font-size: 1.5rem;">Nom du Deck</h3>
+                        <p id="deck-meta" style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 8px;"></p>
+                    </div>
+                    
+                    <div style="padding: 25px;">
+                        <h4 style="margin-top: 0; margin-bottom: 20px; font-size: 1.1rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px;">Unités du Deck</h4>
+                        <div id="deck-units" class="verify-grid">
+                            <!-- Units list -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <style>
+        .verify-grid {
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+            gap: 15px;
+        }
+        .verify-unit-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s ease;
+        }
+        .verify-unit-card:hover {
+            background: rgba(255,255,255,0.06);
+            transform: translateY(-2px);
+        }
+        .verify-unit-card img {
+            width: 60px;
+            height: 35px;
+            border-radius: 4px;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        .verify-unit-info {
+            flex: 1;
+        }
+        .verify-unit-name {
+            display: block;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+        .verify-unit-country {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+        .verify-unit-credits {
+            font-size: 0.7rem;
+            color: var(--accent);
+            margin-top: 4px;
+            font-weight: 600;
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+
+        .total-cost-badge {
+            background: rgba(240, 173, 78, 0.1);
+            color: var(--accent);
+            padding: 2px 6px;
+            border-radius: 4px;
+            border: 1px solid var(--accent);
+        }
+
+        .emport-label {
+            font-size: 0.65rem;
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+    </style>
+
+    <script>
+        const DOCTRINES = {
+            infantry: "Infanterie",
+            armored: "Blindée",
+            mechanized: "Mécanisée",
+            support: "Appui",
+            cas: "CAS",
+            mixed: "Mixte"
+        };
+
+        function translateType(type) {
+            const map = {
+                infantry: 'INF',
+                armor: 'ARM',
+                mechanized: 'MEC',
+                motorized: 'MOT',
+                support: 'SUP',
+                plane: 'AIR',
+                invitation: 'INV'
+            };
+            return map[type] || type;
+        }
+
+        function stableStringify(obj) {
+            const allKeys = [];
+            JSON.stringify(obj, (key, value) => {
+                allKeys.push(key);
+                return value;
+            });
+            allKeys.sort();
+            return JSON.stringify(obj, allKeys);
+        }
+
+        function getVehicleImage(u) {
+            // Try to find in latest data
+            let latest = null;
+            if (window.VEHICLES_DATA && window.VEHICLES_DATA[u.country]) {
+                latest = window.VEHICLES_DATA[u.country].find(v => v.name === u.name);
+            }
+
+            const v = latest || u;
+            let path = v.image_path || v.thumbnail || '';
+            
+            if (path && !path.startsWith('http') && !path.startsWith('../')) {
+                path = '../Assets/' + path;
+            }
+            if (v.thumbnail && v.thumbnail.includes('imgur.com') && v.image_path) {
+                path = '../Assets/' + v.image_path;
+            }
+            return path || '../Assets/Other/img/Logo_Ranked.png';
+        }
+
+        function handleVerify(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    const { signature, ...rest } = data;
+                    const expected = sha256(stableStringify(rest) + "WargameRankedSecretSalt");
+
+                    const resultArea = document.getElementById('result-area');
+                    const badge = document.getElementById('status-badge');
+                    
+                    resultArea.style.display = 'block';
+                    
+                    if (signature === expected) {
+                        badge.innerText = "✓ DECK VALIDE";
+                        badge.className = "status-badge status-valid";
+                    } else {
+                        badge.innerText = "⚠ DECK MODIFIÉ / INVALIDE";
+                        badge.className = "status-badge status-invalid";
+                    }
+
+                    document.getElementById('deck-title').innerText = data.name;
+                    document.getElementById('deck-meta').innerText = `Doctrine: ${DOCTRINES[data.doctrine] || data.doctrine} | Date: ${new Date(data.timestamp).toLocaleString()}`;
+
+                    const unitsList = document.getElementById('deck-units');
+                    unitsList.innerHTML = '';
+                    data.units.forEach(u => {
+                        const div = document.createElement('div');
+                        div.className = 'verify-unit-card';
+                        
+                        // Handle both old and new formats
+                        const base = u.baseCredits || u.credits || {};
+                        const emport = u.selectedEmport || { infantry: 0, armor: 0, mechanized: 0, motorized: 0, support: 0, plane: 0, invitation: 0, _text: '' };
+
+                        const totalCredits = {};
+                        for (const type in base) {
+                            if (typeof base[type] === 'number') {
+                                totalCredits[type] = (base[type] || 0) + (emport[type] || 0);
+                            }
+                        }
+
+                        const costStr = Object.entries(totalCredits)
+                            .filter(([key, val]) => val > 0 && !key.startsWith('_'))
+                            .map(([type, val]) => `${val} ${translateType(type)}`)
+                            .join(' + ');
+
+                        const thumbUrl = getVehicleImage(u);
+                        
+                        div.innerHTML = `
+                            <img src="${thumbUrl}" alt="">
+                            <div class="verify-unit-info">
+                                <span class="verify-unit-name">${u.name}</span>
+                                <span class="verify-unit-country">${u.country}</span>
+                                <div class="verify-unit-credits">
+                                    <span class="total-cost-badge">${costStr}</span>
+                                    ${emport._text ? `<span class="emport-label">${emport._text}</span>` : ''}
+                                </div>
+                            </div>
+                        `;
+                        unitsList.appendChild(div);
+                    });
+
+                } catch (err) {
+                    alert("Erreur lors de l'analyse du fichier : " + err.message);
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        // Drag and drop logic
+        const dropZone = document.getElementById('drop-zone');
+        dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.style.borderColor = 'var(--accent)'; });
+        dropZone.addEventListener('dragleave', () => { dropZone.style.borderColor = 'var(--border)'; });
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.style.borderColor = 'var(--border)';
+            const file = e.dataTransfer.files[0];
+            if (file) {
+                const input = document.getElementById('verify-input');
+                const dt = new DataTransfer();
+                dt.items.add(file);
+                input.files = dt.files;
+                handleVerify({ target: { files: dt.files } });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-{
+window.VEHICLES_DATA = {
   "afrique du sud": [
     {
       "id": "v1767628854591",
@@ -1798,4 +1798,4 @@
       "emportOptions": []
     }
   ]
-}
+};

@@ -8,6 +8,11 @@ import json
 import re
 from pathlib import Path
 from bs4 import BeautifulSoup
+import sys
+
+# Ensure utf-8 output for emojis in Windows console
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
 
 def load_vehicle_mapping(json_file):
     """Charge le mapping des véhicules depuis le fichier JSON."""
@@ -159,7 +164,7 @@ def replace_imgur_links_in_html(html_file, vehicle_mapping):
     
     # Sauvegarder le fichier modifié
     with open(html_file, 'w', encoding='utf-8') as f:
-        f.write(str(soup.prettify()))
+        f.write(str(soup))
     
     print(f"  ✓ {replaced_count} lien(s) remplacé(s) dans {html_file.name}")
     return True
@@ -195,6 +200,32 @@ def main():
     
     print("\n" + "=" * 60)
     print(f"✓ Terminé! {total_replaced}/{len(html_files)} fichier(s) modifié(s)")
+    
+    # Update vehicles.json and vehicles.js with new paths
+    if total_replaced > 0:
+        print("\nMise à jour de vehicles.json et vehicles.js...")
+        try:
+            with open(json_file, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            
+            # Update paths in data
+            for country, vehicles in data.items():
+                for v in vehicles:
+                    if v['name'] in vehicle_mapping:
+                        v['image_path'] = vehicle_mapping[v['name']]
+            
+            # Save JSON
+            with open(json_file, 'w', encoding='utf-8') as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
+            
+            # Save JS
+            js_file = assets_dir / 'vehicles.js'
+            with open(js_file, 'w', encoding='utf-8') as f:
+                f.write("window.VEHICLES_DATA = " + json.dumps(data, ensure_ascii=False, indent=2) + ";")
+            
+            print("✓ Fichiers de données mis à jour.")
+        except Exception as e:
+            print(f"⚠ Erreur lors de la mise à jour des données: {e}")
 
 if __name__ == '__main__':
     main()

@@ -15,6 +15,11 @@ from urllib.parse import urlparse
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from bs4 import BeautifulSoup
+import sys
+
+# Ensure utf-8 output for emojis in Windows console
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
 
 def get_image_name_from_url(url):
     """Extrait le nom de l'image depuis l'URL imgur."""
@@ -255,13 +260,51 @@ def main():
     
     print(f"✓ Log créé: {log_file}")
     
-    # Créer le fichier JSON avec tous les véhicules par pays
+    # Save or Merge JSON
     json_file = assets_dir / 'vehicles.json'
-    with open(json_file, 'w', encoding='utf-8') as f:
-        json.dump(all_vehicles_by_country, f, ensure_ascii=False, indent=2)
+    existing_data = {}
+    if json_file.exists():
+        try:
+            with open(json_file, 'r', encoding='utf-8') as f:
+                existing_data = json.load(f)
+        except Exception as e:
+            print(f"⚠ Impossible de lire le JSON existant: {e}")
+
+    # Merge new vehicle image paths into existing data
+    for country, vehicles in all_vehicles_by_country.items():
+        # Match country name (some might be slightly different in case or underscores)
+        # We try to find the best match in existing_data
+        target_country = country
+        for existing_country in existing_data.keys():
+            if existing_country.lower().replace(' ', '_') == country.lower().replace(' ', '_'):
+                target_country = existing_country
+                break
+        
+        if target_country not in existing_data:
+            existing_data[target_country] = []
+        
+        # For each vehicle found in this country
+        for new_v in vehicles:
+            found = False
+            for old_v in existing_data[target_country]:
+                if old_v['name'] == new_v['name']:
+                    old_v['image_path'] = new_v['image_path']
+                    found = True
+                    break
+            if not found:
+                # Add new vehicle if not exists
+                existing_data[target_country].append(new_v)
     
-    print(f"✓ JSON créé: {json_file}")
-    print(f"  {sum(len(v) for v in all_vehicles_by_country.values())} véhicules au total dans {len(all_vehicles_by_country)} pays")
+    with open(json_file, 'w', encoding='utf-8') as f:
+        json.dump(existing_data, f, ensure_ascii=False, indent=2)
+    
+    # Also update vehicles.js for the web app
+    js_file = assets_dir / 'vehicles.js'
+    with open(js_file, 'w', encoding='utf-8') as f:
+        f.write("window.VEHICLES_DATA = " + json.dumps(existing_data, ensure_ascii=False, indent=2) + ";")
+
+    print(f"✓ JSON et JS mis à jour: {json_file}, {js_file}")
+    print(f"  {sum(len(v) for v in existing_data.values())} véhicules au total")
 
 if __name__ == '__main__':
     main()

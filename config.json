@@ -1,0 +1,48 @@
+{
+    "credits": {
+        "types": [
+            {
+                "id": "infanterie",
+                "name": "Crédits Infanterie",
+                "icon": "🪖",
+                "color": "#FFFFFF"
+            },
+            {
+                "id": "blindes",
+                "name": "Crédits Blindés",
+                "icon": "🛡️",
+                "color": "#D11B1B"
+            },
+            {
+                "id": "mecanises",
+                "name": "Crédits Mécanisés",
+                "icon": "🚛",
+                "color": "#B06EFF"
+            },
+            {
+                "id": "motorises",
+                "name": "Crédits Motorisés",
+                "icon": "🚗",
+                "color": "#A1A1A1"
+            },
+            {
+                "id": "support",
+                "name": "Crédits Support",
+                "icon": "🚑",
+                "color": "#70CC41"
+            },
+            {
+                "id": "aeriens",
+                "name": "Crédits Aériens",
+                "icon": "✈️",
+                "color": "#A6DEFF"
+            },
+            {
+                "id": "invitation",
+                "name": "Crédits d'Invitations",
+                "icon": "✉️",
+                "color": "#FF8F00"
+            }
+        ]
+    }
+}
