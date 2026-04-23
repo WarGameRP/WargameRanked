@@ -2,17 +2,19 @@
 """
 Script pour télécharger les images depuis i.imgur.com et les placer dans les dossiers appropriés.
 Ce script parcourt tous les fichiers HTML, extrait les URLs imgur, et télécharge les images
-dans le dossier Assets/Image/[nom_du_pays]/.
+dans le dossier Assets/Image/[nom_du_pays]/ avec les noms de véhicules.
 """
 
 import os
 import re
 import requests
 import time
+import json
 from pathlib import Path
 from urllib.parse import urlparse
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from bs4 import BeautifulSoup
 
 def get_image_name_from_url(url):
     """Extrait le nom de l'image depuis l'URL imgur."""
@@ -23,6 +25,44 @@ def get_image_name_from_url(url):
     # Extraire juste le nom de fichier
     name = name.split('/')[-1]
     return name + '.png'
+
+def sanitize_filename(name):
+    """Nettoie le nom du véhicule pour l'utiliser comme nom de fichier."""
+    # Remplacer les caractères invalides par des underscores
+    sanitized = re.sub(r'[<>:"/\\|?*]', '_', name)
+    # Remplacer les espaces par des underscores
+    sanitized = sanitized.replace(' ', '_')
+    # Supprimer les caractères non alphanumériques sauf underscore et tiret
+    sanitized = re.sub(r'[^a-zA-Z0-9_-]', '', sanitized)
+    return sanitized
+
+def extract_vehicle_data(html_content):
+    """Extrait les noms de véhicules et leurs URLs imgur depuis le HTML."""
+    soup = BeautifulSoup(html_content, 'html.parser')
+    vehicle_data = []
+    
+    # Trouver tous les éléments vehicleBadge
+    badges = soup.find_all('td', class_='vehicleBadge')
+    
+    for badge in badges:
+        # Extraire le nom du véhicule
+        name_span = badge.find('span', class_='vehicleName')
+        if name_span:
+            vehicle_name = name_span.get_text(strip=True)
+        else:
+            continue
+        
+        # Extraire l'URL de l'image
+        img = badge.find('img')
+        if img and img.get('src'):
+            img_url = img['src']
+            if 'i.imgur.com' in img_url:
+                vehicle_data.append({
+                    'name': vehicle_name,
+                    'url': img_url
+                })
+    
+    return vehicle_data
 
 def download_image(url, destination_path):
     """Télécharge une image depuis une URL et la sauvegarde."""
@@ -44,15 +84,8 @@ def download_image(url, destination_path):
         print(f"✗ Erreur lors du téléchargement de {url}: {e}")
         return False
 
-def extract_imgur_urls(html_content):
-    """Extrait toutes les URLs imgur d'un contenu HTML."""
-    # Pattern pour trouver les URLs imgur dans les balises img
-    pattern = r'https://i\.imgur\.com/[a-zA-Z0-9]+\.(?:png|jpg|jpeg|gif)'
-    urls = re.findall(pattern, html_content)
-    return list(set(urls))  # Supprimer les doublons
-
 def process_html_file(html_file_path, image_base_dir):
-    """Traite un fichier HTML et télécharge ses images."""
+    """Traite un fichier HTML et télécharge ses images avec les noms de véhicules."""
     with open(html_file_path, 'r', encoding='utf-8') as f:
         content = f.read()
     
@@ -65,52 +98,68 @@ def process_html_file(html_file_path, image_base_dir):
     dest_dir = image_base_dir / folder_name
     dest_dir.mkdir(parents=True, exist_ok=True)
     
-    # Extraire les URLs imgur
-    imgur_urls = extract_imgur_urls(content)
+    # Extraire les données de véhicules (nom + URL)
+    vehicle_data = extract_vehicle_data(content)
     
-    if not imgur_urls:
+    if not vehicle_data:
         print(f"⚠ Aucune image imgur trouvée dans {html_file_path.name}")
-        return {'file': html_file_path.name, 'total': 0, 'downloaded': 0, 'skipped': 0, 'errors': []}
+        return {'file': html_file_path.name, 'country': folder_name, 'total': 0, 'downloaded': 0, 'skipped': 0, 'errors': [], 'vehicles': []}
     
     print(f"\nTraitement de {html_file_path.name}:")
-    print(f"  {len(imgur_urls)} image(s) trouvée(s)")
+    print(f"  {len(vehicle_data)} véhicule(s) trouvé(s)")
     
     downloaded = 0
     skipped = 0
     errors = []
+    vehicles = []
     
     # Préparer la liste des téléchargements
     download_tasks = []
-    for url in imgur_urls:
-        image_name = get_image_name_from_url(url)
+    for vehicle in vehicle_data:
+        vehicle_name = vehicle['name']
+        url = vehicle['url']
+        
+        # Sanitizer le nom du véhicule pour le nom de fichier
+        sanitized_name = sanitize_filename(vehicle_name)
+        image_name = f"{sanitized_name}.png"
         dest_path = dest_dir / image_name
         
         # Ne pas télécharger si le fichier existe déjà
         if dest_path.exists():
-            print(f"  ⊘ {image_name} existe déjà")
+            print(f"  ⊘ {vehicle_name} ({image_name}) existe déjà")
             downloaded += 1
             skipped += 1
+            vehicles.append({
+                'name': vehicle_name,
+                'image_path': str(dest_path.relative_to(image_base_dir))
+            })
             continue
         
-        download_tasks.append((url, dest_path, image_name))
+        download_tasks.append((url, dest_path, vehicle_name, image_name))
     
     # Télécharger en parallèle avec ThreadPoolExecutor
     if download_tasks:
         with ThreadPoolExecutor(max_workers=5) as executor:
-            future_to_name = {executor.submit(download_image, url, dest_path): name for url, dest_path, name in download_tasks}
-            for future in as_completed(future_to_name):
-                image_name = future_to_name[future]
+            future_to_vehicle = {executor.submit(download_image, url, dest_path): (name, img_name) for url, dest_path, name, img_name in download_tasks}
+            for future in as_completed(future_to_vehicle):
+                vehicle_name, image_name = future_to_vehicle[future]
                 try:
                     if future.result():
                         downloaded += 1
+                        # Trouver le chemin relatif depuis image_base_dir
+                        dest_path = dest_dir / image_name
+                        vehicles.append({
+                            'name': vehicle_name,
+                            'image_path': str(dest_path.relative_to(image_base_dir))
+                        })
                     else:
-                        errors.append(image_name)
+                        errors.append(vehicle_name)
                 except Exception as e:
-                    errors.append(image_name)
-                    print(f"  ✗ Erreur pour {image_name}: {e}")
+                    errors.append(vehicle_name)
+                    print(f"  ✗ Erreur pour {vehicle_name}: {e}")
     
-    print(f"  Téléchargement terminé: {downloaded}/{len(imgur_urls)} images")
-    return {'file': html_file_path.name, 'total': len(imgur_urls), 'downloaded': downloaded, 'skipped': skipped, 'errors': errors}
+    print(f"  Téléchargement terminé: {downloaded}/{len(vehicle_data)} images")
+    return {'file': html_file_path.name, 'country': folder_name, 'total': len(vehicle_data), 'downloaded': downloaded, 'skipped': skipped, 'errors': errors, 'vehicles': vehicles}
 
 def main():
     """Fonction principale."""
@@ -133,6 +182,7 @@ def main():
     total_downloaded = 0
     total_skipped = 0
     total_errors = 0
+    all_vehicles_by_country = {}
     
     for html_path in html_files:
         try:
@@ -141,9 +191,16 @@ def main():
             total_downloaded += stats['downloaded']
             total_skipped += stats['skipped']
             total_errors += len(stats['errors'])
+            
+            # Collecter les véhicules par pays
+            if 'country' in stats and stats['vehicles']:
+                country = stats['country']
+                if country not in all_vehicles_by_country:
+                    all_vehicles_by_country[country] = []
+                all_vehicles_by_country[country].extend(stats['vehicles'])
         except Exception as e:
             print(f"✗ Erreur lors du traitement de {html_path.name}: {e}")
-            download_stats.append({'file': html_path.name, 'total': 0, 'downloaded': 0, 'skipped': 0, 'errors': [str(e)]})
+            download_stats.append({'file': html_path.name, 'country': 'unknown', 'total': 0, 'downloaded': 0, 'skipped': 0, 'errors': [str(e)], 'vehicles': []})
             total_errors += 1
     
     print("=" * 60)
@@ -181,6 +238,14 @@ def main():
         f.write("Fin du rapport\n")
     
     print(f"✓ Log créé: {log_file}")
+    
+    # Créer le fichier JSON avec tous les véhicules par pays
+    json_file = assets_dir / 'vehicles.json'
+    with open(json_file, 'w', encoding='utf-8') as f:
+        json.dump(all_vehicles_by_country, f, ensure_ascii=False, indent=2)
+    
+    print(f"✓ JSON créé: {json_file}")
+    print(f"  {sum(len(v) for v in all_vehicles_by_country.values())} véhicules au total dans {len(all_vehicles_by_country)} pays")
 
 if __name__ == '__main__':
     main()
