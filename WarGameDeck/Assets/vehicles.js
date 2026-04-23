@@ -255,7 +255,7 @@ window.VEHICLES_DATA = {
   ],
   "chine": [
     {
-      "id": "v1767177905914",
+      "id": "v1776980440805",
       "name": "Dongfeng EQ2050",
       "thumbnail": "https://i.imgur.com/CE8uz9x.png",
       "image_path": "Image/chine\\Dongfeng_EQ2050.png",
@@ -274,7 +274,7 @@ window.VEHICLES_DATA = {
       "emportOptions": []
     },
     {
-      "id": "v1767178100667",
+      "id": "v1776980785673",
       "name": "FAW MV3",
       "thumbnail": "https://i.imgur.com/zogRnVS.png",
       "image_path": "Image/chine\\FAW_MV3.png",
@@ -293,150 +293,17 @@ window.VEHICLES_DATA = {
       "emportOptions": []
     },
     {
-      "id": "v1767178325282",
-      "name": "HQ-16",
-      "thumbnail": "https://i.imgur.com/ITnT0jc.png",
-      "image_path": "Image/chine\\HQ-16.png",
-      "rank": 5,
-      "br": 10.3,
-      "type": "researchable",
-      "baseCredits": {
-        "infantry": 0,
-        "armor": 0,
-        "mechanized": 0,
-        "motorized": 0,
-        "support": 3,
-        "plane": 0,
-        "invitation": 0
-      },
-      "emportOptions": []
-    },
-    {
-      "id": "v1767178482362",
-      "name": "HQ-17",
-      "thumbnail": "https://i.imgur.com/Pxeveo3.png",
-      "image_path": "Image/chine\\HQ-17.png",
-      "rank": 5,
-      "br": 11.7,
-      "type": "researchable",
-      "baseCredits": {
-        "infantry": 0,
-        "armor": 0,
-        "mechanized": 0,
-        "motorized": 0,
-        "support": 4,
-        "plane": 0,
-        "invitation": 0
-      },
-      "emportOptions": []
-    },
-    {
-      "id": "v1767178650594",
-      "name": "PCL-171",
-      "thumbnail": "https://i.imgur.com/wdGCban.png",
-      "image_path": "Image/chine\\PCL-171.png",
-      "rank": 3,
-      "br": 6.7,
-      "type": "researchable",
-      "baseCredits": {
-        "infantry": 0,
-        "armor": 0,
-        "mechanized": 0,
-        "motorized": 0,
-        "support": 2,
-        "plane": 0,
-        "invitation": 0
-      },
-      "emportOptions": []
-    },
-    {
-      "id": "v1767178767624",
-      "name": "PGZ-09",
-      "thumbnail": "https://i.imgur.com/b6puspH.png",
-      "image_path": "Image/chine\\PGZ-09.png",
-      "rank": 4,
-      "br": 9,
-      "type": "researchable",
-      "baseCredits": {
-        "infantry": 0,
-        "armor": 0,
-        "mechanized": 0,
-        "motorized": 0,
-        "support": 2,
-        "plane": 0,
-        "invitation": 0
-      },
-      "emportOptions": []
-    },
-    {
-      "id": "v1767178849502",
-      "name": "PHL-03",
-      "thumbnail": "https://i.imgur.com/mBJc7YI.png",
-      "image_path": "Image/chine\\PHL-03.png",
-      "rank": 5,
-      "br": 10,
-      "type": "researchable",
-      "baseCredits": {
-        "infantry": 0,
-        "armor": 0,
-        "mechanized": 0,
-        "motorized": 0,
-        "support": 2,
-        "plane": 0,
-        "invitation": 0
-      },
-      "emportOptions": []
-    },
-    {
-      "id": "v1767179091799",
-      "name": "PLZ-05",
-      "thumbnail": "https://i.imgur.com/z0zaxbR.png",
-      "image_path": "Image/chine\\PLZ-05.png",
-      "rank": 4,
-      "br": 8,
-      "type": "researchable",
-      "baseCredits": {
-        "infantry": 0,
-        "armor": 0,
-        "mechanized": 0,
-        "motorized": 0,
-        "support": 2,
-        "plane": 0,
-        "invitation": 0
-      },
-      "emportOptions": []
-    },
-    {
-      "id": "v1767179214559",
-      "name": "QN-506",
-      "thumbnail": "https://i.imgur.com/KhS2Dpz.png",
-      "image_path": "Image/chine\\QN-506.png",
-      "rank": 5,
-      "br": 10,
-      "type": "researchable",
-      "baseCredits": {
-        "infantry": 0,
-        "armor": 2,
-        "mechanized": 0,
-        "motorized": 0,
-        "support": 0,
-        "plane": 0,
-        "invitation": 0
-      },
-      "emportOptions": []
-    },
-    {
-      "id": "v1767179493357",
+      "id": "v1776981050278",
       "name": "Type 89 YW534",
       "thumbnail": "https://i.imgur.com/byKk1sW.png",
       "image_path": "Image/chine\\Type_89_YW534.png",
       "rank": 2,
-      "br": 4.3,
+      "br": 5,
       "type": "researchable",
       "baseCredits": {
         "infantry": 0,
         "armor": 0,
-        "mechanized": 0,
+        "mechanized": 1,
         "motorized": 0,
         "support": 0,
         "plane": 0,
@@ -445,26 +312,7 @@ window.VEHICLES_DATA = {
       "emportOptions": []
     },
     {
-      "id": "v1767179779196",
-      "name": "VT4",
-      "thumbnail": "https://i.imgur.com/A6j9lhG.png",
-      "image_path": "Image/chine\\VT4.png",
-      "rank": 6,
-      "br": 12.3,
-      "type": "researchable",
-      "baseCredits": {
-        "infantry": 0,
-        "armor": 3,
-        "mechanized": 0,
-        "motorized": 0,
-        "support": 0,
-        "plane": 0,
-        "invitation": 0
-      },
-      "emportOptions": []
-    },
-    {
-      "id": "v1767179838110",
+      "id": "v1776981158976",
       "name": "WZ-551",
       "thumbnail": "https://i.imgur.com/ggEnkZx.png",
       "image_path": "Image/chine\\WZ-551.png",
@@ -474,7 +322,7 @@ window.VEHICLES_DATA = {
       "baseCredits": {
         "infantry": 0,
         "armor": 0,
-        "mechanized": 0,
+        "mechanized": 2,
         "motorized": 0,
         "support": 0,
         "plane": 0,
@@ -483,26 +331,7 @@ window.VEHICLES_DATA = {
       "emportOptions": []
     },
     {
-      "id": "v1767179957649",
-      "name": "ZBD-04A",
-      "thumbnail": "https://i.imgur.com/69OAWpv.png",
-      "image_path": "Image/chine\\ZBD-04A.png",
-      "rank": 5,
-      "br": 10,
-      "type": "researchable",
-      "baseCredits": {
-        "infantry": 0,
-        "armor": 0,
-        "mechanized": 0,
-        "motorized": 0,
-        "support": 0,
-        "plane": 0,
-        "invitation": 0
-      },
-      "emportOptions": []
-    },
-    {
-      "id": "v1767180139531",
+      "id": "v1776981238247",
       "name": "ZBL-08",
       "thumbnail": "https://i.imgur.com/pEIKZqn.png",
       "image_path": "Image/chine\\ZBL-08.png",
@@ -512,7 +341,7 @@ window.VEHICLES_DATA = {
       "baseCredits": {
         "infantry": 0,
         "armor": 0,
-        "mechanized": 0,
+        "mechanized": 3,
         "motorized": 0,
         "support": 0,
         "plane": 0,
@@ -521,7 +350,26 @@ window.VEHICLES_DATA = {
       "emportOptions": []
     },
     {
-      "id": "v1767180289666",
+      "id": "v1776981285565",
+      "name": "ZBD-04A",
+      "thumbnail": "https://i.imgur.com/69OAWpv.png",
+      "image_path": "Image/chine\\ZBD-04A.png",
+      "rank": 5,
+      "br": 10,
+      "type": "researchable",
+      "baseCredits": {
+        "infantry": 0,
+        "armor": 0,
+        "mechanized": 3,
+        "motorized": 0,
+        "support": 0,
+        "plane": 0,
+        "invitation": 0
+      },
+      "emportOptions": []
+    },
+    {
+      "id": "v1776981408529",
       "name": "ZLT-11",
       "thumbnail": "https://i.imgur.com/oSD2lAa.png",
       "image_path": "Image/chine\\ZLT-11.png",
@@ -540,7 +388,26 @@ window.VEHICLES_DATA = {
       "emportOptions": []
     },
     {
-      "id": "v1767180445746",
+      "id": "v1776981536673",
+      "name": "QN-506",
+      "thumbnail": "https://i.imgur.com/KhS2Dpz.png",
+      "image_path": "Image/chine\\QN-506.png",
+      "rank": 5,
+      "br": 10,
+      "type": "researchable",
+      "baseCredits": {
+        "infantry": 0,
+        "armor": 2,
+        "mechanized": 0,
+        "motorized": 0,
+        "support": 0,
+        "plane": 0,
+        "invitation": 0
+      },
+      "emportOptions": []
+    },
+    {
+      "id": "v1776981597760",
       "name": "ZTQ-15",
       "thumbnail": "https://i.imgur.com/crbd66W.png",
       "image_path": "Image/chine\\ZTQ-15.png",
@@ -559,7 +426,26 @@ window.VEHICLES_DATA = {
       "emportOptions": []
     },
     {
-      "id": "v1767180596216",
+      "id": "v1776981651649",
+      "name": "VT4",
+      "thumbnail": "https://i.imgur.com/A6j9lhG.png",
+      "image_path": "Image/chine\\VT4.png",
+      "rank": 6,
+      "br": 12.3,
+      "type": "premium",
+      "baseCredits": {
+        "infantry": 0,
+        "armor": 3,
+        "mechanized": 0,
+        "motorized": 0,
+        "support": 0,
+        "plane": 0,
+        "invitation": 1
+      },
+      "emportOptions": []
+    },
+    {
+      "id": "v1776981727397",
       "name": "ZTZ-99A1",
       "thumbnail": "https://i.imgur.com/UnRJNNa.png",
       "image_path": "Image/chine\\ZTZ-99A1.png",
@@ -578,7 +464,121 @@ window.VEHICLES_DATA = {
       "emportOptions": []
     },
     {
-      "id": "v1767624688528",
+      "id": "v1776982047128",
+      "name": "PCL-171",
+      "thumbnail": "https://i.imgur.com/wdGCban.png",
+      "image_path": "Image/chine\\PCL-171.png",
+      "rank": 3,
+      "br": 6.7,
+      "type": "researchable",
+      "baseCredits": {
+        "infantry": 0,
+        "armor": 0,
+        "mechanized": 0,
+        "motorized": 0,
+        "support": 2,
+        "plane": 0,
+        "invitation": 0
+      },
+      "emportOptions": []
+    },
+    {
+      "id": "v1776982216972",
+      "name": "PZL-05",
+      "thumbnail": "https://i.imgur.com/z0zaxbR.png",
+      "image_path": "Image/chine\\PZL-05.png",
+      "rank": 4,
+      "br": 8,
+      "type": "researchable",
+      "baseCredits": {
+        "infantry": 0,
+        "armor": 0,
+        "mechanized": 0,
+        "motorized": 0,
+        "support": 2,
+        "plane": 0,
+        "invitation": 0
+      },
+      "emportOptions": []
+    },
+    {
+      "id": "v1776982274322",
+      "name": "PHL-03",
+      "thumbnail": "https://i.imgur.com/mBJc7YI.png",
+      "image_path": "Image/chine\\PHL-03.png",
+      "rank": 5,
+      "br": 10,
+      "type": "researchable",
+      "baseCredits": {
+        "infantry": 0,
+        "armor": 0,
+        "mechanized": 0,
+        "motorized": 0,
+        "support": 3,
+        "plane": 0,
+        "invitation": 0
+      },
+      "emportOptions": []
+    },
+    {
+      "id": "v1776982325179",
+      "name": "PGZ-09",
+      "thumbnail": "https://i.imgur.com/b6puspH.png",
+      "image_path": "Image/chine\\PGZ-09.png",
+      "rank": 4,
+      "br": 9,
+      "type": "researchable",
+      "baseCredits": {
+        "infantry": 0,
+        "armor": 0,
+        "mechanized": 0,
+        "motorized": 0,
+        "support": 2,
+        "plane": 0,
+        "invitation": 0
+      },
+      "emportOptions": []
+    },
+    {
+      "id": "v1776982384102",
+      "name": "HQ-16",
+      "thumbnail": "https://i.imgur.com/ITnT0jc.png",
+      "image_path": "Image/chine\\HQ-16.png",
+      "rank": 5,
+      "br": 10.3,
+      "type": "researchable",
+      "baseCredits": {
+        "infantry": 0,
+        "armor": 0,
+        "mechanized": 0,
+        "motorized": 0,
+        "support": 3,
+        "plane": 0,
+        "invitation": 0
+      },
+      "emportOptions": []
+    },
+    {
+      "id": "v1776982439219",
+      "name": "HQ-17",
+      "thumbnail": "https://i.imgur.com/Pxeveo3.png",
+      "image_path": "Image/chine\\HQ-17.png",
+      "rank": 5,
+      "br": 11.7,
+      "type": "researchable",
+      "baseCredits": {
+        "infantry": 0,
+        "armor": 0,
+        "mechanized": 0,
+        "motorized": 0,
+        "support": 4,
+        "plane": 0,
+        "invitation": 0
+      },
+      "emportOptions": []
+    },
+    {
+      "id": "v1776982592083",
       "name": "J-16",
       "thumbnail": "https://i.imgur.com/7tDGXz7.png",
       "image_path": "Image/chine\\J-16.png",
@@ -603,7 +603,7 @@ window.VEHICLES_DATA = {
           "support": 0,
           "plane": 1,
           "invitation": 0,
-          "_text": "1 - Crédits Aériens"
+          "_text": "A/A - PL-12 Light"
         },
         {
           "infantry": 0,
@@ -613,7 +613,7 @@ window.VEHICLES_DATA = {
           "support": 0,
           "plane": 2,
           "invitation": 0,
-          "_text": "2 - Crédits Aériens"
+          "_text": "A/A - PL-12 Standard"
         },
         {
           "infantry": 0,
@@ -623,7 +623,7 @@ window.VEHICLES_DATA = {
           "support": 0,
           "plane": 3,
           "invitation": 0,
-          "_text": "3 - Crédits Aériens"
+          "_text": "A/A - PL-15 Light"
         },
         {
           "infantry": 0,
@@ -633,7 +633,7 @@ window.VEHICLES_DATA = {
           "support": 0,
           "plane": 4,
           "invitation": 0,
-          "_text": "4 - Crédits Aériens"
+          "_text": "A/A - PL-15 Standard"
         },
         {
           "infantry": 0,
@@ -643,7 +643,7 @@ window.VEHICLES_DATA = {
           "support": 0,
           "plane": 4,
           "invitation": 0,
-          "_text": "4 - Crédits Aériens"
+          "_text": "A/A - PL-15 + PL-12"
         },
         {
           "infantry": 0,
@@ -653,17 +653,7 @@ window.VEHICLES_DATA = {
           "support": 0,
           "plane": 4,
           "invitation": 0,
-          "_text": "4 - Crédits Aériens"
-        },
-        {
-          "infantry": 0,
-          "armor": 0,
-          "mechanized": 0,
-          "motorized": 0,
-          "support": 0,
-          "plane": 4,
-          "invitation": 0,
-          "_text": "4 - Crédits Aériens"
+          "_text": "A/A - PL-17 Standard"
         },
         {
           "infantry": 0,
@@ -673,7 +663,7 @@ window.VEHICLES_DATA = {
           "support": 0,
           "plane": 5,
           "invitation": 0,
-          "_text": "5 - Crédits Aériens"
+          "_text": "A/A - PL-17 Heavy"
         },
         {
           "infantry": 0,
@@ -683,7 +673,7 @@ window.VEHICLES_DATA = {
           "support": 0,
           "plane": 2,
           "invitation": 0,
-          "_text": "2 - Crédits Aériens"
+          "_text": "A/G - AKD-88"
         },
         {
           "infantry": 0,
@@ -693,7 +683,7 @@ window.VEHICLES_DATA = {
           "support": 0,
           "plane": 3,
           "invitation": 0,
-          "_text": "3 - Crédits Aériens"
+          "_text": "A/G - AKD-88C"
         },
         {
           "infantry": 0,
@@ -703,7 +693,7 @@ window.VEHICLES_DATA = {
           "support": 0,
           "plane": 4,
           "invitation": 0,
-          "_text": "4 - Crédits Aériens"
+          "_text": "A/G - AKF-98A"
         },
         {
           "infantry": 0,
@@ -713,7 +703,7 @@ window.VEHICLES_DATA = {
           "support": 0,
           "plane": 3,
           "invitation": 0,
-          "_text": "3 - Crédits Aériens"
+          "_text": "A/G - LS-6-500"
         },
         {
           "infantry": 0,
@@ -723,7 +713,7 @@ window.VEHICLES_DATA = {
           "support": 0,
           "plane": 2,
           "invitation": 0,
-          "_text": "2 - Crédits Aériens"
+          "_text": "A/G - YJ-1000-1"
         },
         {
           "infantry": 0,
@@ -733,7 +723,7 @@ window.VEHICLES_DATA = {
           "support": 0,
           "plane": 3,
           "invitation": 0,
-          "_text": "3 - Crédits Aériens"
+          "_text": "A/G - YJ-91"
         }
       ]
     }
