@@ -1,0 +1,10 @@
+{
+  "name": "wargame-api",
+  "version": "1.0.0",
+  "description": "Cloudflare Worker pour la signature de decks Wargame Ranked",
+  "main": "index.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  }
+}

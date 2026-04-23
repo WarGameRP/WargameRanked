@@ -325,6 +325,13 @@
     </div>
 
     <script>
+        function escapeHtml(str) {
+            if (str == null) return '';
+            const div = document.createElement('div');
+            div.textContent = String(str);
+            return div.innerHTML;
+        }
+
         function loadDiscordServers() {
             const dropdown = document.getElementById('discord-dropdown');
             if (typeof DISCORD_SERVERS === 'undefined') {
@@ -337,11 +344,11 @@
             </svg>`;
 
             dropdown.innerHTML = DISCORD_SERVERS.map(server => `
-                <a href="${server.url}" target="_blank" class="dropdown-item">
+                <a href="${escapeHtml(server.url)}" target="_blank" class="dropdown-item">
                     <div class="server-icon">${discordLogo}</div>
                     <div class="server-info">
-                        <span class="server-name">${server.name}</span>
-                        <span class="server-desc">${server.description}</span>
+                        <span class="server-name">${escapeHtml(server.name)}</span>
+                        <span class="server-desc">${escapeHtml(server.description)}</span>
                     </div>
                     <span class="arrow">→</span>
                 </a>

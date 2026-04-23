@@ -6,7 +6,6 @@
     <title>Wargame Ranked - Vérification de Deck</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
     <script src="../Assets/vehicles.js"></script>
 </head>
 <body>
@@ -132,6 +131,19 @@
             mixed: "Mixte"
         };
 
+        // ─── Configuration API Cloudflare Workers ───────────────────────────────────
+        // L'URL de votre API Cloudflare Workers qui génère les signatures SHA-256.
+        // La vérification utilise la même API que l'export pour garantir l'intégrité.
+        const SIGNATURE_API_URL = "https://wargame-api.gougele222.workers.dev";
+
+        // ─── Helper XSS ───────────────────────────────────────────────
+        function escapeHtml(str) {
+            if (str == null) return '';
+            const div = document.createElement('div');
+            div.textContent = String(str);
+            return div.innerHTML;
+        }
+
         function translateType(type) {
             const map = {
                 infantry: 'INF',
@@ -143,16 +155,6 @@
                 invitation: 'INV'
             };
             return map[type] || type;
-        }
-
-        function stableStringify(obj) {
-            const allKeys = [];
-            JSON.stringify(obj, (key, value) => {
-                allKeys.push(key);
-                return value;
-            });
-            allKeys.sort();
-            return JSON.stringify(obj, allKeys);
         }
 
         function getVehicleImage(u) {
@@ -174,27 +176,42 @@
             return path || '../Assets/Other/img/Logo_Ranked.png';
         }
 
-        function handleVerify(event) {
+        async function handleVerify(event) {
             const file = event.target.files[0];
             if (!file) return;
 
             const reader = new FileReader();
-            reader.onload = (e) => {
+            reader.onload = async (e) => {
                 try {
                     const data = JSON.parse(e.target.result);
                     const { signature, ...rest } = data;
-                    const expected = sha256(stableStringify(rest) + "WargameRankedSecretSalt");
+
+                    // Envoyer le deck à l'API pour obtenir la signature attendue
+                    const response = await fetch(SIGNATURE_API_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(rest)
+                    });
 
                     const resultArea = document.getElementById('result-area');
                     const badge = document.getElementById('status-badge');
                     
                     resultArea.style.display = 'block';
                     
-                    if (signature === expected) {
-                        badge.innerText = "✓ DECK VALIDE";
-                        badge.className = "status-badge status-valid";
+                    if (response.ok) {
+                        const { signature: expectedSignature } = await response.json();
+                        
+                        if (signature === expectedSignature) {
+                            badge.innerText = "✓ DECK VALIDE";
+                            badge.className = "status-badge status-valid";
+                        } else {
+                            badge.innerText = "⚠ DECK MODIFIÉ / INVALIDE";
+                            badge.className = "status-badge status-invalid";
+                        }
                     } else {
-                        badge.innerText = "⚠ DECK MODIFIÉ / INVALIDE";
+                        badge.innerText = "⚠ ERREUR API";
                         badge.className = "status-badge status-invalid";
                     }
 
@@ -226,13 +243,13 @@
                         const thumbUrl = getVehicleImage(u);
                         
                         div.innerHTML = `
-                            <img src="${thumbUrl}" alt="">
+                            <img src="${escapeHtml(thumbUrl)}" alt="${escapeHtml(u.name)}">
                             <div class="verify-unit-info">
-                                <span class="verify-unit-name">${u.name}</span>
-                                <span class="verify-unit-country">${u.country}</span>
+                                <span class="verify-unit-name">${escapeHtml(u.name)}</span>
+                                <span class="verify-unit-country">${escapeHtml(u.country)}</span>
                                 <div class="verify-unit-credits">
-                                    <span class="total-cost-badge">${costStr}</span>
-                                    ${emport._text ? `<span class="emport-label">${emport._text}</span>` : ''}
+                                    <span class="total-cost-badge">${escapeHtml(costStr)}</span>
+                                    ${emport._text ? `<span class="emport-label">${escapeHtml(emport._text)}</span>` : ''}
                                 </div>
                             </div>
                         `;

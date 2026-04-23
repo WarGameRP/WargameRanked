@@ -1,0 +1,14 @@
+# Wrangler cache and account data
+.wrangler/
+.wrangler-cache/
+
+# Node modules
+node_modules/
+
+# Environment variables (if any)
+.env
+.env.local
+
+# OS files
+.DS_Store
+Thumbs.db

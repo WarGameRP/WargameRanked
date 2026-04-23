@@ -1,3 +1,26 @@
+// ─── Configuration API Cloudflare Workers ───────────────────────────────────
+// L'URL de votre API Cloudflare Workers qui génère les signatures SHA-256.
+// 
+// ARCHITECTURE SÉCURISÉE:
+// - Le script.js génère le deck JSON et l'envoie à cette API
+// - L'API (Cloudflare Workers) possède le secret caché dans ses variables d'environnement
+// - L'API calcule la signature SHA-256 avec le secret et la renvoie
+// - Le script.js reçoit la signature officielle et télécharge le fichier
+// - Résultat: Impossible de tricher, le secret est invisible côté client
+//
+// DÉPLOIEMENT:
+// 1. Suivez les instructions dans cloudflare-worker.js
+// 2. Remplacez cette URL par l'URL de votre Worker déployé
+const SIGNATURE_API_URL = "https://wargame-api.gougele222.workers.dev";
+
+// ─── Helper XSS ─────────────────────────────────────────────────────────────
+function escapeHtml(str) {
+    if (str == null) return '';
+    const div = document.createElement('div');
+    div.textContent = String(str);
+    return div.innerHTML;
+}
+
 const DOCTRINES = {
     infantry: { name: "Infanterie", infantry: 12, armor: 0, mechanized: 3, motorized: 3, support: 2, plane: 0 },
     armored: { name: "Blindée", infantry: 2, armor: 13, mechanized: 3, motorized: 0, support: 4, plane: 0 },
@@ -42,7 +65,7 @@ function renderCountryList() {
         
         const header = document.createElement('div');
         header.className = 'country-header';
-        header.innerHTML = `<span>${country}</span> <span style="font-size: 0.8rem; opacity: 0.5;">${vehicles.length} unités</span>`;
+        header.innerHTML = `<span>${escapeHtml(country)}</span> <span style="font-size: 0.8rem; opacity: 0.5;">${vehicles.length} unités</span>`;
         header.onclick = () => item.classList.toggle('active');
         
         const container = document.createElement('div');
@@ -61,10 +84,10 @@ function renderCountryList() {
             const thumbUrl = getVehicleImage(v);
 
             card.innerHTML = `
-                <img src="${thumbUrl}" alt="" style="object-fit: cover;">
+                <img src="${escapeHtml(thumbUrl)}" alt="${escapeHtml(v.name)}" style="object-fit: cover;">
                 <div class="vehicle-info">
-                    <span class="vehicle-name">${v.name}</span>
-                    <span class="vehicle-cost">${costStr}</span>
+                    <span class="vehicle-name">${escapeHtml(v.name)}</span>
+                    <span class="vehicle-cost">${escapeHtml(costStr)}</span>
                 </div>
             `;
             container.appendChild(card);
@@ -169,7 +192,7 @@ function confirmAddVehicle(country, vehicle, emport) {
         ...vehicle, 
         country, 
         selectedEmport: emport,
-        instanceId: Date.now() + Math.random() 
+        instanceId: crypto.randomUUID()
     });
     updateDeckUI();
     updateCreditsDisplay();
@@ -239,20 +262,20 @@ function updateDeckUI() {
                 .map(([type, val]) => `${val} ${translateType(type)}`)
                 .join(' + ');
 
-            const emportText = v.selectedEmport._text ? `<span class="emport-label">${v.selectedEmport._text}</span>` : '';
+            const emportText = v.selectedEmport._text ? `<span class="emport-label">${escapeHtml(v.selectedEmport._text)}</span>` : '';
 
             div.innerHTML = `
                 <div class="selected-vehicle-info">
-                    <img src="${thumbUrl}" style="width: 40px; height: 25px; border-radius: 4px; object-fit: cover;">
+                    <img src="${escapeHtml(thumbUrl)}" alt="${escapeHtml(v.name)}" style="width: 40px; height: 25px; border-radius: 4px; object-fit: cover;">
                     <div style="flex: 1;">
-                        <span style="font-weight: 600; display: block; font-size: 0.9rem;">${v.name}</span>
+                        <span style="font-weight: 600; display: block; font-size: 0.9rem;">${escapeHtml(v.name)}</span>
                         <div style="display: flex; gap: 5px; align-items: center;">
-                            <span class="total-cost-badge">${totalCostStr}</span>
+                            <span class="total-cost-badge">${escapeHtml(totalCostStr)}</span>
                             ${emportText}
                         </div>
                     </div>
                 </div>
-                <button class="remove-btn" onclick="removeVehicle(${v.instanceId})">×</button>
+                <button class="remove-btn" onclick="removeVehicle('${escapeHtml(v.instanceId)}')">×</button>
             `;
             section.appendChild(div);
         }
@@ -321,21 +344,42 @@ async function exportDeck() {
         timestamp: Date.now()
     };
     
-    // Create signature with stable stringify
-    const dataString = stableStringify(deckData);
-    const signature = sha256(dataString + "WargameRankedSecretSalt");
-    
-    const finalFile = {
-        ...deckData,
-        signature: signature
-    };
-    
-    const blob = new Blob([JSON.stringify(finalFile, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `${deckName.replace(/\s+/g, '_')}_deck.json`;
-    a.click();
+    try {
+        // Envoyer le deck JSON à l'API Cloudflare Workers pour obtenir la signature
+        const response = await fetch(SIGNATURE_API_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(deckData)
+        });
+        
+        if (!response.ok) {
+            throw new Error(`Erreur API: ${response.status} ${response.statusText}`);
+        }
+        
+        const { signature } = await response.json();
+        
+        if (!signature) {
+            throw new Error("L'API n'a pas renvoyé de signature");
+        }
+        
+        const finalFile = {
+            ...deckData,
+            signature: signature
+        };
+        
+        const blob = new Blob([JSON.stringify(finalFile, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${deckName.replace(/\s+/g, '_')}_deck.json`;
+        a.click();
+        
+    } catch (error) {
+        console.error("Erreur lors de la signature:", error);
+        alert(`Erreur lors de l'export: ${error.message}\n\nVérifiez que l'API Cloudflare Workers est déployée et accessible.`);
+    }
 }
 
 function importDeck(event) {
@@ -348,15 +392,9 @@ function importDeck(event) {
             const data = JSON.parse(e.target.result);
             if (!data.doctrine || !data.units) throw new Error("Format invalide");
             
-            // Verify signature with stable stringify
-            const { signature, ...rest } = data;
-            const expected = sha256(stableStringify(rest) + "WargameRankedSecretSalt");
-            
-            if (signature !== expected) {
-                if (!confirm("Attention : La signature de ce deck est invalide (il a peut-être été modifié manuellement). Voulez-vous quand même l'importer ?")) {
-                    return;
-                }
-            }
+            // Note: La vérification de signature n'est plus faite côté client
+            // car le secret est maintenant stocké uniquement dans l'API Cloudflare Workers.
+            // La vérification peut être faite par le bot Discord ou un autre système serveur.
             
             // Load it
             currentDoctrine = data.doctrine;
@@ -373,10 +411,10 @@ function importDeck(event) {
                         ...latest, 
                         country: u.country, 
                         selectedEmport: u.selectedEmport || { infantry: 0, armor: 0, mechanized: 0, motorized: 0, support: 0, plane: 0, invitation: 0, _text: '' },
-                        instanceId: Date.now() + Math.random() 
+                        instanceId: crypto.randomUUID()
                     };
                 }
-                return { ...u, instanceId: Date.now() + Math.random() };
+                return { ...u, instanceId: crypto.randomUUID() };
             });
             
             // Switch to builder UI
