@@ -74,6 +74,60 @@ def update_html_style(html_file_path):
         
         content = content.replace(old_section, new_header)
         print(f"✓ Ajouté le header à {html_file_path}")
+
+    # Injecter convertEditorBlocksToHtml si manquant
+    if 'function convertEditorBlocksToHtml' not in content:
+        js_func = """
+        function convertEditorBlocksToHtml ( blocks ) {
+            if ( !blocks || !blocks.length ) return '';
+            let html = '';
+            blocks.forEach( block => {
+                switch ( block.type ) {
+                case 'header':
+                    const level = block.data.level || 1;
+                    html += `<h${ level }>${ block.data.text }</h${ level }>`;
+                    break;
+                case 'paragraph':
+                    html += `<p>${ block.data.text || '' }</p>`;
+                    break;
+                case 'list':
+                    const tag = block.data.style === 'ordered' ? 'ol' : 'ul';
+                    html += `<${ tag }>`;
+                    block.data.items.forEach( item => {
+                        html += `<li>${ item }</li>`;
+                    } );
+                    html += `</${ tag }>`;
+                    break;
+                case 'credit':
+                    html += `<div class="vehicle-credit" style="color: ${ block.data.color }; margin: 5px 0; padding: 8px; background-color: rgba(22, 27, 34, 0.5); border-radius: 4px; border-left: 3px solid ${ block.data.color };">${ block.data.icon } ${ block.data.text || '' } <strong>${ block.data.typeName }</strong>: ${ block.data.value }</div>`;
+                    break;
+                case 'table':
+                    html += `<table border="1" style="border-collapse: collapse; width: 100%; margin: 10px 0;">`;
+                    if ( block.data.content && block.data.content.length > 0 ) {
+                        block.data.content.forEach( row => {
+                            html += '<tr>';
+                            row.forEach( cell => {
+                                html += `<td style="padding: 5px; border: 1px solid #444;">${ cell }</td>`;
+                            } );
+                            html += '</tr>';
+                        } );
+                    }
+                    html += '</table>';
+                    break;
+                case 'image':
+                    html += `<div style="margin: 10px 0;"><img src="${ block.data.url }" style="max-width: 100%;"></div>`;
+                    if ( block.data.caption ) {
+                        html += `<p style="font-style: italic; color: #888;">${ block.data.caption }</p>`;
+                    }
+                    break;
+                }
+            } );
+            return html;
+        }
+        """
+        if 'const settings =' in content:
+            content = content.replace('const settings =', js_func + '\n        const settings =')
+            print(f"✓ Injecté convertEditorBlocksToHtml à {html_file_path}")
     
     # Écrire le contenu modifié
     with open(html_file_path, 'w', encoding='utf-8') as f:
