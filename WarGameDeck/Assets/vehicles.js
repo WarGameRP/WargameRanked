@@ -4,7 +4,7 @@ window.VEHICLES_DATA = {
       "id": "v1776983469578",
       "name": "Mamba VBTT",
       "thumbnail": "https://i.imgur.com/EPRqWod.png",
-      "image_path": "Image/afrique_du_sud/Mamba_VBTT.png",
+      "image_path": "Image/afrique_du_sud\\Mamba_VBTT.png",
       "rank": 1,
       "br": 1.3,
       "type": "researchable",
@@ -23,7 +23,7 @@ window.VEHICLES_DATA = {
       "id": "v1776983551801",
       "name": "Badger IFV",
       "thumbnail": "https://i.imgur.com/dGKWhD9.png",
-      "image_path": "Image/afrique_du_sud/Badger_IFV.png",
+      "image_path": "Image/afrique_du_sud\\Badger_IFV.png",
       "rank": 4,
       "br": 9,
       "type": "researchable",
@@ -42,7 +42,7 @@ window.VEHICLES_DATA = {
       "id": "v1776983598924",
       "name": "Ratel ZT3A2",
       "thumbnail": "https://i.imgur.com/fA1vogo.png",
-      "image_path": "Image/afrique_du_sud/Ratel_ZT3A2.png",
+      "image_path": "Image/afrique_du_sud\\Ratel_ZT3A2.png",
       "rank": 4,
       "br": 8.3,
       "type": "researchable",
@@ -61,7 +61,7 @@ window.VEHICLES_DATA = {
       "id": "v1776983675602",
       "name": "Rooikat MTTD",
       "thumbnail": "https://i.imgur.com/kbkrCzk.png",
-      "image_path": "Image/afrique_du_sud/Rooikat_MTTD.png",
+      "image_path": "Image/afrique_du_sud\\Rooikat_MTTD.png",
       "rank": 4,
       "br": 9.3,
       "type": "researchable",
@@ -80,7 +80,7 @@ window.VEHICLES_DATA = {
       "id": "v1776983985651",
       "name": "Olifant Mk.2",
       "thumbnail": "https://i.imgur.com/0O1oicH.png",
-      "image_path": "Image/afrique_du_sud/Olifant_Mk2.png",
+      "image_path": "Image/afrique_du_sud\\Olifant_Mk2.png",
       "rank": 4,
       "br": 9.3,
       "type": "researchable",
@@ -99,7 +99,7 @@ window.VEHICLES_DATA = {
       "id": "v1776984037217",
       "name": "G6 Rhino",
       "thumbnail": "https://i.imgur.com/hTtPoSl.png",
-      "image_path": "Image/afrique_du_sud/G6_Rhino.png",
+      "image_path": "Image/afrique_du_sud\\G6_Rhino.png",
       "rank": 3,
       "br": 6.7,
       "type": "researchable",
@@ -118,7 +118,7 @@ window.VEHICLES_DATA = {
       "id": "v1776984154355",
       "name": "Bateleur FV2",
       "thumbnail": "https://i.imgur.com/3X92yEu.png",
-      "image_path": "Image/afrique_du_sud/Bateleur_FV2.png",
+      "image_path": "Image/afrique_du_sud\\Bateleur_FV2.png",
       "rank": 3,
       "br": 7.7,
       "type": "researchable",
@@ -137,7 +137,7 @@ window.VEHICLES_DATA = {
       "id": "v1776984359488",
       "name": "Umkhonto SAM",
       "thumbnail": "https://i.imgur.com/NlAERFV.png",
-      "image_path": "Image/afrique_du_sud/Umkhonto_SAM.png",
+      "image_path": "Image/afrique_du_sud\\Umkhonto_SAM.png",
       "rank": 5,
       "br": 11.7,
       "type": "researchable",
@@ -156,7 +156,7 @@ window.VEHICLES_DATA = {
       "id": "v1776984446334",
       "name": "Cheetah C",
       "thumbnail": "https://i.imgur.com/NMt7Iuh.png",
-      "image_path": "Image/afrique_du_sud/Cheetah_C.png",
+      "image_path": "Image/afrique_du_sud\\Cheetah_C.png",
       "rank": 5,
       "br": 11.3,
       "type": "researchable",
@@ -258,7 +258,7 @@ window.VEHICLES_DATA = {
       "id": "v1776980440805",
       "name": "Dongfeng EQ2050",
       "thumbnail": "https://i.imgur.com/CE8uz9x.png",
-      "image_path": "Image/chine/Dongfeng_EQ2050.png",
+      "image_path": "Image/chine\\Dongfeng_EQ2050.png",
       "rank": 1,
       "br": 1,
       "type": "researchable",
@@ -277,7 +277,7 @@ window.VEHICLES_DATA = {
       "id": "v1776980785673",
       "name": "FAW MV3",
       "thumbnail": "https://i.imgur.com/zogRnVS.png",
-      "image_path": "Image/chine/FAW_MV3.png",
+      "image_path": "Image/chine\\FAW_MV3.png",
       "rank": 1,
       "br": 1.3,
       "type": "researchable",
@@ -296,7 +296,7 @@ window.VEHICLES_DATA = {
       "id": "v1776981050278",
       "name": "Type 89 YW534",
       "thumbnail": "https://i.imgur.com/byKk1sW.png",
-      "image_path": "Image/chine/Type_89_YW534.png",
+      "image_path": "Image/chine\\Type_89_YW534.png",
       "rank": 2,
       "br": 5,
       "type": "researchable",
@@ -315,7 +315,7 @@ window.VEHICLES_DATA = {
       "id": "v1776981158976",
       "name": "WZ-551",
       "thumbnail": "https://i.imgur.com/ggEnkZx.png",
-      "image_path": "Image/chine/WZ-551.png",
+      "image_path": "Image/chine\\WZ-551.png",
       "rank": 3,
       "br": 6.3,
       "type": "researchable",
@@ -334,7 +334,7 @@ window.VEHICLES_DATA = {
       "id": "v1776981238247",
       "name": "ZBL-08",
       "thumbnail": "https://i.imgur.com/pEIKZqn.png",
-      "image_path": "Image/chine/ZBL-08.png",
+      "image_path": "Image/chine\\ZBL-08.png",
       "rank": 4,
       "br": 9,
       "type": "researchable",
@@ -353,7 +353,7 @@ window.VEHICLES_DATA = {
       "id": "v1776981285565",
       "name": "ZBD-04A",
       "thumbnail": "https://i.imgur.com/69OAWpv.png",
-      "image_path": "Image/chine/ZBD-04A.png",
+      "image_path": "Image/chine\\ZBD-04A.png",
       "rank": 5,
       "br": 10,
       "type": "researchable",
@@ -372,7 +372,7 @@ window.VEHICLES_DATA = {
       "id": "v1776981408529",
       "name": "ZLT-11",
       "thumbnail": "https://i.imgur.com/oSD2lAa.png",
-      "image_path": "Image/chine/ZLT-11.png",
+      "image_path": "Image/chine\\ZLT-11.png",
       "rank": 4,
       "br": 9.7,
       "type": "researchable",
@@ -391,7 +391,7 @@ window.VEHICLES_DATA = {
       "id": "v1776981536673",
       "name": "QN-506",
       "thumbnail": "https://i.imgur.com/KhS2Dpz.png",
-      "image_path": "Image/chine/QN-506.png",
+      "image_path": "Image/chine\\QN-506.png",
       "rank": 5,
       "br": 10,
       "type": "researchable",
@@ -410,7 +410,7 @@ window.VEHICLES_DATA = {
       "id": "v1776981597760",
       "name": "ZTQ-15",
       "thumbnail": "https://i.imgur.com/crbd66W.png",
-      "image_path": "Image/chine/ZTQ-15.png",
+      "image_path": "Image/chine\\ZTQ-15.png",
       "rank": 5,
       "br": 11.7,
       "type": "researchable",
@@ -429,7 +429,7 @@ window.VEHICLES_DATA = {
       "id": "v1776981651649",
       "name": "VT4",
       "thumbnail": "https://i.imgur.com/A6j9lhG.png",
-      "image_path": "Image/chine/VT4.png",
+      "image_path": "Image/chine\\VT4.png",
       "rank": 6,
       "br": 12.3,
       "type": "premium",
@@ -448,7 +448,7 @@ window.VEHICLES_DATA = {
       "id": "v1776981727397",
       "name": "ZTZ-99A1",
       "thumbnail": "https://i.imgur.com/UnRJNNa.png",
-      "image_path": "Image/chine/ZTZ-99A1.png",
+      "image_path": "Image/chine\\ZTZ-99A1.png",
       "rank": 6,
       "br": 12.3,
       "type": "researchable",
@@ -467,7 +467,7 @@ window.VEHICLES_DATA = {
       "id": "v1776982047128",
       "name": "PCL-171",
       "thumbnail": "https://i.imgur.com/wdGCban.png",
-      "image_path": "Image/chine/PCL-171.png",
+      "image_path": "Image/chine\\PCL-171.png",
       "rank": 3,
       "br": 6.7,
       "type": "researchable",
@@ -486,7 +486,7 @@ window.VEHICLES_DATA = {
       "id": "v1776982216972",
       "name": "PZL-05",
       "thumbnail": "https://i.imgur.com/z0zaxbR.png",
-      "image_path": "Image/chine/PZL-05.png",
+      "image_path": "Image/chine\\PZL-05.png",
       "rank": 4,
       "br": 8,
       "type": "researchable",
@@ -505,7 +505,7 @@ window.VEHICLES_DATA = {
       "id": "v1776982274322",
       "name": "PHL-03",
       "thumbnail": "https://i.imgur.com/mBJc7YI.png",
-      "image_path": "Image/chine/PHL-03.png",
+      "image_path": "Image/chine\\PHL-03.png",
       "rank": 5,
       "br": 10,
       "type": "researchable",
@@ -524,7 +524,7 @@ window.VEHICLES_DATA = {
       "id": "v1776982325179",
       "name": "PGZ-09",
       "thumbnail": "https://i.imgur.com/b6puspH.png",
-      "image_path": "Image/chine/PGZ-09.png",
+      "image_path": "Image/chine\\PGZ-09.png",
       "rank": 4,
       "br": 9,
       "type": "researchable",
@@ -543,7 +543,7 @@ window.VEHICLES_DATA = {
       "id": "v1776982384102",
       "name": "HQ-16",
       "thumbnail": "https://i.imgur.com/ITnT0jc.png",
-      "image_path": "Image/chine/HQ-16.png",
+      "image_path": "Image/chine\\HQ-16.png",
       "rank": 5,
       "br": 10.3,
       "type": "researchable",
@@ -562,7 +562,7 @@ window.VEHICLES_DATA = {
       "id": "v1776982439219",
       "name": "HQ-17",
       "thumbnail": "https://i.imgur.com/Pxeveo3.png",
-      "image_path": "Image/chine/HQ-17.png",
+      "image_path": "Image/chine\\HQ-17.png",
       "rank": 5,
       "br": 11.7,
       "type": "researchable",
@@ -581,7 +581,7 @@ window.VEHICLES_DATA = {
       "id": "v1776982592083",
       "name": "J-16",
       "thumbnail": "https://i.imgur.com/7tDGXz7.png",
-      "image_path": "Image/chine/J-16.png",
+      "image_path": "Image/chine\\J-16.png",
       "rank": 7,
       "br": 14.7,
       "type": "researchable",
@@ -728,90 +728,14 @@ window.VEHICLES_DATA = {
       ]
     }
   ],
-  "france": [
+  "corée du sud": [
     {
-      "id": "v1767221657691",
-      "name": "AMX-10RC",
-      "thumbnail": "https://i.imgur.com/dkNNWYJ.png",
-      "image_path": "Image/france/AMX-10RC.png",
-      "rank": 4,
-      "br": 8.3,
-      "type": "researchable",
-      "baseCredits": {
-        "infantry": 0,
-        "armor": 2,
-        "mechanized": 0,
-        "motorized": 0,
-        "support": 0,
-        "plane": 0,
-        "invitation": 0
-      },
-      "emportOptions": []
-    },
-    {
-      "id": "v1767221876278",
-      "name": "CAESAR",
-      "thumbnail": "https://i.imgur.com/ueUEbDk.png",
-      "image_path": "Image/france/CAESAR.png",
-      "rank": 5,
-      "br": 10,
-      "type": "researchable",
-      "baseCredits": {
-        "infantry": 0,
-        "armor": 0,
-        "mechanized": 0,
-        "motorized": 0,
-        "support": 2,
-        "plane": 0,
-        "invitation": 0
-      },
-      "emportOptions": []
-    },
-    {
-      "id": "v1767221986164",
-      "name": "CAESAR 8x8",
-      "thumbnail": "https://i.imgur.com/qzOtnBy.png",
-      "image_path": "Image/france/CAESAR_8x8.png",
-      "rank": 5,
-      "br": 10.3,
-      "type": "researchable",
-      "baseCredits": {
-        "infantry": 0,
-        "armor": 0,
-        "mechanized": 0,
-        "motorized": 0,
-        "support": 3,
-        "plane": 0,
-        "invitation": 0
-      },
-      "emportOptions": []
-    },
-    {
-      "id": "v1767222181019",
-      "name": "Griffon MEPAC",
-      "thumbnail": "https://i.imgur.com/VkPcbbJ.png",
-      "image_path": "Image/france/Griffon_MEPAC.png",
-      "rank": 2,
-      "br": 4,
-      "type": "researchable",
-      "baseCredits": {
-        "infantry": 0,
-        "armor": 0,
-        "mechanized": 0,
-        "motorized": 0,
-        "support": 2,
-        "plane": 0,
-        "invitation": 0
-      },
-      "emportOptions": []
-    },
-    {
-      "id": "v1767222280801",
-      "name": "Griffon VBTT",
-      "thumbnail": "https://i.imgur.com/2Jse3j2.png",
-      "image_path": "Image/france/Griffon_VBTT.png",
-      "rank": 2,
-      "br": 2.3,
+      "id": "v1776984868081",
+      "name": "K151 Raycolt",
+      "thumbnail": "https://i.imgur.com/26ULFYP.png",
+      "image_path": "Image/corée_du_sud\\K151_Raycolt.png",
+      "rank": 1,
+      "br": 1.3,
       "type": "researchable",
       "baseCredits": {
         "infantry": 0,
@@ -825,36 +749,17 @@ window.VEHICLES_DATA = {
       "emportOptions": []
     },
     {
-      "id": "v1767222387318",
-      "name": "Griffon VOA",
-      "thumbnail": "https://i.imgur.com/k6ixMjQ.png",
-      "image_path": "Image/france/Griffon_VOA.png",
-      "rank": 1,
-      "br": 2,
+      "id": "v1776985070395",
+      "name": "K200 KIFV",
+      "thumbnail": "https://i.imgur.com/R7UhSFD.png",
+      "image_path": "Image/corée_du_sud\\K200_KIFV.png",
+      "rank": 2,
+      "br": 4,
       "type": "researchable",
       "baseCredits": {
         "infantry": 0,
         "armor": 0,
-        "mechanized": 0,
-        "motorized": 0,
-        "support": 2,
-        "plane": 0,
-        "invitation": 0
-      },
-      "emportOptions": []
-    },
-    {
-      "id": "v1767222495027",
-      "name": "Leclerc",
-      "thumbnail": "https://i.imgur.com/XrmutUP.png",
-      "image_path": "Image/france/Leclerc.png",
-      "rank": 6,
-      "br": 12.7,
-      "type": "researchable",
-      "baseCredits": {
-        "infantry": 0,
-        "armor": 3,
-        "mechanized": 0,
+        "mechanized": 1,
         "motorized": 0,
         "support": 0,
         "plane": 0,
@@ -863,17 +768,17 @@ window.VEHICLES_DATA = {
       "emportOptions": []
     },
     {
-      "id": "v1767222653625",
-      "name": "Leclerc SXXI",
-      "thumbnail": "https://i.imgur.com/uziblYE.png",
-      "image_path": "Image/france/Leclerc_SXXI.png",
-      "rank": 6,
-      "br": 13,
+      "id": "v1776985130851",
+      "name": "K808 White Tiger",
+      "thumbnail": "https://i.imgur.com/1RaywTk.png",
+      "image_path": "Image/corée_du_sud\\K808_White_Tiger.png",
+      "rank": 4,
+      "br": 9.3,
       "type": "researchable",
       "baseCredits": {
         "infantry": 0,
-        "armor": 3,
-        "mechanized": 0,
+        "armor": 0,
+        "mechanized": 3,
         "motorized": 0,
         "support": 0,
         "plane": 0,
@@ -882,10 +787,29 @@ window.VEHICLES_DATA = {
       "emportOptions": []
     },
     {
-      "id": "v1767222706992",
-      "name": "Leclerc AZUR",
-      "thumbnail": "https://i.imgur.com/lKmtCDU.png",
-      "image_path": "Image/france/Leclerc_AZUR.png",
+      "id": "v1776985208656",
+      "name": "K21",
+      "thumbnail": "https://i.imgur.com/3QTohYx.png",
+      "image_path": "Image/corée_du_sud\\K21.png",
+      "rank": 5,
+      "br": 10,
+      "type": "researchable",
+      "baseCredits": {
+        "infantry": 0,
+        "armor": 0,
+        "mechanized": 3,
+        "motorized": 0,
+        "support": 0,
+        "plane": 0,
+        "invitation": 0
+      },
+      "emportOptions": []
+    },
+    {
+      "id": "v1776985325415",
+      "name": "K2 Black Panther",
+      "thumbnail": "https://i.imgur.com/72aagBS.png",
+      "image_path": "Image/corée_du_sud\\K2_Black_Panther.png",
       "rank": 6,
       "br": 13.3,
       "type": "researchable",
@@ -901,12 +825,12 @@ window.VEHICLES_DATA = {
       "emportOptions": []
     },
     {
-      "id": "v1767222769061",
-      "name": "Mamba-SAMP/T",
-      "thumbnail": "https://i.imgur.com/oUqCMCv.png",
-      "image_path": "Image/france/Mamba-SAMP_T.png",
-      "rank": 6,
-      "br": 12.7,
+      "id": "v1776985408037",
+      "name": "K9A1 Thunder",
+      "thumbnail": "https://i.imgur.com/wQQM0dU.png",
+      "image_path": "Image/corée_du_sud\\K9A1_Thunder.png",
+      "rank": 3,
+      "br": 7.3,
       "type": "researchable",
       "baseCredits": {
         "infantry": 0,
@@ -920,10 +844,50 @@ window.VEHICLES_DATA = {
       "emportOptions": []
     },
     {
-      "id": "v1767223792371",
+      "id": "v1776985524728",
+      "name": "K239 Chunmoo",
+      "thumbnail": "https://i.imgur.com/FHXdLdA.png",
+      "image_path": "Image/corée_du_sud\\K239_Chunmoo.png",
+      "rank": 5,
+      "br": 10.7,
+      "type": "researchable",
+      "baseCredits": {
+        "infantry": 0,
+        "armor": 0,
+        "mechanized": 0,
+        "motorized": 0,
+        "support": 4,
+        "plane": 0,
+        "invitation": 0
+      },
+      "emportOptions": []
+    },
+    {
+      "id": "v1776985582911",
+      "name": "K30 Biho",
+      "thumbnail": "https://i.imgur.com/COJtG00.png",
+      "image_path": "Image/corée_du_sud\\K30_Biho.png",
+      "rank": 4,
+      "br": 8.3,
+      "type": "researchable",
+      "baseCredits": {
+        "infantry": 0,
+        "armor": 0,
+        "mechanized": 0,
+        "motorized": 0,
+        "support": 2,
+        "plane": 0,
+        "invitation": 0
+      },
+      "emportOptions": []
+    }
+  ],
+  "france": [
+    {
+      "id": "v1776986135137",
       "name": "SCARABEE",
       "thumbnail": "https://i.imgur.com/em9rFFr.png",
-      "image_path": "Image/france/SCARABEE.png",
+      "image_path": "Image/france\\SCARABEE.png",
       "rank": 1,
       "br": 1.7,
       "type": "researchable",
@@ -939,10 +903,295 @@ window.VEHICLES_DATA = {
       "emportOptions": []
     },
     {
-      "id": "v1767223843439",
+      "id": "v1776986173650",
+      "name": "VAB Mk1 APC",
+      "thumbnail": "https://i.imgur.com/tDGJPmQ.png",
+      "image_path": "Image/france\\VAB_Mk1_APC.png",
+      "rank": 1,
+      "br": 2,
+      "type": "researchable",
+      "baseCredits": {
+        "infantry": 0,
+        "armor": 0,
+        "mechanized": 0,
+        "motorized": 1,
+        "support": 0,
+        "plane": 0,
+        "invitation": 0
+      },
+      "emportOptions": []
+    },
+    {
+      "id": "v1776986230067",
+      "name": "Griffon VBTT",
+      "thumbnail": "https://i.imgur.com/2Jse3j2.png",
+      "image_path": "Image/france\\Griffon_VBTT.png",
+      "rank": 2,
+      "br": 2.3,
+      "type": "researchable",
+      "baseCredits": {
+        "infantry": 0,
+        "armor": 0,
+        "mechanized": 0,
+        "motorized": 1,
+        "support": 0,
+        "plane": 0,
+        "invitation": 0
+      },
+      "emportOptions": []
+    },
+    {
+      "id": "v1776986297225",
+      "name": "VAB Mk3 VCI",
+      "thumbnail": "https://i.imgur.com/QRxb45E.png",
+      "image_path": "Image/france\\VAB_Mk3_VCI.png",
+      "rank": 3,
+      "br": 7.7,
+      "type": "researchable",
+      "baseCredits": {
+        "infantry": 0,
+        "armor": 0,
+        "mechanized": 2,
+        "motorized": 0,
+        "support": 0,
+        "plane": 0,
+        "invitation": 0
+      },
+      "emportOptions": []
+    },
+    {
+      "id": "v1776986352893",
       "name": "VBCI",
       "thumbnail": "https://i.imgur.com/0PLnNlj.png",
-      "image_path": "Image/france/VBCI.png",
+      "image_path": "Image/france\\VBCI.png",
+      "rank": 4,
+      "br": 9.3,
+      "type": "researchable",
+      "baseCredits": {
+        "infantry": 0,
+        "armor": 0,
+        "mechanized": 2,
+        "motorized": 0,
+        "support": 0,
+        "plane": 0,
+        "invitation": 0
+      },
+      "emportOptions": []
+    },
+    {
+      "id": "v1776986395472",
+      "name": "VBCI-2",
+      "thumbnail": "https://i.imgur.com/0vGtiJC.png",
+      "image_path": "Image/france\\VBCI-2.png",
+      "rank": 4,
+      "br": 9.7,
+      "type": "researchable",
+      "baseCredits": {
+        "infantry": 0,
+        "armor": 0,
+        "mechanized": 3,
+        "motorized": 0,
+        "support": 0,
+        "plane": 0,
+        "invitation": 0
+      },
+      "emportOptions": []
+    },
+    {
+      "id": "v1776986568568",
+      "name": "AMX-10RC",
+      "thumbnail": "https://i.imgur.com/dkNNWYJ.png",
+      "image_path": "Image/france\\AMX-10RC.png",
+      "rank": 4,
+      "br": 8.3,
+      "type": "researchable",
+      "baseCredits": {
+        "infantry": 0,
+        "armor": 2,
+        "mechanized": 0,
+        "motorized": 0,
+        "support": 0,
+        "plane": 0,
+        "invitation": 0
+      },
+      "emportOptions": []
+    },
+    {
+      "id": "v1776986657877",
+      "name": "VAB MEPHISTO",
+      "thumbnail": "https://i.imgur.com/m1NyaW5.png",
+      "image_path": "Image/france\\VAB_MEPHISTO.png",
+      "rank": 4,
+      "br": 8.7,
+      "type": "researchable",
+      "baseCredits": {
+        "infantry": 0,
+        "armor": 2,
+        "mechanized": 0,
+        "motorized": 0,
+        "support": 0,
+        "plane": 0,
+        "invitation": 0
+      },
+      "emportOptions": []
+    },
+    {
+      "id": "v1776986711020",
+      "name": "VAB Mk3 AFV",
+      "thumbnail": "https://i.imgur.com/EvW92W1.png",
+      "image_path": "Image/france\\VAB_Mk3_AFV.png",
+      "rank": 4,
+      "br": 9,
+      "type": "researchable",
+      "baseCredits": {
+        "infantry": 0,
+        "armor": 2,
+        "mechanized": 0,
+        "motorized": 0,
+        "support": 0,
+        "plane": 0,
+        "invitation": 0
+      },
+      "emportOptions": []
+    },
+    {
+      "id": "v1776986831826",
+      "name": "Leclerc",
+      "thumbnail": "https://i.imgur.com/XrmutUP.png",
+      "image_path": "Image/france\\Leclerc.png",
+      "rank": 6,
+      "br": 12.7,
+      "type": "researchable",
+      "baseCredits": {
+        "infantry": 0,
+        "armor": 3,
+        "mechanized": 0,
+        "motorized": 0,
+        "support": 0,
+        "plane": 0,
+        "invitation": 0
+      },
+      "emportOptions": []
+    },
+    {
+      "id": "v1776986886368",
+      "name": "Leclerc SXXI",
+      "thumbnail": "https://i.imgur.com/uziblYE.png",
+      "image_path": "Image/france\\Leclerc_SXXI.png",
+      "rank": 6,
+      "br": 13,
+      "type": "researchable",
+      "baseCredits": {
+        "infantry": 0,
+        "armor": 3,
+        "mechanized": 0,
+        "motorized": 0,
+        "support": 0,
+        "plane": 0,
+        "invitation": 0
+      },
+      "emportOptions": []
+    },
+    {
+      "id": "v1776986924749",
+      "name": "Leclerc AZUR",
+      "thumbnail": "https://i.imgur.com/lKmtCDU.png",
+      "image_path": "Image/france\\Leclerc_AZUR.png",
+      "rank": 6,
+      "br": 13.3,
+      "type": "researchable",
+      "baseCredits": {
+        "infantry": 0,
+        "armor": 4,
+        "mechanized": 0,
+        "motorized": 0,
+        "support": 0,
+        "plane": 0,
+        "invitation": 0
+      },
+      "emportOptions": []
+    },
+    {
+      "id": "v1776987009656",
+      "name": "Griffon VOA",
+      "thumbnail": "https://i.imgur.com/k6ixMjQ.png",
+      "image_path": "Image/france\\Griffon_VOA.png",
+      "rank": 1,
+      "br": 2,
+      "type": "researchable",
+      "baseCredits": {
+        "infantry": 0,
+        "armor": 0,
+        "mechanized": 0,
+        "motorized": 0,
+        "support": 2,
+        "plane": 0,
+        "invitation": 0
+      },
+      "emportOptions": []
+    },
+    {
+      "id": "v1776987062840",
+      "name": "Griffon MEPAC",
+      "thumbnail": "https://i.imgur.com/VkPcbbJ.png",
+      "image_path": "Image/france\\Griffon_MEPAC.png",
+      "rank": 2,
+      "br": 4,
+      "type": "researchable",
+      "baseCredits": {
+        "infantry": 0,
+        "armor": 0,
+        "mechanized": 0,
+        "motorized": 0,
+        "support": 2,
+        "plane": 0,
+        "invitation": 0
+      },
+      "emportOptions": []
+    },
+    {
+      "id": "v1776987130471",
+      "name": "CAESAR",
+      "thumbnail": "https://i.imgur.com/ueUEbDk.png",
+      "image_path": "Image/france\\CAESAR.png",
+      "rank": 5,
+      "br": 10,
+      "type": "researchable",
+      "baseCredits": {
+        "infantry": 0,
+        "armor": 0,
+        "mechanized": 0,
+        "motorized": 0,
+        "support": 3,
+        "plane": 0,
+        "invitation": 0
+      },
+      "emportOptions": []
+    },
+    {
+      "id": "v1776987471910",
+      "name": "CAESAR 8x8",
+      "thumbnail": "https://i.imgur.com/qzOtnBy.png",
+      "image_path": "Image/france\\CAESAR_8x8.png",
+      "rank": 5,
+      "br": 10.3,
+      "type": "researchable",
+      "baseCredits": {
+        "infantry": 0,
+        "armor": 0,
+        "mechanized": 0,
+        "motorized": 0,
+        "support": 3,
+        "plane": 0,
+        "invitation": 0
+      },
+      "emportOptions": []
+    },
+    {
+      "id": "v1776987545898",
+      "name": "VAB SANTAL",
+      "thumbnail": "https://i.imgur.com/pLBQpYT.png",
+      "image_path": "Image/france\\VAB_SANTAL.png",
       "rank": 4,
       "br": 9.3,
       "type": "researchable",
@@ -951,55 +1200,36 @@ window.VEHICLES_DATA = {
         "armor": 0,
         "mechanized": 0,
         "motorized": 0,
-        "support": 0,
+        "support": 2,
         "plane": 0,
         "invitation": 0
       },
       "emportOptions": []
     },
     {
-      "id": "v1767224000904",
-      "name": "VBCI-2",
-      "thumbnail": "https://i.imgur.com/0vGtiJC.png",
-      "image_path": "Image/france/VBCI-2.png",
-      "rank": 4,
-      "br": 9.7,
+      "id": "v1776987587299",
+      "name": "Mamba-SAMP/T",
+      "thumbnail": "https://i.imgur.com/oUqCMCv.png",
+      "image_path": "Image/france\\Mamba-SAMP_T.png",
+      "rank": 6,
+      "br": 12.7,
       "type": "researchable",
       "baseCredits": {
         "infantry": 0,
         "armor": 0,
         "mechanized": 0,
         "motorized": 0,
-        "support": 0,
+        "support": 3,
         "plane": 0,
         "invitation": 0
       },
       "emportOptions": []
     },
     {
-      "id": "v1767224371473",
-      "name": "VBCI-2 T40P",
-      "thumbnail": "https://i.imgur.com/j9SyTkl.png",
-      "image_path": "Image/france/VBCI-2_T40P.png",
-      "rank": 5,
-      "br": 10,
-      "type": "premium",
-      "baseCredits": {
-        "infantry": 0,
-        "armor": 0,
-        "mechanized": 0,
-        "motorized": 0,
-        "support": 0,
-        "plane": 0,
-        "invitation": 1
-      },
-      "emportOptions": []
-    },
-    {
-      "id": "v1767619757365",
+      "id": "v1776987819714",
       "name": "Rafale M F4-2",
       "thumbnail": "https://i.imgur.com/r0efmVl.png",
-      "image_path": "Image/france/Rafale_M_F4-2.png",
+      "image_path": "Image/france\\Rafale_M_F4-2.png",
       "rank": 7,
       "br": 15,
       "type": "researchable",
@@ -1021,7 +1251,7 @@ window.VEHICLES_DATA = {
           "support": 0,
           "plane": 1,
           "invitation": 0,
-          "_text": "1 - Crédits Aériens"
+          "_text": "A/A - MICA Light"
         },
         {
           "infantry": 0,
@@ -1031,7 +1261,7 @@ window.VEHICLES_DATA = {
           "support": 0,
           "plane": 2,
           "invitation": 0,
-          "_text": "2 - Crédits Aériens"
+          "_text": "A/A - MICA Standard"
         },
         {
           "infantry": 0,
@@ -1041,7 +1271,7 @@ window.VEHICLES_DATA = {
           "support": 0,
           "plane": 3,
           "invitation": 0,
-          "_text": "3 - Crédits Aériens"
+          "_text": "A/A - MICA Heavy"
         },
         {
           "infantry": 0,
@@ -1051,7 +1281,7 @@ window.VEHICLES_DATA = {
           "support": 0,
           "plane": 3,
           "invitation": 0,
-          "_text": "3 - Crédits Aériens"
+          "_text": "A/A - Meteor Standard"
         },
         {
           "infantry": 0,
@@ -1061,7 +1291,7 @@ window.VEHICLES_DATA = {
           "support": 0,
           "plane": 1,
           "invitation": 0,
-          "_text": "1 - Crédits Aériens"
+          "_text": "A/G - GBU-12 Standard"
         },
         {
           "infantry": 0,
@@ -1071,7 +1301,7 @@ window.VEHICLES_DATA = {
           "support": 0,
           "plane": 1,
           "invitation": 0,
-          "_text": "1 - Crédits Aériens"
+          "_text": "A/G - GBU-22 Standard"
         },
         {
           "infantry": 0,
@@ -1081,7 +1311,7 @@ window.VEHICLES_DATA = {
           "support": 0,
           "plane": 2,
           "invitation": 0,
-          "_text": "2 - Crédits Aériens"
+          "_text": "A/G - GBU-49 Standard"
         },
         {
           "infantry": 0,
@@ -1091,7 +1321,7 @@ window.VEHICLES_DATA = {
           "support": 0,
           "plane": 2,
           "invitation": 0,
-          "_text": "2 - Crédits Aériens"
+          "_text": "A/G - SBU-38 AASM Standard"
         },
         {
           "infantry": 0,
@@ -1101,7 +1331,7 @@ window.VEHICLES_DATA = {
           "support": 0,
           "plane": 3,
           "invitation": 0,
-          "_text": "3 - Crédits Aériens"
+          "_text": "A/G - SBU-54 AASM Standard"
         },
         {
           "infantry": 0,
@@ -1111,7 +1341,7 @@ window.VEHICLES_DATA = {
           "support": 0,
           "plane": 3,
           "invitation": 0,
-          "_text": "3 - Crédits Aériens"
+          "_text": "A/G - SBU-64 AASM Standard"
         },
         {
           "infantry": 0,
@@ -1121,34 +1351,15 @@ window.VEHICLES_DATA = {
           "support": 0,
           "plane": 4,
           "invitation": 0,
-          "_text": "4 - Crédits Aériens"
+          "_text": "A/G - SCALP EG"
         }
       ]
     },
     {
-      "id": "v1775423315409",
-      "name": "VAB Mk1 APC",
-      "thumbnail": "https://i.imgur.com/tDGJPmQ.png",
-      "image_path": "Image/france/VAB_Mk1_APC.png",
-      "rank": 1,
-      "br": 2,
-      "type": "researchable",
-      "baseCredits": {
-        "infantry": 0,
-        "armor": 0,
-        "mechanized": 0,
-        "motorized": 1,
-        "support": 0,
-        "plane": 0,
-        "invitation": 0
-      },
-      "emportOptions": []
-    },
-    {
-      "id": "v1775423726665",
+      "id": "v1776987877109",
       "name": "VAB Mk3 APC",
-      "thumbnail": "https://i.imgur.com/X5bSV1V.png",
-      "image_path": "Image/france/VAB_Mk3_APC.png",
+      "thumbnail": "https://i.imgur.com/rNQ0HiM.png",
+      "image_path": "Image/france\\VAB_Mk3_APC.png",
       "rank": 2,
       "br": 2.3,
       "type": "premium",
@@ -1159,94 +1370,26 @@ window.VEHICLES_DATA = {
         "motorized": 2,
         "support": 0,
         "plane": 0,
-        "invitation": 0
-      },
-      "emportOptions": [
-        {
-          "infantry": 0,
-          "armor": 0,
-          "mechanized": 0,
-          "motorized": 0,
-          "support": 0,
-          "plane": 0,
-          "invitation": 1,
-          "_text": "1 - Crédits d&#39;Invitation"
-        }
-      ]
-    },
-    {
-      "id": "v1775424011978",
-      "name": "VAB MEPHISTO",
-      "thumbnail": "https://i.imgur.com/m1NyaW5.png",
-      "image_path": "Image/france/VAB_MEPHISTO.png",
-      "rank": 4,
-      "br": 8.7,
-      "type": "researchable",
-      "baseCredits": {
-        "infantry": 0,
-        "armor": 2,
-        "mechanized": 0,
-        "motorized": 0,
-        "support": 0,
-        "plane": 0,
-        "invitation": 0
+        "invitation": 1
       },
       "emportOptions": []
     },
     {
-      "id": "v1775424218673",
-      "name": "VAB SANTAL",
-      "thumbnail": "https://i.imgur.com/pLBQpYT.png",
-      "image_path": "Image/france/VAB_SANTAL.png",
-      "rank": 4,
-      "br": 9.3,
-      "type": "researchable",
+      "id": "v1776987942473",
+      "name": "VBCI-2 T40P",
+      "thumbnail": "https://i.imgur.com/j9SyTkl.png",
+      "image_path": "Image/france\\VBCI-2_T40P.png",
+      "rank": 5,
+      "br": 10.3,
+      "type": "premium",
       "baseCredits": {
         "infantry": 0,
         "armor": 0,
-        "mechanized": 0,
-        "motorized": 0,
-        "support": 2,
-        "plane": 0,
-        "invitation": 0
-      },
-      "emportOptions": []
-    },
-    {
-      "id": "v1775424385775",
-      "name": "VAB Mk3 AFV",
-      "thumbnail": "https://i.imgur.com/EvW92W1.png",
-      "image_path": "Image/france/VAB_Mk3_AFV.png",
-      "rank": 4,
-      "br": 9,
-      "type": "researchable",
-      "baseCredits": {
-        "infantry": 0,
-        "armor": 2,
-        "mechanized": 0,
+        "mechanized": 3,
         "motorized": 0,
         "support": 0,
         "plane": 0,
-        "invitation": 0
-      },
-      "emportOptions": []
-    },
-    {
-      "id": "v1775424497483",
-      "name": "VAB Mk3 VCI",
-      "thumbnail": "https://i.imgur.com/QRxb45E.png",
-      "image_path": "Image/france/VAB_Mk3_VCI.png",
-      "rank": 3,
-      "br": 7.3,
-      "type": "researchable",
-      "baseCredits": {
-        "infantry": 0,
-        "armor": 0,
-        "mechanized": 0,
-        "motorized": 0,
-        "support": 0,
-        "plane": 0,
-        "invitation": 0
+        "invitation": 1
       },
       "emportOptions": []
     }
@@ -1256,7 +1399,7 @@ window.VEHICLES_DATA = {
       "id": "v1767642224914",
       "name": "F-2A",
       "thumbnail": "https://i.imgur.com/sLDHeOc.png",
-      "image_path": "Image/japon/F-2A.png",
+      "image_path": "Image/japon\\F-2A.png",
       "rank": 7,
       "br": 13.7,
       "type": "researchable",
@@ -1426,7 +1569,7 @@ window.VEHICLES_DATA = {
       "id": "v1767646528636",
       "name": "Type 10",
       "thumbnail": "https://i.imgur.com/RLmL1My.png",
-      "image_path": "Image/japon/Type_10.png",
+      "image_path": "Image/japon\\Type_10.png",
       "rank": 6,
       "br": 12.7,
       "type": "researchable",
@@ -1445,7 +1588,7 @@ window.VEHICLES_DATA = {
       "id": "v1767646617670",
       "name": "Type 16MCV",
       "thumbnail": "https://i.imgur.com/mEg4Ego.png",
-      "image_path": "Image/japon/Type_16MCV.png",
+      "image_path": "Image/japon\\Type_16MCV.png",
       "rank": 4,
       "br": 9.7,
       "type": "researchable",
@@ -1464,7 +1607,7 @@ window.VEHICLES_DATA = {
       "id": "v1767654972242",
       "name": "Type 19",
       "thumbnail": "https://i.imgur.com/85MtQ1j.png",
-      "image_path": "Image/japon/Type_19.png",
+      "image_path": "Image/japon\\Type_19.png",
       "rank": 3,
       "br": 6.7,
       "type": "researchable",
@@ -1483,7 +1626,7 @@ window.VEHICLES_DATA = {
       "id": "v1767655019567",
       "name": "Type 87",
       "thumbnail": "https://i.imgur.com/gpJ4lp0.png",
-      "image_path": "Image/japon/Type_87.png",
+      "image_path": "Image/japon\\Type_87.png",
       "rank": 4,
       "br": 8.3,
       "type": "researchable",
@@ -1502,7 +1645,7 @@ window.VEHICLES_DATA = {
       "id": "v1767655121508",
       "name": "Type 89",
       "thumbnail": "https://i.imgur.com/PuqJRen.png",
-      "image_path": "Image/japon/Type_89.png",
+      "image_path": "Image/japon\\Type_89.png",
       "rank": 4,
       "br": 9,
       "type": "researchable",
@@ -1521,7 +1664,7 @@ window.VEHICLES_DATA = {
       "id": "v1767655266784",
       "name": "Type 96",
       "thumbnail": "https://i.imgur.com/7Hsw9MJ.png",
-      "image_path": "Image/japon/Type_96.png",
+      "image_path": "Image/japon\\Type_96.png",
       "rank": 3,
       "br": 6,
       "type": "researchable",
@@ -1540,7 +1683,7 @@ window.VEHICLES_DATA = {
       "id": "v1767655396487",
       "name": "Type 99",
       "thumbnail": "https://i.imgur.com/5RGdrWF.png",
-      "image_path": "Image/japon/Type_99.png",
+      "image_path": "Image/japon\\Type_99.png",
       "rank": 3,
       "br": 7.3,
       "type": "researchable",
@@ -1559,7 +1702,7 @@ window.VEHICLES_DATA = {
       "id": "v1767656028273",
       "name": "Type 96 MPMS",
       "thumbnail": "https://i.imgur.com/6sJUgLx.png",
-      "image_path": "Image/japon/Type_96_MPMS.png",
+      "image_path": "Image/japon\\Type_96_MPMS.png",
       "rank": 4,
       "br": 8.3,
       "type": "researchable",
@@ -1578,7 +1721,7 @@ window.VEHICLES_DATA = {
       "id": "v1767656261792",
       "name": "Komatsu LAV",
       "thumbnail": "https://i.imgur.com/uuHRGIV.png",
-      "image_path": "Image/japon/Komatsu_LAV.png",
+      "image_path": "Image/japon\\Komatsu_LAV.png",
       "rank": 1,
       "br": 1,
       "type": "researchable",
@@ -1599,7 +1742,7 @@ window.VEHICLES_DATA = {
       "id": "v1767627835285",
       "name": "Groupe d'infanterie",
       "thumbnail": "https://i.imgur.com/M56Ddvw.png",
-      "image_path": "Image/ranked_basique/Groupe_dinfanterie.png",
+      "image_path": "Image/ranked_basique\\Groupe_dinfanterie.png",
       "rank": 1,
       "br": 1,
       "type": "researchable",
@@ -1618,7 +1761,7 @@ window.VEHICLES_DATA = {
       "id": "v1767628381796",
       "name": "Équipe anti-air",
       "thumbnail": "https://i.imgur.com/9vjbk0y.png",
-      "image_path": "Image/ranked_basique/quipe_anti-air.png",
+      "image_path": "Image/ranked_basique\\quipe_anti-air.png",
       "rank": 1,
       "br": 1.3,
       "type": "researchable",
@@ -1628,160 +1771,6 @@ window.VEHICLES_DATA = {
         "mechanized": 0,
         "motorized": 0,
         "support": 0,
-        "plane": 0,
-        "invitation": 0
-      },
-      "emportOptions": []
-    }
-  ],
-  "South Korea": [
-    {
-      "id": "v1767657028587",
-      "name": "K151 Raycolt",
-      "thumbnail": "https://i.imgur.com/26ULFYP.png",
-      "image_path": "Image/south_korea/K151_Raycolt.png",
-      "rank": 1,
-      "br": 1.7,
-      "type": "researchable",
-      "baseCredits": {
-        "infantry": 0,
-        "armor": 0,
-        "mechanized": 0,
-        "motorized": 1,
-        "support": 0,
-        "plane": 0,
-        "invitation": 0
-      },
-      "emportOptions": []
-    },
-    {
-      "id": "v1767657115973",
-      "name": "K2 Black Panther",
-      "thumbnail": "https://i.imgur.com/72aagBS.png",
-      "image_path": "Image/south_korea/K2_Black_Panther.png",
-      "rank": 6,
-      "br": 13.3,
-      "type": "researchable",
-      "baseCredits": {
-        "infantry": 0,
-        "armor": 4,
-        "mechanized": 0,
-        "motorized": 0,
-        "support": 0,
-        "plane": 0,
-        "invitation": 0
-      },
-      "emportOptions": []
-    },
-    {
-      "id": "v1767657325259",
-      "name": "K200 KIFV",
-      "thumbnail": "https://i.imgur.com/R7UhSFD.png",
-      "image_path": "Image/south_korea/K200_KIFV.png",
-      "rank": 2,
-      "br": 4,
-      "type": "researchable",
-      "baseCredits": {
-        "infantry": 0,
-        "armor": 0,
-        "mechanized": 0,
-        "motorized": 0,
-        "support": 0,
-        "plane": 0,
-        "invitation": 0
-      },
-      "emportOptions": []
-    },
-    {
-      "id": "v1767657460344",
-      "name": "K21",
-      "thumbnail": "https://i.imgur.com/3QTohYx.png",
-      "image_path": "Image/south_korea/K21.png",
-      "rank": 5,
-      "br": 10,
-      "type": "researchable",
-      "baseCredits": {
-        "infantry": 0,
-        "armor": 0,
-        "mechanized": 0,
-        "motorized": 0,
-        "support": 0,
-        "plane": 0,
-        "invitation": 0
-      },
-      "emportOptions": []
-    },
-    {
-      "id": "v1767657613427",
-      "name": "K239 Chunmoo",
-      "thumbnail": "https://i.imgur.com/FHXdLdA.png",
-      "image_path": "Image/south_korea/K239_Chunmoo.png",
-      "rank": 5,
-      "br": 10.7,
-      "type": "researchable",
-      "baseCredits": {
-        "infantry": 0,
-        "armor": 0,
-        "mechanized": 0,
-        "motorized": 0,
-        "support": 4,
-        "plane": 0,
-        "invitation": 0
-      },
-      "emportOptions": []
-    },
-    {
-      "id": "v1767657718815",
-      "name": "K30 Biho",
-      "thumbnail": "https://i.imgur.com/COJtG00.png",
-      "image_path": "Image/south_korea/K30_Biho.png",
-      "rank": 4,
-      "br": 8.3,
-      "type": "researchable",
-      "baseCredits": {
-        "infantry": 0,
-        "armor": 0,
-        "mechanized": 0,
-        "motorized": 0,
-        "support": 2,
-        "plane": 0,
-        "invitation": 0
-      },
-      "emportOptions": []
-    },
-    {
-      "id": "v1767658146375",
-      "name": "K808 White Tiger",
-      "thumbnail": "https://i.imgur.com/1RaywTk.png",
-      "image_path": "Image/south_korea/K808_White_Tiger.png",
-      "rank": 4,
-      "br": 9.3,
-      "type": "researchable",
-      "baseCredits": {
-        "infantry": 0,
-        "armor": 0,
-        "mechanized": 0,
-        "motorized": 0,
-        "support": 0,
-        "plane": 0,
-        "invitation": 0
-      },
-      "emportOptions": []
-    },
-    {
-      "id": "v1767658408255",
-      "name": "K9A1 Thunder",
-      "thumbnail": "https://i.imgur.com/wQQM0dU.png",
-      "image_path": "Image/south_korea/K9A1_Thunder.png",
-      "rank": 3,
-      "br": 7.3,
-      "type": "researchable",
-      "baseCredits": {
-        "infantry": 0,
-        "armor": 0,
-        "mechanized": 0,
-        "motorized": 0,
-        "support": 3,
         "plane": 0,
         "invitation": 0
       },
