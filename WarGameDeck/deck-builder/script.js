@@ -94,7 +94,7 @@ function renderCountryList() {
 function translateType(type) {
     const map = {
         infantry: 'INF',
-        armor: 'ARM',
+        armor: 'BLI',
         mechanized: 'MEC',
         motorized: 'MOT',
         support: 'SUP',
