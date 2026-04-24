@@ -1396,187 +1396,36 @@ window.VEHICLES_DATA = {
   ],
   "japon": [
     {
-      "id": "v1767642224914",
-      "name": "F-2A",
-      "thumbnail": "https://i.imgur.com/sLDHeOc.png",
-      "image_path": "Image/japon\\F-2A.png",
-      "rank": 7,
-      "br": 13.7,
+      "id": "v1776988100686",
+      "name": "Komatsu LAV",
+      "thumbnail": "https://i.imgur.com/uuHRGIV.png",
+      "image_path": "Image/japon\\Komatsu_LAV.png",
+      "rank": 1,
+      "br": 1,
       "type": "researchable",
       "baseCredits": {
         "infantry": 0,
         "armor": 0,
         "mechanized": 0,
-        "motorized": 0,
+        "motorized": 1,
         "support": 0,
-        "plane": 1,
+        "plane": 0,
         "invitation": 0
       },
-      "emportOptions": [
-        {
-          "infantry": 0,
-          "armor": 0,
-          "mechanized": 0,
-          "motorized": 0,
-          "support": 0,
-          "plane": 2,
-          "invitation": 0,
-          "_text": "2 - Crédits Aériens"
-        },
-        {
-          "infantry": 0,
-          "armor": 0,
-          "mechanized": 0,
-          "motorized": 0,
-          "support": 0,
-          "plane": 3,
-          "invitation": 0,
-          "_text": "3 - Crédits Aériens"
-        },
-        {
-          "infantry": 0,
-          "armor": 0,
-          "mechanized": 0,
-          "motorized": 0,
-          "support": 0,
-          "plane": 3,
-          "invitation": 0,
-          "_text": "3 - Crédits Aériens"
-        },
-        {
-          "infantry": 0,
-          "armor": 0,
-          "mechanized": 0,
-          "motorized": 0,
-          "support": 0,
-          "plane": 4,
-          "invitation": 0,
-          "_text": "4 - Crédits Aériens"
-        },
-        {
-          "infantry": 0,
-          "armor": 0,
-          "mechanized": 0,
-          "motorized": 0,
-          "support": 0,
-          "plane": 1,
-          "invitation": 0,
-          "_text": "1 - Crédits Aériens"
-        },
-        {
-          "infantry": 0,
-          "armor": 0,
-          "mechanized": 0,
-          "motorized": 0,
-          "support": 0,
-          "plane": 2,
-          "invitation": 0,
-          "_text": "2 - Crédits Aériens"
-        },
-        {
-          "infantry": 0,
-          "armor": 0,
-          "mechanized": 0,
-          "motorized": 0,
-          "support": 0,
-          "plane": 3,
-          "invitation": 0,
-          "_text": "3 - Crédits Aériens"
-        },
-        {
-          "infantry": 0,
-          "armor": 0,
-          "mechanized": 0,
-          "motorized": 0,
-          "support": 0,
-          "plane": 3,
-          "invitation": 0,
-          "_text": "3 - Crédits Aériens"
-        },
-        {
-          "infantry": 0,
-          "armor": 0,
-          "mechanized": 0,
-          "motorized": 0,
-          "support": 0,
-          "plane": 4,
-          "invitation": 0,
-          "_text": "4 - Crédits Aériens"
-        },
-        {
-          "infantry": 0,
-          "armor": 0,
-          "mechanized": 0,
-          "motorized": 0,
-          "support": 0,
-          "plane": 2,
-          "invitation": 0,
-          "_text": "2 - Crédits Aériens"
-        },
-        {
-          "infantry": 0,
-          "armor": 0,
-          "mechanized": 0,
-          "motorized": 0,
-          "support": 0,
-          "plane": 2,
-          "invitation": 0,
-          "_text": "2 - Crédits Aériens"
-        },
-        {
-          "infantry": 0,
-          "armor": 0,
-          "mechanized": 0,
-          "motorized": 0,
-          "support": 0,
-          "plane": 3,
-          "invitation": 0,
-          "_text": "3 - Crédits Aériens"
-        },
-        {
-          "infantry": 0,
-          "armor": 0,
-          "mechanized": 0,
-          "motorized": 0,
-          "support": 0,
-          "plane": 2,
-          "invitation": 0,
-          "_text": "2 - Crédits Aériens"
-        },
-        {
-          "infantry": 0,
-          "armor": 0,
-          "mechanized": 0,
-          "motorized": 0,
-          "support": 0,
-          "plane": 1,
-          "invitation": 0,
-          "_text": "1 - Crédits Aériens"
-        },
-        {
-          "infantry": 0,
-          "armor": 0,
-          "mechanized": 0,
-          "motorized": 0,
-          "support": 0,
-          "plane": 1,
-          "invitation": 0,
-          "_text": "1 - Crédits Aériens"
-        }
-      ]
+      "emportOptions": []
     },
     {
-      "id": "v1767646528636",
-      "name": "Type 10",
-      "thumbnail": "https://i.imgur.com/RLmL1My.png",
-      "image_path": "Image/japon\\Type_10.png",
-      "rank": 6,
-      "br": 12.7,
+      "id": "v1776988198880",
+      "name": "Type 96",
+      "thumbnail": "https://i.imgur.com/7Hsw9MJ.png",
+      "image_path": "Image/japon\\Type_96.png",
+      "rank": 3,
+      "br": 6,
       "type": "researchable",
       "baseCredits": {
         "infantry": 0,
-        "armor": 3,
-        "mechanized": 0,
+        "armor": 0,
+        "mechanized": 2,
         "motorized": 0,
         "support": 0,
         "plane": 0,
@@ -1585,7 +1434,45 @@ window.VEHICLES_DATA = {
       "emportOptions": []
     },
     {
-      "id": "v1767646617670",
+      "id": "v1776988230183",
+      "name": "Type 89",
+      "thumbnail": "https://i.imgur.com/PuqJRen.png",
+      "image_path": "Image/japon\\Type_89.png",
+      "rank": 4,
+      "br": 9,
+      "type": "researchable",
+      "baseCredits": {
+        "infantry": 0,
+        "armor": 0,
+        "mechanized": 3,
+        "motorized": 0,
+        "support": 0,
+        "plane": 0,
+        "invitation": 0
+      },
+      "emportOptions": []
+    },
+    {
+      "id": "v1776988307314",
+      "name": "Type 96 MPMS",
+      "thumbnail": "https://i.imgur.com/6sJUgLx.png",
+      "image_path": "Image/japon\\Type_96_MPMS.png",
+      "rank": 4,
+      "br": 8.3,
+      "type": "researchable",
+      "baseCredits": {
+        "infantry": 0,
+        "armor": 0,
+        "mechanized": 0,
+        "motorized": 2,
+        "support": 0,
+        "plane": 0,
+        "invitation": 0
+      },
+      "emportOptions": []
+    },
+    {
+      "id": "v1776988429698",
       "name": "Type 16MCV",
       "thumbnail": "https://i.imgur.com/mEg4Ego.png",
       "image_path": "Image/japon\\Type_16MCV.png",
@@ -1604,7 +1491,26 @@ window.VEHICLES_DATA = {
       "emportOptions": []
     },
     {
-      "id": "v1767654972242",
+      "id": "v1776988472881",
+      "name": "Type 10",
+      "thumbnail": "https://i.imgur.com/RLmL1My.png",
+      "image_path": "Image/japon\\Type_10.png",
+      "rank": 6,
+      "br": 12.7,
+      "type": "researchable",
+      "baseCredits": {
+        "infantry": 0,
+        "armor": 3,
+        "mechanized": 0,
+        "motorized": 0,
+        "support": 0,
+        "plane": 0,
+        "invitation": 0
+      },
+      "emportOptions": []
+    },
+    {
+      "id": "v1776988525436",
       "name": "Type 19",
       "thumbnail": "https://i.imgur.com/85MtQ1j.png",
       "image_path": "Image/japon\\Type_19.png",
@@ -1623,64 +1529,7 @@ window.VEHICLES_DATA = {
       "emportOptions": []
     },
     {
-      "id": "v1767655019567",
-      "name": "Type 87",
-      "thumbnail": "https://i.imgur.com/gpJ4lp0.png",
-      "image_path": "Image/japon\\Type_87.png",
-      "rank": 4,
-      "br": 8.3,
-      "type": "researchable",
-      "baseCredits": {
-        "infantry": 0,
-        "armor": 0,
-        "mechanized": 0,
-        "motorized": 0,
-        "support": 2,
-        "plane": 0,
-        "invitation": 0
-      },
-      "emportOptions": []
-    },
-    {
-      "id": "v1767655121508",
-      "name": "Type 89",
-      "thumbnail": "https://i.imgur.com/PuqJRen.png",
-      "image_path": "Image/japon\\Type_89.png",
-      "rank": 4,
-      "br": 9,
-      "type": "researchable",
-      "baseCredits": {
-        "infantry": 0,
-        "armor": 0,
-        "mechanized": 0,
-        "motorized": 0,
-        "support": 0,
-        "plane": 0,
-        "invitation": 0
-      },
-      "emportOptions": []
-    },
-    {
-      "id": "v1767655266784",
-      "name": "Type 96",
-      "thumbnail": "https://i.imgur.com/7Hsw9MJ.png",
-      "image_path": "Image/japon\\Type_96.png",
-      "rank": 3,
-      "br": 6,
-      "type": "researchable",
-      "baseCredits": {
-        "infantry": 0,
-        "armor": 0,
-        "mechanized": 0,
-        "motorized": 0,
-        "support": 0,
-        "plane": 0,
-        "invitation": 0
-      },
-      "emportOptions": []
-    },
-    {
-      "id": "v1767655396487",
+      "id": "v1776988581543",
       "name": "Type 99",
       "thumbnail": "https://i.imgur.com/5RGdrWF.png",
       "image_path": "Image/japon\\Type_99.png",
@@ -1699,10 +1548,10 @@ window.VEHICLES_DATA = {
       "emportOptions": []
     },
     {
-      "id": "v1767656028273",
-      "name": "Type 96 MPMS",
-      "thumbnail": "https://i.imgur.com/6sJUgLx.png",
-      "image_path": "Image/japon\\Type_96_MPMS.png",
+      "id": "v1776988625718",
+      "name": "Type 87",
+      "thumbnail": "https://i.imgur.com/gpJ4lp0.png",
+      "image_path": "Image/japon\\Type_87.png",
       "rank": 4,
       "br": 8.3,
       "type": "researchable",
@@ -1718,23 +1567,174 @@ window.VEHICLES_DATA = {
       "emportOptions": []
     },
     {
-      "id": "v1767656261792",
-      "name": "Komatsu LAV",
-      "thumbnail": "https://i.imgur.com/uuHRGIV.png",
-      "image_path": "Image/japon\\Komatsu_LAV.png",
-      "rank": 1,
-      "br": 1,
+      "id": "v1776988692803",
+      "name": "F-2A",
+      "thumbnail": "https://i.imgur.com/sLDHeOc.png",
+      "image_path": "Image/japon\\F-2A.png",
+      "rank": 7,
+      "br": 13.7,
       "type": "researchable",
       "baseCredits": {
         "infantry": 0,
         "armor": 0,
         "mechanized": 0,
-        "motorized": 1,
+        "motorized": 0,
         "support": 0,
-        "plane": 0,
+        "plane": 2,
         "invitation": 0
       },
-      "emportOptions": []
+      "emportOptions": [
+        {
+          "infantry": 0,
+          "armor": 0,
+          "mechanized": 0,
+          "motorized": 0,
+          "support": 0,
+          "plane": 2,
+          "invitation": 0,
+          "_text": "A/A - AAM-3 Standard"
+        },
+        {
+          "infantry": 0,
+          "armor": 0,
+          "mechanized": 0,
+          "motorized": 0,
+          "support": 0,
+          "plane": 3,
+          "invitation": 0,
+          "_text": "A/A - AAM-3 Heavy"
+        },
+        {
+          "infantry": 0,
+          "armor": 0,
+          "mechanized": 0,
+          "motorized": 0,
+          "support": 0,
+          "plane": 3,
+          "invitation": 0,
+          "_text": "A/A - AAM-4 Standard"
+        },
+        {
+          "infantry": 0,
+          "armor": 0,
+          "mechanized": 0,
+          "motorized": 0,
+          "support": 0,
+          "plane": 4,
+          "invitation": 0,
+          "_text": "A/A - AAM-4 Heavy"
+        },
+        {
+          "infantry": 0,
+          "armor": 0,
+          "mechanized": 0,
+          "motorized": 0,
+          "support": 0,
+          "plane": 1,
+          "invitation": 0,
+          "_text": "A/A - AIM-7 Standard"
+        },
+        {
+          "infantry": 0,
+          "armor": 0,
+          "mechanized": 0,
+          "motorized": 0,
+          "support": 0,
+          "plane": 2,
+          "invitation": 0,
+          "_text": "A/A - AIM-7 Heavy"
+        },
+        {
+          "infantry": 0,
+          "armor": 0,
+          "mechanized": 0,
+          "motorized": 0,
+          "support": 0,
+          "plane": 3,
+          "invitation": 0,
+          "_text": "A/G - ASM-1"
+        },
+        {
+          "infantry": 0,
+          "armor": 0,
+          "mechanized": 0,
+          "motorized": 0,
+          "support": 0,
+          "plane": 3,
+          "invitation": 0,
+          "_text": "A/G - ASM-2"
+        },
+        {
+          "infantry": 0,
+          "armor": 0,
+          "mechanized": 0,
+          "motorized": 0,
+          "support": 0,
+          "plane": 4,
+          "invitation": 0,
+          "_text": "A/G - ASM-2B"
+        },
+        {
+          "infantry": 0,
+          "armor": 0,
+          "mechanized": 0,
+          "motorized": 0,
+          "support": 0,
+          "plane": 2,
+          "invitation": 0,
+          "_text": "A/G - CBU-87"
+        },
+        {
+          "infantry": 0,
+          "armor": 0,
+          "mechanized": 0,
+          "motorized": 0,
+          "support": 0,
+          "plane": 2,
+          "invitation": 0,
+          "_text": "A/G - GBU-38"
+        },
+        {
+          "infantry": 0,
+          "armor": 0,
+          "mechanized": 0,
+          "motorized": 0,
+          "support": 0,
+          "plane": 3,
+          "invitation": 0,
+          "_text": "A/G - GBU-54"
+        },
+        {
+          "infantry": 0,
+          "armor": 0,
+          "mechanized": 0,
+          "motorized": 0,
+          "support": 0,
+          "plane": 2,
+          "invitation": 0,
+          "_text": "A/G - GCS-1 IR"
+        },
+        {
+          "infantry": 0,
+          "armor": 0,
+          "mechanized": 0,
+          "motorized": 0,
+          "support": 0,
+          "plane": 1,
+          "invitation": 0,
+          "_text": "A/G - JM117"
+        },
+        {
+          "infantry": 0,
+          "armor": 0,
+          "mechanized": 0,
+          "motorized": 0,
+          "support": 0,
+          "plane": 1,
+          "invitation": 0,
+          "_text": "A/G - Mk82"
+        }
+      ]
     }
   ],
   "ranked basique": [

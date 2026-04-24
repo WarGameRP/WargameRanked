@@ -253,7 +253,7 @@ function updateDeckUI() {
                 .map(([type, val]) => `${val} ${translateType(type)}`)
                 .join(' + ');
 
-            const emportText = v.selectedEmport._text ? `<span class="emport-label">${escapeHtml(v.selectedEmport._text)}</span>` : '';
+            const emportText = v.selectedEmport._text ? `<span class="emport-label" title="${escapeHtml(v.selectedEmport._text)}">${escapeHtml(v.selectedEmport._text)}</span>` : '';
 
             div.innerHTML = `
                 <div class="selected-vehicle-info">

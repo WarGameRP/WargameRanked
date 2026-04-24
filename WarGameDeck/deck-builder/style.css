@@ -443,7 +443,16 @@ main {
     padding: 30px;
     max-width: 500px;
     width: 90%;
+    max-height: 80vh;
     box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+}
+
+#credit-options-list {
+    max-height: 50vh;
+    overflow-y: auto;
+    padding-right: 5px;
 }
 
 .credit-option-btn {

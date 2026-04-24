@@ -1,25 +1,80 @@
-# Dashboard WarGameDeck v1.1.1
+# Dashboard WarGameDeck v1.2.0
 
-Mise a jour mineure avec de nouveaux outils d'automatisation.
-
-## Nouveaux outils
-
-### Script de mise a jour du style
-- Creation du script Python `update_style.py` pour standardiser le style des fichiers HTML
-- Ajout du fichier batch `update_style.bat` pour un lancement simplifie
-- Le script detecte automatiquement les fichiers qui necessitent une mise a jour et applique le style uniforme (CSS, en-tete, padding)
-
-### Documentation
-- Mise a jour du README.md avec les instructions pour utiliser le script de mise a jour du style
-- Creation d'un guide de documentation dans `Other/docs/README.md` pour expliquer le systeme de mises a jour
-
-## Fonctionnalites
-
-Le script `update_style.py` effectue les actions suivantes :
-- Ajoute les liens CSS manquants (deck_style.css et Google Fonts)
-- Ajoute l'en-tete avec le logo et le bouton de retour au portail
-- Met a jour le padding de la description
-- Traite automatiquement tous les fichiers HTML du dossier Assets
+Mise à jour majeure avec l'ajout du Deck Builder et de l'API de signature sécurisée.
 
 ---
-*Le systeme continue d'evoluer pour une experience utilisateur optimisee.*
+
+## 🆕 Nouvelles Fonctionnalités
+
+### Deck Builder avec Signature Sécurisée
+- **Deck Builder complet** avec interface moderne pour créer des decks
+- **Système de doctrines** : Infanterie, Blindée, Mécanisée, Appui, CAS, Mixte
+- **Signature SHA-256 sécurisée** via API Cloudflare Workers (anti-triche)
+- **Import/Export de decks** en format JSON avec signature
+- **Page de vérification** des decks (`verify.html`)
+- **Gestion des crédits** par catégorie avec limites dynamiques selon la doctrine
+
+**Architecture de sécurité :**
+- Le secret de signature est stocké côté serveur (Cloudflare Workers)
+- Impossible de tricher côté client
+- CORS configuré pour autoriser les requêtes
+
+---
+
+### API Cloudflare Workers
+- **`wargame-api/index.js`** : API pour la signature des decks
+- **`wargame-api/package.json`** : Dépendances Node.js
+- **`wargame-api/wrangler.toml`** : Configuration Cloudflare Workers
+- **`deck-builder/cloudflare-worker.js`** : Code du Worker
+
+---
+
+### GitHub Actions
+- **`.github/workflows/deploy.yml`** : Workflow de déploiement automatique
+- **`.nojekyll`** : Désactivation de Jekyll pour GitHub Pages
+
+---
+
+## 🛠️ Outils d'Automatisation Ajoutés
+
+### Scripts de Téléchargement d'Images
+- **`download_images.py`** : Télécharge les images depuis les URLs
+- **`run_download_images.bat`** : Lancement simplifié
+- **`download_log.txt`** : Journal des téléchargements
+- **`vehicles.json`** : Base de données des véhicules
+
+### Script de Remplacement de Liens
+- **`replace_imgur_links.py`** : Remplace les liens imgur par des liens locaux
+
+---
+
+## 📚 Documentation Ajoutée
+
+### Guides Git
+- **`git_basics.md`** : Bases de Git pour débutants
+- **`tutoriel_git.md`** : Tutoriel Git détaillé
+
+---
+
+## 🔧 Fichiers de Configuration
+
+- **`.gitignore`** : Fichiers ignorés par Git
+- **`discord_servers.js`** : Configuration des serveurs Discord
+
+---
+
+## 📈 Améliorations
+
+### Mises à jour des Decks
+- **`france.html`** : Mise à jour du deck français
+- **`corée_du_sud.html`** : Mise à jour du deck sud-coréen
+- **`chine.html`** : Mise à jour du deck chinois
+- **`afrique_du_sud.html`** : Mise à jour du deck sud-africain
+
+### Images
+- Ajout de 56 images d'unités pour tous les pays
+- Remplacement des liens imgur par des images locales
+
+---
+
+*Pour voir les modifications des versions précédentes, consultez `OldUpdate/v1.1.1.md`*
