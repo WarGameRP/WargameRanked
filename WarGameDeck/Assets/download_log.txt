@@ -1,11 +1,11 @@
 ============================================================
 Rapport de téléchargement d'images
-Date: 2026-04-24 02:10:49
+Date: 2026-04-24 02:30:42
 ============================================================
 
-Total fichiers HTML traités: 6
-Total images téléchargées: 68
-Total images ignorées (existantes): 66
+Total fichiers HTML traités: 7
+Total images téléchargées: 82
+Total images ignorées (existantes): 68
 Total erreurs: 0
 
 ============================================================
@@ -40,6 +40,11 @@ Fichier: japon.html
 Fichier: ranked_basique.html
   Images trouvées: 2
   Téléchargées: 2
+  Ignorées: 2
+
+Fichier: ukraine.html
+  Images trouvées: 14
+  Téléchargées: 14
   Ignorées: 0
 
 ============================================================

@@ -65,15 +65,20 @@ Mise à jour majeure avec l'ajout du Deck Builder et de l'API de signature sécu
 
 ## 📈 Améliorations
 
+### Interface Deck Builder
+- **Modale de sélection de crédit** : Ajout du scroll quand il y a beaucoup d'options (max-height: 50vh)
+- **Tooltip sur les emport-label** : Affichage du texte complet au survol de la souris quand le label est tronqué
+
 ### Mises à jour des Decks
 - **`france.html`** : Mise à jour du deck français
 - **`corée_du_sud.html`** : Mise à jour du deck sud-coréen
 - **`chine.html`** : Mise à jour du deck chinois
 - **`afrique_du_sud.html`** : Mise à jour du deck sud-africain
+- **`japon.html`** : Mise à jour du deck japonais
+- **`ranked_basique.html`** : Mise à jour du deck ranked_basique
 
-### Images
-- Ajout de 56 images d'unités pour tous les pays
-- Remplacement des liens imgur par des images locales
+### Ajouts decks
+- **`ukraine.html`** : Ajout du deck ukrainien
 
 ---
 
