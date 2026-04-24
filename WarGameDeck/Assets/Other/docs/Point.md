@@ -1,94 +1,122 @@
-# Reglementation des Points et Doctrines
+## Système de Decks et de Crédits
 
-Ce document definit les standards de composition pour le Wargame Ranked. Le respect scrupuleux de ces limites est imperatif pour la validation de vos forces.
+Les **decks** sont composés d’unités ayant chacune un **coût en crédits**, répartis dans les catégories suivantes :
 
----
-
-## Classification des Unites
-
-Les forces sont divisees en six categories specifiques :
-
-- **Infanterie** : Comprend les troupes au sol standards et les unites d'elite.
-- **Blindes** : Chars de combat principaux et cavalerie lourde.
-- **Mecanises** : Infanterie assignee a des vehicules de transport de combat (VTT/VCI).
-- **Motorises** : Forces de reconnaissance et de combat rapides sur roues.
-- **Support** : Artillerie de campagne, mortiers et defense antiaerienne.
-- **Aeriens** : Vecteurs de combat fixes (chasseurs, bombardiers).
+* Crédits Infanterie
+* Crédits Blindés
+* Crédits Mécanisés
+* Crédits Motorisés
+* Crédits Support
+* Crédits Aériens
 
 ---
 
-## Ressources Speciales
+## Crédits d'Invitations
 
-### Credits d'Invitations
-L'acces a certains prototypes ou materiels de haute technologie est conditionne par l'obtention de credits specifiques.
-> Ces credits s'obtiennent par la participation active au developpement de la communaute sur le serveur.
-> Consultez le salon dedie pour verifier votre solde actuel.
+Il existe également des **Crédits d'Invitations**.
+Ces crédits sont nécessaires pour obtenir certains véhicules et se récupèrent en invitant des joueurs **actifs** sur le serveur.
+
+**Stockage des Crédits d'Invitations :**
+
+> Le stockage des **Crédits d'Invitations** se fait dans :
+> [《👥》consomables](https://ptb.discord.com/channels/1370767743166582845/1456360183025635502)
 
 ---
 
-## Doctrines Tactiques Autorisees
+## Doctrines
 
-Chaque deck doit adherer a un profil doctrinal unique. Les valeurs indiquent le plafond de credits par categorie.
+Chaque **deck** est associé à une **doctrine**.
+Cette doctrine définit le **nombre maximal de crédits** disponibles dans chaque catégorie.
+
+---
 
 ### Doctrine Infanterie
-*Preponderance des forces au sol.*
-- Infanterie : **12**
-- Blindes : **0**
-- Mecanises : **3**
-- Motorises : **3**
-- Support : **2**
-- Aeriens : **0**
 
-### Doctrine Blindee
-*Force de frappe blindee maximale.*
-- Infanterie : **2**
-- Blindes : **13**
-- Mecanises : **3**
-- Motorises : **0**
-- Support : **4**
-- Aeriens : **0**
-
-### Doctrine Mecanisee
-*Equilibre entre blindage et projection.*
-- Infanterie : **10**
-- Blindes : **0**
-- Mecanises : **10**
-- Motorises : **0**
-- Support : **2**
-- Aeriens : **0**
-
-### Doctrine Appui (Support)
-*Maitrise de l'artillerie et de la defense.*
-- Infanterie : **5**
-- Blindes : **0**
-- Mecanises : **2**
-- Motorises : **0**
-- Support : **10**
-- Aeriens : **5**
-
-### Doctrine Close Air Support (CAS)
-*Controle de l'espace aerien.*
-- Infanterie : **5**
-- Blindes : **2**
-- Mecanises : **2**
-- Motorises : **3**
-- Support : **0**
-- Aeriens : **10**
-
-### Doctrine Mixte
-*Versatilite operationnelle.*
-- Infanterie : **5**
-- Blindes : **5**
-- Mecanises : **2**
-- Motorises : **3**
-- Support : **3**
-- Aeriens : **2**
+| Catégorie  | Crédits |
+| ---------- | ------- |
+| Infanterie | 12      |
+| Blindés    | 0       |
+| Mécanisés  | 3       |
+| Motorisés  | 3       |
+| Support    | 2       |
+| Aériens    | 0       |
 
 ---
 
-## Procedure de Validation
+### Doctrine Blindée
 
-Une fois votre composition etablie :
-1. Transmettez la liste detaillee via le canal de communication discorde prevu.
-2. Identifiez clairement la doctrine appliquee.
-3. Attendez la confirmation officielle de l'etat-major avant engagement.
+| Catégorie  | Crédits |
+| ---------- | ------- |
+| Infanterie | 2       |
+| Blindés    | 13      |
+| Mécanisés  | 3       |
+| Motorisés  | 0       |
+| Support    | 4       |
+| Aériens    | 0       |
+
+---
+
+### Doctrine Mécanisée
+
+| Catégorie  | Crédits |
+| ---------- | ------- |
+| Infanterie | 10      |
+| Blindés    | 0       |
+| Mécanisés  | 10      |
+| Motorisés  | 0       |
+| Support    | 2       |
+| Aériens    | 0       |
+
+---
+
+### Doctrine Appui
+
+| Catégorie  | Crédits |
+| ---------- | ------- |
+| Infanterie | 5       |
+| Blindés    | 0       |
+| Mécanisés  | 2       |
+| Motorisés  | 0       |
+| Support    | 10      |
+| Aériens    | 5       |
+
+---
+
+### Doctrine CAS
+
+| Catégorie  | Crédits |
+| ---------- | ------- |
+| Infanterie | 5       |
+| Blindés    | 2       |
+| Mécanisés  | 2       |
+| Motorisés  | 3       |
+| Support    | 0       |
+| Aériens    | 10      |
+
+---
+
+### Doctrine Mixte
+
+| Catégorie  | Crédits |
+| ---------- | ------- |
+| Infanterie | 5       |
+| Blindés    | 5       |
+| Mécanisés  | 2       |
+| Motorisés  | 3       |
+| Support    | 3       |
+| Aériens    | 2       |
+
+---
+
+## Création et gestion des decks
+
+Il vous suffit d'aller sur le site suivant pour créer et modifier vos decks :
+[https://wargamerp.github.io/WargameRanked/WarGameDeck/deck-builder/index.html](https://wargamerp.github.io/WargameRanked/WarGameDeck/deck-builder/index.html)
+
+**Important :**
+
+* Le site ne sauvegarde pas vos decks
+* Conservez votre fichier `.json`
+* Transmettez également le `.json` pour pouvoir utiliser le deck en partie
+* Le partage de deck est laissé au choix de chaque joueur
+
