@@ -3,8 +3,10 @@
     --bg-color: #0d1117;
     --card-bg: rgba(22, 27, 34, 0.8);
     --accent-color: #f0ad4e;
+    --accent_color: #f0ad4e;
     --text-color: #c9d1d9;
     --text-muted: #8b949e;
+    --text_muted: #8b949e;
     --border-color: #30363d;
     --hover-color: #21262d;
     --primary-gradient: linear-gradient(135deg, #f0ad4e 0%, #d98e2b 100%);
@@ -173,19 +175,55 @@ header {
 
 .modal-gallery {
     padding: 1rem !important;
-    background: #000 !important;
+    background: transparent !important;
 }
 
-.galleria {
+.modal-gallery .swiper {
+    width: 100% !important;
+    height: 400px !important;
     border-radius: 12px !important;
     overflow: hidden !important;
-    height: 400px !important;
     background: #000 !important;
 }
 
-.modal-body {
+.modal-gallery .swiper-wrapper {
+    height: 100% !important;
+}
+
+.modal-gallery .swiper-slide {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgb(13, 17, 23) !important;
+}
+
+.modal-gallery .swiper-slide img {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+    border-radius: 8px !important;
+}
+
+.modal-gallery .swiper-button-next,
+.modal-gallery .swiper-button-prev {
+    color: var(--accent-color) !important;
+}
+
+.modal-gallery .swiper-pagination-bullet {
+    background: var(--text-muted) !important;
+    opacity: 0.5 !important;
+}
+
+.modal-gallery .swiper-pagination-bullet-active {
+    background: var(--accent-color) !important;
+    opacity: 1 !important;
+}
+
+#modalDesc {
     padding: 2rem !important;
     background: var(--tech-tree-bg) !important;
+    margin-top: 20px !important;
+    border-radius: 12px !important;
 }
 
 /* Improve stats formatting inside the modal */
