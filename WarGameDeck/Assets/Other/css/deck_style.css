@@ -101,8 +101,17 @@ header {
     box-shadow: 0 0 15px var(--accent-color);
 }
 
+/* Premium and Squadron vehicle backgrounds */
+.type_premium {
+    background-color: #9c8540 !important;
+}
+
+.type_squadron {
+    background-color: #049e4477 !important;
+}
+
 .vehicleName {
-    font-size: 0.85rem !important;
+    font-size: 0.85rem !important;  
     font-weight: 600 !important;
     padding: 2px 4px !important;
     background: rgba(0, 0, 0, 0.5) !important;

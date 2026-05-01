@@ -44,6 +44,12 @@ def update_html_style(html_file_path):
         '.modal-gallery .swiper-pagination-bullet { background: var(--text_muted) !important; opacity: 0.5; }',
         '.modal-gallery .swiper-pagination-bullet-active { background: var(--accent_color) !important; opacity: 1; }'
     ]
+
+    # Ajouter ou mettre à jour les couleurs premium et squadron
+    premium_squadron_styles = [
+        '.type_premium { background-color: #9c8540; }',
+        '.type_squadron { background-color: #049e4477; }'
+    ]
     
     removed_count = 0
     for style in swiper_styles_to_remove:
@@ -54,9 +60,29 @@ def update_html_style(html_file_path):
     if removed_count > 0:
         print(f"✓ Supprimé {removed_count} styles inline swiper de {html_file_path}")
 
+    # Ajouter ou mettre à jour les styles premium et squadron
+    premium_squadron_updated = 0
+    for style in premium_squadron_styles:
+        if style not in content:
+            # Trouver où insérer le style (après les styles de véhicule existants)
+            existing_researchable_style = '.type_researchable, .type_reserve, .type_event { background-color: rgb(46, 66, 80); }'
+            if existing_researchable_style in content:
+                content = content.replace(existing_researchable_style, existing_researchable_style + '\n' + style)
+                premium_squadron_updated += 1
+            else:
+                # Si le style de base n'est pas trouvé, l'ajouter dans la section style
+                style_tag_pattern = '<style>'
+                if style_tag_pattern in content:
+                    content = content.replace(style_tag_pattern, style_tag_pattern + '\n' + style)
+                    premium_squadron_updated += 1
+    
+    if premium_squadron_updated > 0:
+        print(f"✓ Ajouté {premium_squadron_updated} styles premium/squadron à {html_file_path}")
+
     # Vérifier si le fichier a déjà le style (mais toujours nettoyer les styles swiper)
     has_swiper_styles = any(style in content for style in swiper_styles_to_remove)
-    if 'Other/css/deck_style.css' in content and '<header>' in content and new_favicon in content and not favicon_replaced and incorrect_selector not in content and not has_swiper_styles and removed_count == 0:
+    has_premium_squadron = all(style in content for style in premium_squadron_styles)
+    if 'Other/css/deck_style.css' in content and '<header>' in content and new_favicon in content and not favicon_replaced and incorrect_selector not in content and not has_swiper_styles and removed_count == 0 and has_premium_squadron:
         print(f"✓ {html_file_path} a déjà le bon style")
         return
 
