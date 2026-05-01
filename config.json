@@ -44,5 +44,9 @@
                 "color": "#FF8F00"
             }
         ]
+    },
+    "MainPageVideo": {
+        "Path": "WarGameRanked.mp4",
+        "Active": true
     }
 }
