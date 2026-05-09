@@ -46,6 +46,44 @@
                 </div>
             </div>
 
+            <!-- Enhanced Image Viewer Modal -->
+            <div id="image-modal" class="modal-overlay" style="display: none;" onclick="closeImageModal()">
+                <div class="modal-content animate-in image-modal-enhanced" onclick="event.stopPropagation()">
+                    <div class="modal-header">
+                        <h3 id="modal-image-title" class="modal-title"></h3>
+                        <button class="close-modal enhanced-close-btn" onclick="closeImageModal()" title="Fermer">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="image-container">
+                            <img id="modal-image" src="" alt="" class="modal-image-enhanced">
+                            <div class="image-overlay">
+                                <div class="zoom-controls">
+                                    <button class="zoom-btn" onclick="zoomImage(1.2)" title="Zoomer (+)">
+                                        <span style="font-size: 10px; font-weight: bold;">+</span>
+                                    </button>
+                                    <button class="zoom-btn" onclick="zoomImage(0.8)" title="Dézoomer (-)">
+                                        <span style="font-size: 10px; font-weight: bold;">-</span>
+                                    </button>
+                                    <button class="zoom-btn" onclick="resetZoom()" title="Taille originale (100%)">
+                                        <span style="font-size: 10px; font-weight: bold;">100%</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="modal-actions">
+                            <button class="action-btn secondary-btn" onclick="closeImageModal()">Fermer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div id="result-area" style="display: none; margin-top: 40px; text-align: left;">
                 <div id="status-badge" class="status-badge">VALIDE</div>
                 
@@ -83,12 +121,191 @@
             background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 10px;
+        }
+
+        /* Enhanced Image Modal Styles for Verify Deck */
+        .image-modal-enhanced {
+            max-width: 95vw;
+            max-height: 95vh;
+            width: 900px;
+            background: var(--bg-card);
+            border: 2px solid var(--accent);
+            border-radius: 16px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border);
+            background: var(--glass-bg);
+        }
+
+        .modal-title {
+            margin: 0;
+            color: var(--text-primary);
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .enhanced-close-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .enhanced-close-btn:hover {
+            background: var(--danger);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .modal-body {
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-dark);
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .modal-image-enhanced {
+            max-width: 100%;
+            max-height: 60vh;
+            object-fit: contain;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+            cursor: zoom-in;
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-container:hover .image-overlay {
+            opacity: 1;
+        }
+
+        .zoom-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .zoom-btn {
+            background: var(--accent);
+            border: none;
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .zoom-btn:hover {
+            background: var(--accent-hover);
+            transform: scale(1.1);
+        }
+
+        .modal-footer {
+            padding: 20px 24px;
+            border-top: 1px solid var(--border);
+            background: var(--glass-bg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .image-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .info-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .info-value {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .action-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .action-btn.secondary-btn {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 2px solid var(--border);
+        }
+
+        .action-btn.secondary-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .verify-unit-card {
             padding: 12px;
             display: flex;
             align-items: center;
             gap: 15px;
             transition: all 0.3s ease;
         }
+
         .verify-unit-card:hover {
             background: rgba(255,255,255,0.06);
             transform: translateY(-2px);
@@ -498,6 +715,34 @@
             document.getElementById('vehicle-modal').style.display = 'none';
         }
 
+        let currentZoom = 1;
+
+        function showImageModal(imageSrc, title) {
+            document.getElementById('modal-image').src = imageSrc;
+            document.getElementById('modal-image-title').textContent = title;
+            document.getElementById('modal-vehicle-name').textContent = title;
+            document.getElementById('image-modal').style.display = 'flex';
+            resetZoom();
+        }
+
+        function closeImageModal() {
+            document.getElementById('image-modal').style.display = 'none';
+            resetZoom();
+        }
+
+        function zoomImage(factor) {
+            currentZoom *= factor;
+            currentZoom = Math.max(0.5, Math.min(3, currentZoom)); // Limiter entre 0.5x et 3x
+            const img = document.getElementById('modal-image');
+            img.style.transform = `scale(${currentZoom})`;
+        }
+
+        function resetZoom() {
+            currentZoom = 1;
+            const img = document.getElementById('modal-image');
+            img.style.transform = 'scale(1)';
+        }
+
         async function handleVerify(event) {
             const file = event.target.files[0];
             if (!file) return;
@@ -569,13 +814,13 @@
                         const thumbUrl = getVehicleImage(u);
                         
                         div.innerHTML = `
-                            <img src="${escapeHtml(thumbUrl)}" alt="${escapeHtml(u.name)}">
+                            <img src="${escapeHtml(thumbUrl)}" alt="${escapeHtml(u.name)}" style="cursor: pointer;" onclick="event.stopPropagation(); showImageModal('${escapeHtml(thumbUrl)}', '${escapeHtml(u.name)}')">
                             <div class="verify-unit-info">
                                 <span class="verify-unit-name">${escapeHtml(u.name)}</span>
                                 <span class="verify-unit-country">${escapeHtml(u.country)}</span>
                                 <div class="verify-unit-credits">
                                     <span class="total-cost-badge">${escapeHtml(costStr)}</span>
-                                    ${emport._text ? `<span class="emport-label">${escapeHtml(emport._text)}</span>` : ''}
+                                    ${emport._text ? `<span class="emport-label" title="${escapeHtml(emport._text)}">${escapeHtml(emport._text)}</span>` : ''}
                                 </div>
                             </div>
                         `;

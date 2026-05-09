@@ -9,7 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" href="WarGameDeck/Assets/Other/img/Logo_Ranked.png" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="discord_servers.js"></script>
+    <script src="WarGameDeck/Assets/scripts/discord_servers.js"></script>
+    <script src="WarGameDeck/Assets/vehicles.js"></script>
     <style>
         :root {
             --bg-color: #0d1117;
@@ -283,6 +284,176 @@
                 padding: 1.5rem;
             }
         }
+
+        /* Flappy Bird Modal Styles */
+        .flappy-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .flappy-content {
+            background: var(--bg-color);
+            border: 2px solid var(--accent-color);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .flappy-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--accent-color);
+            border: none;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #flappy-canvas {
+            border: 2px solid var(--accent-color);
+            border-radius: 8px;
+            background: linear-gradient(to bottom, #87CEEB, #98D8E8);
+            display: block;
+            margin: 20px auto;
+        }
+
+        .flappy-score {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .flappy-instructions {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin: 10px 0;
+        }
+
+        /* Game Over Modal Styles */
+        .gameover-content {
+            background: var(--bg-color);
+            border: 2px solid var(--accent-color);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+        }
+
+        .gameover-header {
+            margin-bottom: 25px;
+        }
+
+        .gameover-score {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .score-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .score-value {
+            color: var(--accent-color);
+            font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 0 0 20px rgba(240, 173, 78, 0.5);
+        }
+
+        .gameover-stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 25px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-value {
+            color: var(--text);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .gameover-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 25px;
+        }
+
+        .gameover-btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .gameover-btn.primary-btn {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .gameover-btn.primary-btn:hover {
+            background: #d98e2b;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(240, 173, 78, 0.3);
+        }
+
+        .gameover-btn.secondary-btn {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--border);
+        }
+
+        .gameover-btn.secondary-btn:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
     </style>
 </head>
 
@@ -290,7 +461,7 @@
     <video class="video-background" autoplay muted loop></video>
     <div class="container">
         <div class="logo-section">
-            <img src="WarGameDeck/Assets/Other/img/Logo_Ranked.png" alt="Logo WarGame Ranked">
+            <img src="WarGameDeck/Assets/Other/img/Logo_Ranked.png" alt="Logo WarGame Ranked" style="cursor: pointer;" onclick="openFlappyBirdModal()">
             <h1>Wargame Ranked</h1>
 
         <div class="menu-grid">
@@ -340,6 +511,46 @@
                 <div class="dropdown-menu" id="discord-dropdown">
                     <!-- Les serveurs seront chargés dynamiquement depuis discord_servers.js -->
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Flappy Bird Modal -->
+    <div id="flappy-modal" class="flappy-modal">
+        <div class="flappy-content">
+            <button class="flappy-close" onclick="closeFlappyBirdModal()">&times;</button>
+            <h2 style="color: var(--accent-color); margin-top: 0;">Wargame Flappy Bird</h2>
+            <div class="flappy-instructions">Cliquez ou appuyez sur Espace pour voler !</div>
+            <div class="flappy-score">Score: <span id="flappy-score">0</span></div>
+            <canvas id="flappy-canvas" width="350" height="400"></canvas>
+            <div class="flappy-instructions">Utilise les assets du Wargame de façon aléatoire !</div>
+        </div>
+    </div>
+
+    <!-- Game Over Modal -->
+    <div id="gameover-modal" class="flappy-modal" style="display: none;">
+        <div class="gameover-content">
+            <button class="flappy-close" onclick="closeGameOverModal()">&times;</button>
+            <div class="gameover-header">
+                <h2 style="color: var(--accent-color); margin: 0;">Game Over!</h2>
+                <div class="gameover-score">
+                    <span class="score-label">Score Final</span>
+                    <span class="score-value" id="final-score">0</span>
+                </div>
+            </div>
+            <div class="gameover-stats" id="gameover-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Véhicules Évités</span>
+                    <span class="stat-value" id="vehicles-avoided">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Difficulté</span>
+                    <span class="stat-value" id="difficulty-level">Facile</span>
+                </div>
+            </div>
+            <div class="gameover-buttons">
+                <button class="gameover-btn primary-btn" onclick="restartGame()">Rejouer</button>
+                <button class="gameover-btn secondary-btn" onclick="closeGameOverModal()">Fermer</button>
             </div>
         </div>
     </div>
@@ -455,6 +666,370 @@
 
         // Check video config on page load
         checkVideoConfig();
+
+        // Flappy Bird Game
+        let flappyGame = null;
+
+        function openFlappyBirdModal() {
+            document.getElementById('flappy-modal').style.display = 'flex';
+            if (!flappyGame) {
+                flappyGame = new FlappyBirdGame();
+                flappyGame.init();
+            }
+            flappyGame.start();
+        }
+
+        function closeFlappyBirdModal() {
+            document.getElementById('flappy-modal').style.display = 'none';
+            if (flappyGame) {
+                flappyGame.stop();
+            }
+        }
+
+        function closeGameOverModal() {
+            document.getElementById('gameover-modal').style.display = 'none';
+        }
+
+        function restartGame() {
+            document.getElementById('gameover-modal').style.display = 'none';
+            if (flappyGame) {
+                flappyGame.start();
+            }
+        }
+
+        class FlappyBirdGame {
+            constructor() {
+                this.canvas = document.getElementById('flappy-canvas');
+                this.ctx = this.canvas.getContext('2d');
+                this.score = 0;
+                this.gameRunning = false;
+                this.countdown = 3;
+                this.bird = {
+                    x: 50,
+                    y: 200,
+                    velocity: 0,
+                    radius: 20,
+                    gravity: 0.4,  // Moins de gravité = chute plus lente
+                    jump: -9      // Saut moins puissant mais plus contrôlable
+                };
+                this.obstacles = [];
+                this.obstacleSpeed = 2;  // Vitesse réduite pour plus de facilité
+                this.frameCount = 0;
+                this.baseGap = 150;      // Gap plus grand au début
+                this.difficultyMultiplier = 1; // Pour la progression progressive
+                
+                // Fonction pour charger dynamiquement les assets depuis les fichiers de véhicules
+                this.loadVehicleAssets();
+                this.currentPlayerAsset = null;
+                this.currentObstacleAsset = null;
+            }
+
+            loadVehicleAssets() {
+                this.allAssets = [];
+                
+                // Ajouter les assets Other
+                this.allAssets.push(
+                    'WarGameDeck/Assets/Other/img/Logo_Ranked.png',
+                    'WarGameDeck/Assets/Other/img/archive-svgrepo-com.svg'
+                );
+                
+                // Charger les images depuis VEHICLES_DATA si disponible
+                if (typeof VEHICLES_DATA !== 'undefined') {
+                    for (const country in VEHICLES_DATA) {
+                        const vehicles = VEHICLES_DATA[country];
+                        for (const vehicle of vehicles) {
+                            if (vehicle.image_path) {
+                                // Convertir le chemin relatif en chemin complet
+                                const fullPath = 'WarGameDeck/Assets/' + vehicle.image_path;
+                                this.allAssets.push(fullPath);
+                            }
+                        }
+                    }
+                }
+                
+                console.log('Assets chargés:', this.allAssets.length, 'images');
+            }
+
+            init() {
+                // Event listeners
+                this.canvas.addEventListener('click', () => this.jump());
+                document.addEventListener('keydown', (e) => {
+                    if (e.code === 'Space') {
+                        e.preventDefault();
+                        this.jump();
+                    }
+                });
+            }
+
+            start() {
+                this.gameRunning = false;
+                this.score = 0;
+                this.bird.y = 200;
+                this.bird.velocity = 0;
+                this.obstacles = [];
+                this.frameCount = 0;
+                this.countdown = 3;
+                
+                // Réinitialiser les paramètres de difficulté pour un début facile
+                this.obstacleSpeed = 2;  // Vitesse de base facile
+                this.difficultyMultiplier = 1;
+                
+                // Choisir un asset vraiment aléatoire pour le joueur parmi tous les véhicules
+                this.currentPlayerAsset = this.allAssets[Math.floor(Math.random() * this.allAssets.length)];
+                
+                document.getElementById('flappy-score').textContent = '0';
+                this.startCountdown();
+            }
+
+            startCountdown() {
+                const countdownInterval = setInterval(() => {
+                    this.countdown--;
+                    if (this.countdown <= 0) {
+                        clearInterval(countdownInterval);
+                        this.gameRunning = true;
+                        this.gameLoop();
+                    }
+                    this.draw();
+                }, 1000);
+            }
+
+            stop() {
+                this.gameRunning = false;
+            }
+
+            jump() {
+                if (this.gameRunning) {
+                    this.bird.velocity = this.bird.jump;
+                }
+            }
+
+            update() {
+                if (!this.gameRunning) return;
+
+                // Update bird
+                this.bird.velocity += this.bird.gravity;
+                this.bird.y += this.bird.velocity;
+
+                // Generate random obstacles with random assets and progressive difficulty
+                this.frameCount++;
+                
+                // DIFFICULTÉ NORMALE (0-24 points)
+                if (this.score <= 24) {
+                    if (this.score > 0 && this.score % 5 === 0) {
+                        this.difficultyMultiplier = Math.min(1.5, 1 + (this.score / 20));
+                        this.obstacleSpeed = Math.min(4, 2 + (this.score / 15));
+                    }
+                }
+                // DIFFICULTÉ EXTRÊME (25+ points)
+                else {
+                    // Augmentation massive de la difficulté
+                    this.obstacleSpeed = Math.min(8, 3 + (this.score / 10)); // Vitesse double
+                    this.difficultyMultiplier = Math.min(3, 1.5 + (this.score / 25));
+                }
+                
+                const obstacleFrequency = this.score >= 25 ? 60 : 90; // Plus fréquent après 25 points
+                
+                if (this.frameCount % obstacleFrequency === 0) {
+                    let gapSize, minGap;
+                    
+                    if (this.score >= 25) {
+                        // MODE EXTRÊME : gaps très petits
+                        gapSize = this.baseGap - (this.score * 4) - 50; // Réduction massive
+                        minGap = Math.max(80, gapSize); // Gap minimum de 80px
+                    } else {
+                        // MODE NORMAL : gaps raisonnables
+                        gapSize = this.baseGap - (this.score * 2);
+                        minGap = Math.max(120, gapSize); // Gap minimum de 120px
+                    }
+                    
+                    const gap = minGap + Math.random() * 20;
+                    const gapY = Math.random() * (this.canvas.height - gap - 100) + 50;
+                    
+                    // Choisir un asset aléatoire différent pour chaque obstacle
+                    const randomObstacleAsset = this.allAssets[Math.floor(Math.random() * this.allAssets.length)];
+                    
+                    this.obstacles.push({
+                        x: this.canvas.width,
+                        gapY: gapY,
+                        gapHeight: gap,
+                        width: this.score >= 25 ? 60 : 50, // Obstacles plus larges en mode extrême
+                        passed: false,
+                        asset: randomObstacleAsset // Chaque obstacle a son propre asset
+                    });
+                }
+
+                // Update obstacles
+                this.obstacles = this.obstacles.filter(obstacle => {
+                    obstacle.x -= this.obstacleSpeed;
+
+                    // Check if bird passed obstacle
+                    if (!obstacle.passed && obstacle.x + obstacle.width < this.bird.x) {
+                        obstacle.passed = true;
+                        this.score++;
+                        document.getElementById('flappy-score').textContent = this.score;
+                    }
+
+                    return obstacle.x + obstacle.width > 0;
+                });
+
+                // Check collisions
+                for (const obstacle of this.obstacles) {
+                    if (this.checkCollision(obstacle)) {
+                        this.gameOver();
+                        return;
+                    }
+                }
+
+                // Check boundaries
+                if (this.bird.y - this.bird.radius < 0 || this.bird.y + this.bird.radius > this.canvas.height) {
+                    this.gameOver();
+                }
+            }
+
+            checkCollision(obstacle) {
+                const birdLeft = this.bird.x - this.bird.radius;
+                const birdRight = this.bird.x + this.bird.radius;
+                const birdTop = this.bird.y - this.bird.radius;
+                const birdBottom = this.bird.y + this.bird.radius;
+
+                const obstacleLeft = obstacle.x;
+                const obstacleRight = obstacle.x + obstacle.width;
+                const obstacleTop = obstacle.gapY;
+                const obstacleBottom = obstacle.gapY + obstacle.gapHeight;
+
+                // Check if bird is in horizontal range of obstacle
+                if (birdRight > obstacleLeft && birdLeft < obstacleRight) {
+                    // Check if bird hits top or bottom part
+                    if (birdTop < obstacleTop || birdBottom > obstacleBottom) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+            gameOver() {
+                this.gameRunning = false;
+                
+                // Afficher la modal game over moderne
+                document.getElementById('final-score').textContent = this.score;
+                document.getElementById('vehicles-avoided').textContent = this.score;
+                
+                // Déterminer le niveau de difficulté
+                let difficultyText = 'Facile';
+                if (this.score >= 25) {
+                    difficultyText = 'EXTRÊME';
+                } else if (this.score >= 15) {
+                    difficultyText = 'Difficile';
+                } else if (this.score >= 8) {
+                    difficultyText = 'Moyen';
+                }
+                document.getElementById('difficulty-level').textContent = difficultyText;
+                
+                // Afficher la modal
+                document.getElementById('gameover-modal').style.display = 'flex';
+            }
+
+            draw() {
+                // Clear canvas with different background for extreme mode
+                const gradient = this.ctx.createLinearGradient(0, 0, 0, this.canvas.height);
+                
+                if (this.score >= 25) {
+                    // MODE EXTRÊME : fond rouge/orange intense
+                    gradient.addColorStop(0, '#FF6B6B');
+                    gradient.addColorStop(0.5, '#FF8E53');
+                    gradient.addColorStop(1, '#FFA726');
+                } else {
+                    // MODE NORMAL : ciel bleu
+                    gradient.addColorStop(0, '#87CEEB');
+                    gradient.addColorStop(1, '#98D8E8');
+                }
+                
+                this.ctx.fillStyle = gradient;
+                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+                // Draw countdown
+                if (this.countdown > 0) {
+                    this.ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+                    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+                    
+                    this.ctx.fillStyle = '#f0ad4e';
+                    this.ctx.font = 'bold 48px Arial';
+                    this.ctx.textAlign = 'center';
+                    this.ctx.fillText(this.countdown, this.canvas.width / 2, this.canvas.height / 2);
+                    
+                    this.ctx.fillStyle = 'white';
+                    this.ctx.font = '16px Arial';
+                    this.ctx.fillText('Préparez-vous !', this.canvas.width / 2, this.canvas.height / 2 + 40);
+                    return;
+                }
+
+                // Draw bird (using random asset)
+                if (this.currentPlayerAsset) {
+                    const img = new Image();
+                    img.src = this.currentPlayerAsset;
+                    this.ctx.save();
+                    this.ctx.translate(this.bird.x, this.bird.y);
+                    this.ctx.rotate(this.bird.velocity * 0.05);
+                    this.ctx.drawImage(img, -this.bird.radius, -this.bird.radius, this.bird.radius * 2, this.bird.radius * 2);
+                    this.ctx.restore();
+                }
+
+                // Draw obstacles with unique random Wargame assets
+                for (const obstacle of this.obstacles) {
+                    if (obstacle.asset) {
+                        const img = new Image();
+                        img.src = obstacle.asset;
+                        
+                        // Effets visuels différents en mode extrême
+                        if (this.score >= 25) {
+                            // MODE EXTRÊME : bordures rouges clignotantes
+                            this.ctx.save();
+                            this.ctx.globalAlpha = 0.9;
+                            
+                            // Effet de lueur rouge
+                            this.ctx.shadowColor = '#FF0000';
+                            this.ctx.shadowBlur = 10;
+                            
+                            this.ctx.drawImage(img, obstacle.x, 0, obstacle.width, obstacle.gapY);
+                            this.ctx.drawImage(img, obstacle.x, obstacle.gapY + obstacle.gapHeight, obstacle.width, this.canvas.height - obstacle.gapY - obstacle.gapHeight);
+                            
+                            // Bordures rouges intenses
+                            this.ctx.strokeStyle = '#FF0000';
+                            this.ctx.lineWidth = 3;
+                            this.ctx.strokeRect(obstacle.x, 0, obstacle.width, obstacle.gapY);
+                            this.ctx.strokeRect(obstacle.x, obstacle.gapY + obstacle.gapHeight, obstacle.width, this.canvas.height - obstacle.gapY - obstacle.gapHeight);
+                            
+                            this.ctx.restore();
+                        } else {
+                            // MODE NORMAL : style standard
+                            this.ctx.save();
+                            this.ctx.globalAlpha = 0.8;
+                            this.ctx.drawImage(img, obstacle.x, 0, obstacle.width, obstacle.gapY);
+                            this.ctx.drawImage(img, obstacle.x, obstacle.gapY + obstacle.gapHeight, obstacle.width, this.canvas.height - obstacle.gapY - obstacle.gapHeight);
+                            this.ctx.restore();
+                            
+                            // Add borders for visibility
+                            this.ctx.strokeStyle = '#f0ad4e';
+                            this.ctx.lineWidth = 2;
+                            this.ctx.strokeRect(obstacle.x, 0, obstacle.width, obstacle.gapY);
+                            this.ctx.strokeRect(obstacle.x, obstacle.gapY + obstacle.gapHeight, obstacle.width, this.canvas.height - obstacle.gapY - obstacle.gapHeight);
+                        }
+                    }
+                }
+
+                // Draw ground
+                this.ctx.fillStyle = '#8B4513';
+                this.ctx.fillRect(0, this.canvas.height - 10, this.canvas.width, 10);
+            }
+
+            gameLoop() {
+                if (!this.gameRunning) return;
+
+                this.update();
+                this.draw();
+                requestAnimationFrame(() => this.gameLoop());
+            }
+        }
     </script>
 </body>
 

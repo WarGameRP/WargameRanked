@@ -75,7 +75,7 @@ function renderCountryList() {
             const thumbUrl = getVehicleImage(v);
 
             card.innerHTML = `
-                <img src="${escapeHtml(thumbUrl)}" alt="${escapeHtml(v.name)}" style="object-fit: cover;">
+                <img src="${escapeHtml(thumbUrl)}" alt="${escapeHtml(v.name)}" style="object-fit: cover; cursor: pointer;" onclick="event.stopPropagation(); showImageModal('${escapeHtml(thumbUrl)}', '${escapeHtml(v.name)}')">
                 <div class="vehicle-info">
                     <span class="vehicle-name">${escapeHtml(v.name)}</span>
                     <span class="vehicle-cost">${escapeHtml(costStr)}</span>
@@ -214,6 +214,34 @@ function getVehicleImage(v) {
     return path || '../Assets/Other/img/Logo_Ranked.png';
 }
 
+let currentZoom = 1;
+
+function showImageModal(imageSrc, title) {
+    document.getElementById('modal-image').src = imageSrc;
+    document.getElementById('modal-image-title').textContent = title;
+    document.getElementById('modal-vehicle-name').textContent = title;
+    document.getElementById('image-modal').style.display = 'flex';
+    resetZoom();
+}
+
+function closeImageModal() {
+    document.getElementById('image-modal').style.display = 'none';
+    resetZoom();
+}
+
+function zoomImage(factor) {
+    currentZoom *= factor;
+    currentZoom = Math.max(0.5, Math.min(3, currentZoom)); // Limiter entre 0.5x et 3x
+    const img = document.getElementById('modal-image');
+    img.style.transform = `scale(${currentZoom})`;
+}
+
+function resetZoom() {
+    currentZoom = 1;
+    const img = document.getElementById('modal-image');
+    img.style.transform = 'scale(1)';
+}
+
 function updateDeckUI() {
     const sections = document.querySelectorAll('.deck-section .section-items');
     sections.forEach(s => s.innerHTML = '');
@@ -257,7 +285,7 @@ function updateDeckUI() {
 
             div.innerHTML = `
                 <div class="selected-vehicle-info">
-                    <img src="${escapeHtml(thumbUrl)}" alt="${escapeHtml(v.name)}" style="width: 40px; height: 25px; border-radius: 4px; object-fit: cover;">
+                    <img src="${escapeHtml(thumbUrl)}" alt="${escapeHtml(v.name)}" style="width: 40px; height: 25px; border-radius: 4px; object-fit: cover; cursor: pointer;" onclick="event.stopPropagation(); showImageModal('${escapeHtml(thumbUrl)}', '${escapeHtml(v.name)}')">
                     <div style="flex: 1;">
                         <span style="font-weight: 600; display: block; font-size: 0.9rem;">${escapeHtml(v.name)}</span>
                         <div style="display: flex; gap: 5px; align-items: center;">
@@ -272,7 +300,6 @@ function updateDeckUI() {
         }
     });
 }
-
 function updateCreditsDisplay() {
     if (!currentDoctrine) return;
     
